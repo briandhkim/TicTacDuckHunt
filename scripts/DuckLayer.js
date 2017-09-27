@@ -24,8 +24,13 @@ var DuckLayer = function(){
 
     this.generateDucks = function(){
         //called by TicTacMain.
-
         //randomly determines number of remaining squares from availableSquareArray
+        var duckSquares = [];
+        var percentOfAvailSquares = Math.floor(Math.random()*(0.7-0.3))+0.3;
+        console.log(percentOfAvailSquares);
+        var numberOfDuckSquares = Math.floor(ticTacToe.availableSquareArray.length * percentOfAvailSquares);
+
+
         //randomly determine time ducks will appear and disappear
         //generate them, and put the ID of divs in duckOccupiedSquares while they are there
         //if click on div where id of div is in duckOccupiedSquares

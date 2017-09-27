@@ -47,6 +47,12 @@ caput mortuum - rgb(84,42,22)
 	border-radius: 7%;
 	background-color: rgba(0,0,0,0.9);
 }
+.gameScreenMonitor>div.row{
+	/*height: ;*/
+}
+.gameSquare{
+	border: 1px solid white;
+}
 .buttonArea{
 	background-color: rgba(84,42,22, 0.95);
 	padding: 0;
@@ -69,11 +75,14 @@ caput mortuum - rgb(84,42,22)
 .radioGridSelectInput{
 	height: 20%;
 }
-.startButton{
+.startInput{
 	height: 20%;
 	border: 1px solid;
 }
+.startButton{
+	background-color: white;
 
+}
 .rowLower{
 	height: 23%;
 	padding-bottom: 10px;
