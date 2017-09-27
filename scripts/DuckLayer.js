@@ -1,18 +1,25 @@
 var DuckLayer = function(){
     this.player0Score = 0;
     this.player1Score = 0;
-    this.duckOccupiedSquares = [01, 23];
+    this.duckOccupiedSquares = [];
     this.duckHit = false;
+    this.turnTime = 5000;
 
     this.startTimer = function(){
         //set duckHit to false
         //this.generateDucks
         //initiates timer as long as ducHit = false
             //otherwise, stop timer
+        if (this.duckHit === false){
+            setTimeout(this.generateDucks, this.turnTime);
+        } else {
+            this.stopTimer();
+        }
     };
 
     this.stopTimer = function(){
         //this.changePlayerTurn
+        TicTacMain.changePlayerTurn();
     };
 
     this.generateDucks = function(){
@@ -26,7 +33,7 @@ var DuckLayer = function(){
 
     };
 
-    this.hitDuck(){
+    this.hitDuck = function(){
         //duckHit = true
         //TicTacMain.placePiece
         //TicTacMain.changePlayerTurn
@@ -35,12 +42,20 @@ var DuckLayer = function(){
         //stopTimer()
 
         //update this.player0Score and this.player1Score
-    }
+        this.duckHit = true;
+        TicTacMain.placePiece();
+        TicTacMain.changePlayerTurn();
+        this.updateDisplay();
+        this.stopTimer();
+        this.player0Score += 10;
+        this.player1score += 10;
+    };
 
-    this.updateDisplay(){
+    this.updateDisplay = function(){
         //put dead ducks on squares based on TicTacMain.player0Squares and TicTacMain.player1Squares
 
         //updateScore in html.index;
+
     }
 
 
