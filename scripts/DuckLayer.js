@@ -12,7 +12,7 @@ var DuckLayer = function(){
     //end of merge conflict change
     this.startTimer = function(){
         if (this.duckHit === false){ //check if duckHit === false
-            this.playerTimer = setInterval(this.generateDucks, this.interval); // will call generateDucks every half a second and generateDucks will either have the duck or not
+            this.playerTimer = setInterval(this.generateRandomDuck, this.interval); // will call generateDucks every half a second and generateDucks will either have the duck or not
         }
     };
 
@@ -108,10 +108,7 @@ var DuckLayer = function(){
         //generate them, and put the ID of divs in duckOccupiedSquares while they are there
         //if click on div where id of div is in duckOccupiedSquares
             //run duckHit()
-
-    };
-  
-    this.generateDucks = this.generateDucks.bind(this);
+    }.bind(this); //bind "this" to generateDucks after setInterval set "this" to the window
 
     this.removeRandomGeneratedDuck = function(){
         for(var time in this.duckDurations){
@@ -135,6 +132,5 @@ var DuckLayer = function(){
     this.updateDisplay = function () {
         //put dead ducks on squares based on TicTacMain.player0Squares and TicTacMain.player1Squares
         //updateScore in html.index;
-    }
-
+    };
 };
