@@ -19,12 +19,38 @@ var TicTacMain = function(dim){
 		console.log(this.availableSquareArray);
 	};
 
-	this.placePiece = function(squareID){}; //places either x or o on the square
+	this.clickGameSquare = function(squareID){
+		if(playerTurn == 0){	//first checks player turn
+			for(var i=0; i<duck.duckOccupiedSquares.length; i++){	//traverse through available squares with ducks inside them
+				if(duck.duckOccupiedSquares[i]==squareID){	//if clicked squareID is inside the array, call hitDuck function
+					// return duck.hitDuck();	//may need to use return before function call to exit loop
+					duck.hitDuck();
+				}
+			}
+		}else if(playerTurn==1){
+			for(var i=0; i<duck.duckOccupiedSquares.length; i++){
+				if(duck.duckOccupiedSquares[i] == squareID){
+					duck.hitDuck();
+				}
+			}
+		}
+	}; 
+	//needs to call hitDuck in duck object
+	//places either x or o on the square
+	//go through duckoccupied square in duck object to check condition
 			// will call function that switches player turn - changePalyerTurn
 			//needs to call function that updates global array of available squares
 			//splice squareID from availableSquareArray and push to playerSquare array to current player
 
-	this.changePlayerTurn = function(){}; 
+	this.changePlayerTurn = function(){
+		if(playerTurn == 0){
+			playerTurn--;
+			return;
+		}else if(playerTurn == 1){
+			playerTurn++;
+			return;
+		}
+	}; 
 	/*called by placePiece either decrement or increment playerTurn depending on player turn
 		duck obje*/
 
