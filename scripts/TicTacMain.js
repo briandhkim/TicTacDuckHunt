@@ -38,11 +38,11 @@ var TicTacMain = function(dim){	//will eventually need to take in winning condit
 			//splice squareID from availableSquareArray and push to playerSquare array to current player
 
 	this.changePlayerTurn = function(){
-		if(playerTurn == 0){
-			playerTurn--;
+		if(this.playerTurn == 0){
+			this.playerTurn--;
 			return;
-		}else if(playerTurn == 1){
-			playerTurn++;
+		}else if(this.playerTurn == 1){
+			this.playerTurn++;
 			return;
 		}
 	}; 
