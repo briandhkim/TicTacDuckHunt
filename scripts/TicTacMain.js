@@ -1,4 +1,4 @@
-ar TicTacMain = function(dimension){
+var TicTacMain = function(dimension){
 	this.dimension = dimension;
 	this.playerTurn = 0;	//will always be either 0 or 1
 							/*player turn tracker
@@ -6,7 +6,16 @@ ar TicTacMain = function(dimension){
 	this.availableSquareArray = []; //will be populated createBoard containing all square ids
 	this.player0Squares = []; //ids of player occupied squares
 	this.player1Squares = []; 
-	this.createBoard = function(dimension){};
+	this.createBoard = function(dimension){
+		var divRowHeight = Math.floor(100/dimension);
+		var gameSquareWidth = Math.floor(100/dimension);
+		for(var i=0; i<dimension; i++){
+			$('<div>').addClass('row').attr('id','row'+i).appendTo('.gameScreenMonitor').css('height',divRowHeight+'%');
+			for(var j=0; j<dimension; j++){
+				$('<div>').addClass('gameSquare').attr('id',i.toString()+j.toString()).css({'width':gameSquareWidth+'%','height':'100%'}).click(self.placePiece).appendTo('#row'+i);
+			}
+		}
+	};
 
 	this.placePiece = function(squareID){}; //places either x or o on the square
 			// will call function that switches player turn - changePalyerTurn
