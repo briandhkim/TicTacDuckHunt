@@ -18,6 +18,8 @@ var DuckLayer = function(){
 
     this.stopTimer = function(){
         clearInterval(this.playerTimer); //stopping duck creation
+        //check win
+        //updateDisplay
         ticTacMain.changePlayerTurn(); //this.changePlayerTurn
     };
 
