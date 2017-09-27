@@ -13,7 +13,7 @@ var TicTacMain = function(dim){	//will eventually need to take in winning condit
 		for(var i=0; i<this.dimension; i++){
 			$('<div>').addClass('row').attr('id','row'+i).appendTo('.gameScreenMonitor').css('height',divRowHeight+'%');
 			for(var j=0; j<this.dimension; j++){
-				$('<div>').addClass('gameSquare').attr('id',i.toString()+j.toString()).css({'width':gameSquareWidth+'%','height':'100%'}).click(self.placePiece).appendTo('#row'+i);
+				$('<div>').addClass('gameSquare').attr('id',i.toString()+j.toString()).css({'width':gameSquareWidth+'%','height':'100%'}).click(self.clickGameSquae).appendTo('#row'+i);
 				this.availableSquareArray.push(i.toString()+j.toString());
 			}
 		}
