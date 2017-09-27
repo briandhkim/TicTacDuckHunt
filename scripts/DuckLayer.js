@@ -4,22 +4,29 @@ var DuckLayer = function(){
     this.duckOccupiedSquares = [];
     this.duckHit = false;
     this.turnTime = 5000;
+    this.playerTimer = null;
 
     this.startTimer = function(){
         //set duckHit to false
         //this.generateDucks
-        //initiates timer as long as ducHit = false
+        //initiates timer as long as duckHit = false
             //otherwise, stop timer
         if (this.duckHit === false){
-            setTimeout(this.generateDucks, this.turnTime);
+            this.playerTimer = setTimeout(this.generateDucks, 1000);
+            this.playerTurnTimer();
         } else {
             this.stopTimer();
         }
     };
 
+    this.playerTurnTimer = function(){
+
+    };
+
     this.stopTimer = function(){
         //this.changePlayerTurn
-        TicTacMain.changePlayerTurn();
+        clearTimeout(this.playerTimer);
+        ticTacMain.changePlayerTurn();
     };
 
     this.generateDucks = function(){
@@ -48,8 +55,6 @@ var DuckLayer = function(){
 
         //update this.player0Score and this.player1Score
         this.duckHit = true;
-        TicTacMain.placePiece();
-        TicTacMain.changePlayerTurn();
         this.updateDisplay();
         this.stopTimer();
         this.player0Score += 10;
