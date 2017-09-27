@@ -120,7 +120,7 @@ var DuckLayer = function(){
         }
     };
 
-    this.hitDuck = function(){
+    this.hitDuck = function() {
         //duckHit = true
         //TicTacMain.placePiece
         //TicTacMain.changePlayerTurn
@@ -128,25 +128,22 @@ var DuckLayer = function(){
         //updates the display
         //stopTimer()
 
-    this.hitDuck = function(){
-        this.duckHit = true; //changing duckHit to true if duck was in div clicked
-        if (this.duckHit === true) { //stopping timer once duckHit === true
-            this.stopTimer();
+        this.hitDuck = function () {
+            this.duckHit = true; //changing duckHit to true if duck was in div clicked
+            if (this.duckHit === true) { //stopping timer once duckHit === true
+                this.stopTimer();
+            }
+            this.updateDisplay(); //updates the display
+            this.player0Score += 10; //update this.player0Score and this.player1Score
+            this.player1score += 10;
+        };
+
+        this.updateDisplay = function () {
+            //put dead ducks on squares based on TicTacMain.player0Squares and TicTacMain.player1Squares
+
+            //updateScore in html.index;
+
         }
-        this.updateDisplay(); //updates the display
-        this.player0Score += 10; //update this.player0Score and this.player1Score
-        this.player1score += 10;
-    };
-
-    this.updateDisplay = function(){
-        //put dead ducks on squares based on TicTacMain.player0Squares and TicTacMain.player1Squares
-
-        //updateScore in html.index;
 
     }
-
-
 };
-
-
-var tic = new DuckLayer();
