@@ -46,10 +46,12 @@ caput mortuum - rgb(84,42,22)
 	border: 1px solid;
 	border-radius: 7%;
 	background-color: rgba(0,0,0,0.9);
+	padding: 0;
 }
 .gameScreenMonitor>div.row{
 	/*height: ;*/
 	/*display:inline-block;*/
+	margin: 0;
 }
 .gameSquare{
 	border: 1px solid white;
@@ -62,23 +64,23 @@ caput mortuum - rgb(84,42,22)
 .buttonArea > div{
 	margin-left:2.0888%;
 }
-.radioGridSelect{
-	height: 10%;
+.radioGridSelect, .radioWinSelect{
+	height: 12%;
 	border: 1px solid;
 	/*margin-left: 2.088%;*/
 }
-.radioGridSelectLabel{
+.radioGridSelectLabel, .radioWinSelectLabel{
 	margin-top:5px;
 	height: 60%;
 	background-color: gold;
 	/*border-radius: -20px; look up radial gradient*/
 	
 }
-.radioGridSelectInput{
-	height: 20%;
+.radioGridSelectInput, .radioWinSelectInput{
+	height: 30%;
 }
 .startInput{
-	height: 20%;
+	/*height: 20%;*/
 	border: 1px solid;
 }
 .startButton{

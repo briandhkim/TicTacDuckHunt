@@ -3,20 +3,25 @@ var DuckLayer = function(){
     this.player1Score = 0;
     this.duckOccupiedSquares = [];
     this.duckHit = false;
-    this.turnTime = 5000;
+    this.turnTime = 7500;
     this.currentTurnTime = 0;
     this.interval = 500; //can do math.random this to generate ducks at random time
-    //added from merge conflict
     this.percentChangeDuckAppears = 0.90;
     this.duckDurations = {};
-    //end of merge conflict change
     this.startTimer = function(){
         if (this.duckHit === false){ //check if duckHit === false
-            this.playerTimer = setInterval(this.generateRandomDuck, this.interval); // will call generateDucks every half a second and generateDucks will either have the duck or not
+            this.playerTimer = setInterval(this.intervalFunction, this.interval); // will call generateDucks every half a second and generateDucks will either have the duck or not
         }
     };
 
+    this.intervalFunction = function(){
+        this.generateRandomDuck();
+        this.removeRandomGeneratedDuck();
+    }.bind(this);
+
     this.stopTimer = function(){
+        this.currentTurnTime = 0;
+        console.log("Stop timer called")
         clearInterval(this.playerTimer); //stopping duck creation
         //check win
         //updateDisplay
@@ -24,13 +29,11 @@ var DuckLayer = function(){
     };
 
     this.generateRandomDuck = function() {
-        this.currentTurnTime += this.interval;
-        //added from merge conflict
+        console.log("generateDuck ran")
         this.currentTurnTime += this.interval; // adding half a second to currentTime every time the interval runs
         if (this.currentTurnTime >= this.turnTime) { // checking if currentTime === 5 seconds and if it is, stopTimer
             this.stopTimer();
         }
-        //end of merge conflict change
 
         //determine percentage change of generation
         if (this.duckOccupiedSquares.length === 3) {
@@ -51,14 +54,6 @@ var DuckLayer = function(){
             return
         }
 
-        //Generate Random Duck
-        //called by TicTacMain.
-        //randomly determines number of remaining squares from availableSquareArray
-        // var percentOfAvailSquares = (Math.floor(Math.random()*(7-4))+4) * 0.1;
-        // var numberOfDuckSquares = Math.floor(ticTacMain.availableSquareArray.length * percentOfAvailSquares);
-        // if(numberOfDuckSquares < 1){
-        //     numberOfDuckSquares = 1;
-        // }
 
         var availableUnoccupiedSquares = [];
         for(var i = 0; i < ticTacMain.availableSquareArray.length; i++){
@@ -67,59 +62,41 @@ var DuckLayer = function(){
             }
         }
 
-        var randomIndex = Math.floor(Math.random() * availableUnoccupiedSquares.length) + 1;    //test
+        var randomIndex = Math.floor(Math.random() * availableUnoccupiedSquares.length);    //test
         var randomDuckSquare = availableUnoccupiedSquares[randomIndex];
-
+        console.log(randomDuckSquare);
         this.duckOccupiedSquares.push(randomDuckSquare);
 
-        var baseTimeWindow = this.turnTime / 5;
+        var baseTimeWindow = this.turnTime / 5; //1000
         var percentageOfBaseTimeWindow = (Math.floor(Math.random()*(15-5))+5) * 0.1;
         var duckDuration = baseTimeWindow * percentageOfBaseTimeWindow;
         var duckLeaveTime = duckDuration + this.currentTurnTime;
-        this.duckDurations.duckDuration = randomDuckSquare;
-        //
-        // var duckSquareIDs = [];
-        // for(var i = 0; i <numberOfDuckSquares; i++){
-        //     var randomIndex = Math.floor(Math.random() * cloneOfAvailableDuckSquareIDs.length) + 1;
-        //     this.duckSquareIDs.push(cloneOfAvailableDuckSquareIDs[i].splice(randomIndex, 1))
-        // }
-        //
-        // var startTimeOfDuckSquares = [];
-        //
-        // var baseTimeWindow = totalDuration / numberOfDuckSquares;
-        // for(var i = 0; i <numberOfDuckSquares; i++){
-        //     var currentTimeWindow = (i+1) * baseTimeWindow;
-        //     var percentOfTimeWindow = (Math.floor(Math.random()*(9-1))+1) * 0.1;
-        //     this.startTimeOfDuckSquares.push(currentTimeWindow * percentOfTimeWindow);
-        // }
-        //
-        // var stopTimeOfDuckSquares = [];
-        // for(var i = 0; i <numberOfDuckSquares; i++){
-        //     var percentOfTimeWindow = (Math.floor(Math.random()*(16-2))+2) * 0.1;
-        //     var duration = baseTimeWindow[i] * percentOfTimeWindow;
-        //     this.stopTimeOfDuckSquares[i] = stopTimeOfDuckSquares[i] + duration;
-        // }
-        //
-        // console.log("duckSquareIDs", duckSquareIDs);
-        // console.log("startTimeOfDuckSquares", startTimeOfDuckSquares);
-        // console.log("stopTimeOfDuckSquares", stopTimeOfDuckSquares);
-
-        //randomly determine time ducks will appear and disappear
-        //generate them, and put the ID of divs in duckOccupiedSquares while they are there
-        //if click on div where id of div is in duckOccupiedSquares
-            //run duckHit()
-    }.bind(this); //bind "this" to generateDucks after setInterval set "this" to the window
+        this.duckDurations[duckLeaveTime] = randomDuckSquare;
+        console.log("DUck created at" + randomDuckSquare + " and will leave at " + duckLeaveTime + "at time" + this.currentTurnTime)
+        $("#"+randomDuckSquare).css("background", "red");
+    };
 
     this.removeRandomGeneratedDuck = function(){
-        for(var time in this.duckDurations){
-            if(time >= this.currentTurnTime){
-                var indexToRemove = this.duckOccupiedSquares.indexOf(this.duckDurations.time);
-                this.duckOccupiedSquares.splice(indexToRemove)
+        for(var key in this.duckDurations){
+            console.log("KEY IS :" + key + "      currentTime is :" + this.currentTurnTime);
+
+            if(parseInt(key) <= this.currentTurnTime){
+
+                var ID = this.duckDurations[key];
+                console.log(ID + "removed at time of " + this.currentTurnTime);
+                var indexToRemove = this.duckOccupiedSquares.indexOf(this.duckDurations[key]);
+                this.duckOccupiedSquares.splice(indexToRemove);
+                //TEST
+
+
+                $("#" + ID).css("background", "blue")
             }
         }
     };
 
+
     this.hitDuck = function (squareId) {
+
         this.duckHit = true; //changing duckHit to true if duck was in div clicked
         if (this.duckHit === true) { //stopping timer once duckHit === true
             this.stopTimer();
@@ -134,3 +111,4 @@ var DuckLayer = function(){
         //updateScore in html.index;
     };
 };
+

@@ -1,10 +1,14 @@
 var ticTacMain = null;
-var duck = null;
+var duckLayer = null;
 
 function startGame(){
 	var dimension = $("input[name='grid']:checked").val();
-	ticTacMain = new TicTacMain(dimension);
-	duck = new DuckLayer();
+	var winCond = $("input[name='win']:checked").val();
+	if(winCond=="default"){
+		winCond = dimension;
+	}
+	ticTacMain = new TicTacMain(dimension,winCond);
+	duckLayer = new DuckLayer();
 	ticTacMain.createBoard(dimension);
 }
 
