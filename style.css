@@ -64,20 +64,20 @@ caput mortuum - rgb(84,42,22)
 .buttonArea > div{
 	margin-left:2.0888%;
 }
-.radioGridSelect{
-	height: 10%;
+.radioGridSelect, .radioWinSelect{
+	height: 12%;
 	border: 1px solid;
 	/*margin-left: 2.088%;*/
 }
-.radioGridSelectLabel{
+.radioGridSelectLabel, .radioWinSelectLabel{
 	margin-top:5px;
 	height: 60%;
 	background-color: gold;
 	/*border-radius: -20px; look up radial gradient*/
 	
 }
-.radioGridSelectInput{
-	height: 20%;
+.radioGridSelectInput, .radioWinSelectInput{
+	height: 30%;
 }
 .startInput{
 	/*height: 20%;*/
