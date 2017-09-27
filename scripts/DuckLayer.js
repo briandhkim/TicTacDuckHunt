@@ -4,60 +4,39 @@ var DuckLayer = function(){
     this.duckOccupiedSquares = [];
     this.duckHit = false;
     this.turnTime = 5000;
+    this.currentTurnTime = 0;
     this.playerTimer = null;
+    this.interval = 500; //can do math.random this to generate ducks at random times
+
+    this.currentTurnTime += this.interval; // adding half a second to currentTime every time the interval runs
+    if (this.currentTurnTime >= this.turnTime) { // checking if currentTime === 5 seconds and if it is, stopTimer
+        this.stopTimer();
+    }
+
 
     this.startTimer = function(){
-        //set duckHit to false
-        //this.generateDucks
-        //initiates timer as long as duckHit = false
-            //otherwise, stop timer
-        if (this.duckHit === false){
-            this.playerTimer = setTimeout(this.generateDucks, 1000);
-            this.playerTurnTimer();
-        } else {
-            this.stopTimer();
+        if (this.duckHit === false){ //check if duckHit === false
+            this.playerTimer = setInterval(this.generateDucks, this.interval); // will call generateDucks every half a second and generateDucks will either have the duck or not
         }
     };
 
-    this.playerTurnTimer = function(){
-
-    };
-
     this.stopTimer = function(){
-        //this.changePlayerTurn
-        clearTimeout(this.playerTimer);
-        ticTacMain.changePlayerTurn();
+        clearInterval(this.playerTimer); //stopping duck creation
+        ticTacMain.changePlayerTurn(); //this.changePlayerTurn
     };
 
     this.generateDucks = function(){
-        //called by TicTacMain.
-        //randomly determines number of remaining squares from availableSquareArray
-        var duckSquares = [];
-        var percentOfAvailSquares = Math.floor(Math.random()*(0.7-0.3))+0.3;
-        console.log(percentOfAvailSquares);
-        var numberOfDuckSquares = Math.floor(ticTacToe.availableSquareArray.length * percentOfAvailSquares);
-
-
-        //randomly determine time ducks will appear and disappear
-        //generate them, and put the ID of divs in duckOccupiedSquares while they are there
-        //if click on div where id of div is in duckOccupiedSquares
-            //run duckHit()
-
     };
 
+    this.generateDucks = this.generateDucks.bind(this);
+
     this.hitDuck = function(){
-        //duckHit = true
-        //TicTacMain.placePiece
-        //TicTacMain.changePlayerTurn
-
-        //updates the display
-        //stopTimer()
-
-        //update this.player0Score and this.player1Score
-        this.duckHit = true;
-        this.updateDisplay();
-        this.stopTimer();
-        this.player0Score += 10;
+        this.duckHit = true; //changing duckHit to true if duck was in div clicked
+        if (this.duckHit === true) { //stopping timer once duckHit === true
+            this.stopTimer();
+        }
+        this.updateDisplay(); //updates the display
+        this.player0Score += 10; //update this.player0Score and this.player1Score
         this.player1score += 10;
     };
 
@@ -70,3 +49,6 @@ var DuckLayer = function(){
 
 
 };
+
+
+var tic = new DuckLayer();
