@@ -3,7 +3,7 @@ var DuckLayer = function(){
     this.player1Score = 0;
     this.duckOccupiedSquares = [];
     this.duckHit = false;
-    this.turnTime = 5000;
+    this.turnTime = 7500;
     this.currentTurnTime = 0;
     this.interval = 500; //can do math.random this to generate ducks at random time
     this.percentChangeDuckAppears = 0.90;
@@ -30,7 +30,6 @@ var DuckLayer = function(){
 
     this.generateRandomDuck = function() {
         console.log("generateDuck ran")
-        this.currentTurnTime += this.interval;
         this.currentTurnTime += this.interval; // adding half a second to currentTime every time the interval runs
         if (this.currentTurnTime >= this.turnTime) { // checking if currentTime === 5 seconds and if it is, stopTimer
             this.stopTimer();
@@ -65,15 +64,15 @@ var DuckLayer = function(){
 
         var randomIndex = Math.floor(Math.random() * availableUnoccupiedSquares.length);    //test
         var randomDuckSquare = availableUnoccupiedSquares[randomIndex];
-
+        console.log(randomDuckSquare);
         this.duckOccupiedSquares.push(randomDuckSquare);
 
-        var baseTimeWindow = this.turnTime / 5;
+        var baseTimeWindow = this.turnTime / 5; //1000
         var percentageOfBaseTimeWindow = (Math.floor(Math.random()*(15-5))+5) * 0.1;
         var duckDuration = baseTimeWindow * percentageOfBaseTimeWindow;
         var duckLeaveTime = duckDuration + this.currentTurnTime;
-        this.duckDurations[duckDuration] = randomDuckSquare;
-
+        this.duckDurations[duckLeaveTime] = randomDuckSquare;
+        console.log("DUck created at" + randomDuckSquare + " and will leave at " + duckLeaveTime + "at time" + this.currentTurnTime)
         $("#"+randomDuckSquare).css("background", "red");
 
 
@@ -81,18 +80,19 @@ var DuckLayer = function(){
 
 
     this.removeRandomGeneratedDuck = function(){
-        console.log("RemoveRandomGenereatedafl j");
         for(var key in this.duckDurations){
-            if(key <= this.currentTurnTime){
-                var ID = this.duckOccupiedSquares[key];
-                console.log("Time hit" + ID);
-                var indexToRemove = this.duckOccupiedSquares.indexOf(this.duckDurations.time);
+            console.log("KEY IS :" + key + "      currentTime is :" + this.currentTurnTime);
+
+            if(parseInt(key) <= this.currentTurnTime){
+
+                var ID = this.duckDurations[key];
+                console.log(ID + "removed at time of " + this.currentTurnTime);
+                var indexToRemove = this.duckOccupiedSquares.indexOf(this.duckDurations[key]);
                 this.duckOccupiedSquares.splice(indexToRemove);
                 //TEST
 
 
-
-                $("#" + ID).css("color", "blue")
+                $("#" + ID).css("background", "blue")
             }
         }
     };
