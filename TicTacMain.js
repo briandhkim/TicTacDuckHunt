@@ -1,4 +1,4 @@
-var TicTacMain = function(dimension){
+ar TicTacMain = function(dimension){
 	this.dimension = dimension;
 	this.playerTurn = 0;	//will always be either 0 or 1
 							/*player turn tracker
