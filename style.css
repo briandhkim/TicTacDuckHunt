@@ -26,7 +26,6 @@ caput mortuum - rgb(84,42,22)
 }
 .rowUpper>div, .rowLower>div{
 	height: 100%;
-	border: 1px solid;
 }
 
 .rowUpper{
@@ -90,4 +89,21 @@ caput mortuum - rgb(84,42,22)
 .rowLower{
 	height: 23%;
 	padding-bottom: 10px;
+}
+.rowLower>div{
+	border: 1px solid;
+}
+.scoreAndTimerAndDucks>div{
+	height: 100%;
+	border: 1px solid orange;
+	padding: 0;
+}
+.timerAndDuckDisplay>div{
+	height:50%;
+	border: 1px solid green;
+	padding: 0;
+}
+.littleDuck{
+	height: 100%;
+	border: 1px solid;
 }
