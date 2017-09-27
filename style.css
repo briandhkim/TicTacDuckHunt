@@ -49,9 +49,11 @@ caput mortuum - rgb(84,42,22)
 }
 .gameScreenMonitor>div.row{
 	/*height: ;*/
+	/*display:inline-block;*/
 }
 .gameSquare{
 	border: 1px solid white;
+	display:inline-block;
 }
 .buttonArea{
 	background-color: rgba(84,42,22, 0.95);
