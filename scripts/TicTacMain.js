@@ -21,6 +21,7 @@ var TicTacMain = function(dim){	//will eventually need to take in winning condit
 	};
 
 	this.clickGameSquare = function(squareID){
+        //remove conditional and keep loop
 		if(playerTurn == 0){	//first checks player turn
 			for(var i=0; i<duck.duckOccupiedSquares.length; i++){	//traverse through available squares with ducks inside them
 				if(duck.duckOccupiedSquares[i]==squareID){	//if clicked squareID is inside the array, call hitDuck function
@@ -35,7 +36,8 @@ var TicTacMain = function(dim){	//will eventually need to take in winning condit
 				}
 			}
 		}
-	}; 
+	};
+
 	//needs to call hitDuck in duck object
 	//places either x or o on the square
 	//go through duckoccupied square in duck object to check condition
@@ -109,7 +111,7 @@ var TicTacMain = function(dim){	//will eventually need to take in winning condit
 					//call function updating ui with player 0 win
 				}
 				if(player1Pt == this.winNumber){
-					console.log('player 1 wins; triggered at col win check')
+					console.log('player 1 wins; triggered at col win check');
 				}
 			}
 		}
