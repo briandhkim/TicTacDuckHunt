@@ -1,6 +1,6 @@
-var TicTacMain = function(dim){	//will eventually need to take in winning condition number
+var TicTacMain = function(dim,winCond){	//will eventually need to take in winning condition number
 	this.dimension = dim;
-	this.winNumber = dim; //at this time, the requried number of consequtive squares equal to dimension number
+	this.winNumber = winCond; 
 	this.playerTurn = 0;	//will always be either 0 or 1
 							/*player turn tracker
 								0 : o turn  ||| 1 : x turn*/
@@ -8,8 +8,8 @@ var TicTacMain = function(dim){	//will eventually need to take in winning condit
 	this.player0Squares = []; //ids of player occupied squares
 	this.player1Squares = []; 
 	this.createBoard = function(){
-		var divRowHeight = Math.floor(100/this.dimension);
-		var gameSquareWidth = Math.floor(100/this.dimension);
+		var divRowHeight = 100/this.dimension;
+		var gameSquareWidth = 100/this.dimension;
 		for(var i=0; i<this.dimension; i++){
 			$('<div>').addClass('row').attr('id','row'+i).appendTo('.gameScreenMonitor').css('height',divRowHeight+'%');
 			for(var j=0; j<this.dimension; j++){
