@@ -64,3 +64,6 @@ duck game object-> DuckLayer		basically additional skin for the game
 	stopTimer function
 
 	array with squares' ids with ducks inside
+
+
+dynamic timer, screen flash animation 
