@@ -1,20 +1,22 @@
-var TicTacMain = function(dimension){
-	this.dimension = dimension;
+var TicTacMain = function(dim){
+	this.dimension = dim;
 	this.playerTurn = 0;	//will always be either 0 or 1
 							/*player turn tracker
 								0 : o turn  ||| 1 : x turn*/
 	this.availableSquareArray = []; //will be populated createBoard containing all square ids
 	this.player0Squares = []; //ids of player occupied squares
 	this.player1Squares = []; 
-	this.createBoard = function(dimension){
-		var divRowHeight = Math.floor(100/dimension);
-		var gameSquareWidth = Math.floor(100/dimension);
-		for(var i=0; i<dimension; i++){
+	this.createBoard = function(){
+		var divRowHeight = Math.floor(100/this.dimension);
+		var gameSquareWidth = Math.floor(100/this.dimension);
+		for(var i=0; i<this.dimension; i++){
 			$('<div>').addClass('row').attr('id','row'+i).appendTo('.gameScreenMonitor').css('height',divRowHeight+'%');
-			for(var j=0; j<dimension; j++){
+			for(var j=0; j<this.dimension; j++){
 				$('<div>').addClass('gameSquare').attr('id',i.toString()+j.toString()).css({'width':gameSquareWidth+'%','height':'100%'}).click(self.placePiece).appendTo('#row'+i);
+				this.availableSquareArray.push(i.toString()+j.toString());
 			}
 		}
+		console.log(this.availableSquareArray);
 	};
 
 	this.placePiece = function(squareID){}; //places either x or o on the square
