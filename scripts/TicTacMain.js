@@ -20,20 +20,12 @@ var TicTacMain = function(dim){	//will eventually need to take in winning condit
 		console.log(this.availableSquareArray);
 	};
 
-	this.clickGameSquare = function(squareID){
-        //remove conditional and keep loop
-		if(playerTurn == 0){	//first checks player turn
-			for(var i=0; i<duck.duckOccupiedSquares.length; i++){	//traverse through available squares with ducks inside them
-				if(duck.duckOccupiedSquares[i]==squareID){	//if clicked squareID is inside the array, call hitDuck function
-					// return duck.hitDuck();	//may need to use return before function call to exit loop
-					duck.hitDuck();	//hitDuck function needs to update player0/1Squares array
-				}
-			}
-		}else if(playerTurn==1){
-			for(var i=0; i<duck.duckOccupiedSquares.length; i++){
-				if(duck.duckOccupiedSquares[i] == squareID){
-					duck.hitDuck();
-				}
+	this.clickGameSquare = function(squareID){ //will have $().attr('id') passed in
+        //conditional checking player turn was removed | duck object can access that data
+		for(var i=0; i<duck.duckOccupiedSquares.length; i++){	//traverse through available squares with ducks inside them
+			if(duck.duckOccupiedSquares[i]==squareID){	//if clicked squareID is inside the array, call hitDuck function
+				// return duck.hitDuck();	//may need to use return before function call to exit loop
+				duck.hitDuck(squareID);	//hitDuck function needs to update player0/1Squares array
 			}
 		}
 	};
