@@ -5,27 +5,30 @@ var DuckLayer = function(){
     this.duckHit = false;
     this.turnTime = 5000;
     this.currentTurnTime = 0;
-
-    // this.duckSquareIDs = [];
-    // this.startTimeOfDuckSquares = [];
-    // this.stopTimeOfDuckSquares = [];
-
+    this.interval = 500; //can do math.random this to generate ducks at random time
+    //added from merge conflict
     this.percentChangeDuckAppears = 0.90;
     this.duckDurations = {};
-
+    //end of merge conflict change
     this.startTimer = function(){
-        //set duckHit to false
-        //this.generateDucks
-        //initiates timer as long as ducHit = false
-            //otherwise, stop timer
+        if (this.duckHit === false){ //check if duckHit === false
+            this.playerTimer = setInterval(this.generateDucks, this.interval); // will call generateDucks every half a second and generateDucks will either have the duck or not
+        }
     };
 
     this.stopTimer = function(){
-        //this.changePlayerTurn
+        clearInterval(this.playerTimer); //stopping duck creation
+        ticTacMain.changePlayerTurn(); //this.changePlayerTurn
     };
 
     this.generateRandomDuck = function() {
         this.currentTurnTime += this.interval;
+        //added from merge conflict
+        this.currentTurnTime += this.interval; // adding half a second to currentTime every time the interval runs
+        if (this.currentTurnTime >= this.turnTime) { // checking if currentTime === 5 seconds and if it is, stopTimer
+            this.stopTimer();
+        }
+        //end of merge conflict change
 
         //determine percentage change of generation
         if (this.duckOccupiedSquares.length === 3) {
@@ -105,6 +108,8 @@ var DuckLayer = function(){
             //run duckHit()
 
     };
+  
+    this.generateDucks = this.generateDucks.bind(this);
 
     this.removeRandomGeneratedDuck = function(){
         for(var time in this.duckDurations){
@@ -123,14 +128,25 @@ var DuckLayer = function(){
         //updates the display
         //stopTimer()
 
-        //update this.player0Score and this.player1Score
-    }
+    this.hitDuck = function(){
+        this.duckHit = true; //changing duckHit to true if duck was in div clicked
+        if (this.duckHit === true) { //stopping timer once duckHit === true
+            this.stopTimer();
+        }
+        this.updateDisplay(); //updates the display
+        this.player0Score += 10; //update this.player0Score and this.player1Score
+        this.player1score += 10;
+    };
 
     this.updateDisplay = function(){
         //put dead ducks on squares based on TicTacMain.player0Squares and TicTacMain.player1Squares
 
         //updateScore in html.index;
+
     }
 
 
 };
+
+
+var tic = new DuckLayer();
