@@ -6,10 +6,8 @@ var DuckLayer = function(){
     this.turnTime = 5000;
     this.currentTurnTime = 0;
     this.interval = 500; //can do math.random this to generate ducks at random time
-    //added from merge conflict
     this.percentChangeDuckAppears = 0.90;
     this.duckDurations = {};
-    //end of merge conflict change
     this.startTimer = function(){
         if (this.duckHit === false){ //check if duckHit === false
             this.playerTimer = setInterval(this.generateDucks, this.interval); // will call generateDucks every half a second and generateDucks will either have the duck or not
@@ -25,12 +23,10 @@ var DuckLayer = function(){
 
     this.generateRandomDuck = function() {
         this.currentTurnTime += this.interval;
-        //added from merge conflict
         this.currentTurnTime += this.interval; // adding half a second to currentTime every time the interval runs
         if (this.currentTurnTime >= this.turnTime) { // checking if currentTime === 5 seconds and if it is, stopTimer
             this.stopTimer();
         }
-        //end of merge conflict change
 
         //determine percentage change of generation
         if (this.duckOccupiedSquares.length === 3) {
@@ -122,14 +118,14 @@ var DuckLayer = function(){
         }
     };
 
-    this.hitDuck = function(){
+    this.hitDuck = function() {
         //duckHit = true
         //TicTacMain.placePiece
         //TicTacMain.changePlayerTurn
         //set square class to player0sq
         //updates the display
         //stopTimer()
-
+    };
     this.hitDuck = function(){
         this.duckHit = true; //changing duckHit to true if duck was in div clicked
         if (this.duckHit === true) { //stopping timer once duckHit === true
@@ -149,6 +145,3 @@ var DuckLayer = function(){
 
 
 };
-
-
-var tic = new DuckLayer();
