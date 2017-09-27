@@ -109,7 +109,7 @@ var TicTacMain = function(dim){	//will eventually need to take in winning condit
 					//call function updating ui with player 0 win
 				}
 				if(player1Pt == this.winNumber){
-					console.log('player 1 wins; triggered at col win check'){}
+					console.log('player 1 wins; triggered at col win check')
 				}
 			}
 		}
