@@ -173,6 +173,12 @@ function DuckLayer(){
         }
         ticTacMain.availableSquareArray.splice(ticTacMain.availableSquareArray.indexOf(squareId), 1 );
         this.stopTimer();
+        if(ticTacMain.playerTurn === 0){
+            $("#squareID").addClass("player0Sq")
+        }
+        else{
+            $("#squareID").addClass("player1Sq")
+        }
     };
 
     this.updateDisplay = function(){
