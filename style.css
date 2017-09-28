@@ -24,7 +24,17 @@ dark liver - rgb(82,74,65)
 ash grey - rgb(176,180,180)
 caput mortuum - rgb(84,42,22)
 */
-
+.cursorDefault{
+	cursor: url(assets/cursorOrange.png) 50 50,auto;
+}
+.cursorPlayer0{
+	/*green*/
+	cursor: url(assets/cursorGreen.png) 50 50, auto;
+}
+.cursorPlayer1{
+	/*purple*/
+	cursor: url(assets/cursorPurple.png) 50 50, auto;
+}
 
 .mainWrapperRow{	/*overall container div*/
 	height: 100vh;
