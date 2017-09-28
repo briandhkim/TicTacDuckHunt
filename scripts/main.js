@@ -10,6 +10,11 @@ function startGame(){
 	ticTacMain = new TicTacMain(dimension,winCond);
 	duckLayer = new DuckLayer();
 	ticTacMain.createBoard(dimension);
+	$('')
+}
+
+function playerTurnStart(){		//click handler for player areas  | starts each player's turn and timer
+	
 }
 
 $(document).ready(function(){
@@ -17,4 +22,3 @@ $(document).ready(function(){
 });
 
 //click handlers for guns that initiate duckLayer.startTimer()
-//add padding to game screen

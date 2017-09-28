@@ -1,4 +1,4 @@
-var TicTacMain = function(dim,winCond){	//will eventually need to take in winning condition number
+function TicTacMain(dim,winCond){	//will eventually need to take in winning condition number
 	this.dimension = dim;
 	this.winNumber = winCond; 
 	this.playerTurn = 0;	//will always be either 0 or 1
