@@ -46,18 +46,19 @@ function DuckLayer(){
         this.currentTurnTime = 0;
         clearInterval(this.playerTimer); //stopping duck creation
         clearInterval(this.timer);
-        this.checkWinCondition(); //check win
         this.updateDisplay(); //updateDisplay
-        this.resetDuckVar();
-        ticTacMain.changePlayerTurn(); //this.changePlayerTurn
+        this.resetDuckVar();    //may need to be moved
+        // ticTacMain.changePlayerTurn(); //this.changePlayerTurn
         this.timeRemaining = 5000;
         $(".timer").css('width', "100%");
+
     };   //bind this?
 
     this.checkWinCondition = function(){
         ticTacMain.checkWinCol();
         ticTacMain.checkWinRow();
         ticTacMain.checkWinDiag();
+        ticTacMain.changePlayerTurn();
     };
 
     this.resetDuckVar = function(){
@@ -161,7 +162,7 @@ function DuckLayer(){
     // };
 
     this.hitDuck = function(squareId) {
-        console.log("Duck Hit!")
+        console.log("Duck Hit! - Current player is " + ticTacMain.playerTurn)
         this.duckHit = true; //changing duckHit to true if duck was in div clicked
         if (ticTacMain.playerTurn === 0) {
             this.player0Score += this.pointPerDuck; //update this.player0Score
@@ -173,12 +174,14 @@ function DuckLayer(){
         }
         ticTacMain.availableSquareArray.splice(ticTacMain.availableSquareArray.indexOf(squareId), 1 );
         this.stopTimer();
+        console.log("End of hit duck code block, player is - " + ticTacMain.playerTurn)
         if(ticTacMain.playerTurn === 0){
-            $("#squareID").addClass("player0Sq")
+            $("#" + squareId).addClass("player0Sq")
         }
         else{
-            $("#squareID").addClass("player1Sq")
+            $("#" +squareId).addClass("player1Sq")
         }
+        this.checkWinCondition(); //check win
     };
 
     this.updateDisplay = function(){
