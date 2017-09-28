@@ -87,7 +87,7 @@ function DuckLayer(){
         var duckLeaveTime = duckDuration + this.currentTurnTime;
         this.duckDurations[duckLeaveTime] = randomDuckSquare;
         // console.log("Duck created at" + randomDuckSquare + " and will leave at " + duckLeaveTime + "at time" + this.currentTurnTime)
-        $("#"+randomDuckSquare).css("background", "red");
+        $("#"+randomDuckSquare).css("background-image", "assets/p0_duck01.png");
     };
 
     this.removeRandomGeneratedDuck = function(){
@@ -98,9 +98,13 @@ function DuckLayer(){
                 // console.log(ID + "removed at time of " + this.currentTurnTime);
                 var indexToRemove = this.duckOccupiedSquares.indexOf(this.duckDurations[key]);
                 this.duckOccupiedSquares.splice(indexToRemove);
-                $("#" + ID).css("background", "blue")
+                $("#" + ID).css("background-image", "none");
             }
         }
+    };
+
+    this.duckAnimation = function(){
+        var player0animation = ['assets/p0_duck01', 'assets/p0_duck02', 'assets/p0_duck03', ];
     };
 
 
@@ -126,12 +130,12 @@ function DuckLayer(){
         for (var j = 0; j < gameSquareID.length; j++) { //put dead ducks on squares based on ticTacMain.player0Squares
             for (var p0 = 0; p0 < ticTacMain.player0Squares.length; p0++) {
                 if (gameSquareID.indexOf(ticTacMain.player0Squares[p0]) !== -1) {
-                    $('.' + gameSquareID[j]).css('background-image', 'assets/p0_duck03_dead.png');
+                    $('.' + gameSquareID[j]).css('background-image', 'assets/p0_duckDead.png');
                 }
             }
             for (var p1 = 0; p1 < ticTacMain.player1Squares.length; p1++) { //put dead ducks on squares based on ticTacMain.player1Squares
                 if (gameSquareID.indexOf(ticTacMain.player1Squares[p1]) !== -1) {
-                    $('.' + gameSquareID[j]).css('background-image', 'assets/p1_duck03_dead.png');
+                    $('.' + gameSquareID[j]).css('background-image', 'assets/p1_duckDead.png');
                 }
             }
         }
