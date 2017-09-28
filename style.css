@@ -173,7 +173,14 @@ caput mortuum - rgb(84,42,22)
 	background-size: auto 100%;
 	background-repeat: no-repeat;
 	background-position: right;
-
+}
+.player0Name{
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	/*color: white;*/
+	color: black;
+	font-size: 25px;
 }
 .player1Area {
 	background: black;
@@ -181,7 +188,17 @@ caput mortuum - rgb(84,42,22)
 	background-size: auto 100%;
 	background-repeat: no-repeat;
 	background-position: left;
-
+}
+.player1Name{
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	color: black;
+	font-size: 25px;
+}
+.playerFocusHighlight{
+	text-shadow: 0 0 20px #21a4e2;
+	color: #fb9a38;
 }
 
 .transTimer {
