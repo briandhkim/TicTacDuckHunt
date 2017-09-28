@@ -16,6 +16,8 @@ function DuckLayer(){
         }
     };
 
+    //progress bar width change for timer and add to HTML
+
     this.intervalFunction = function(){
         this.generateRandomDuck();
         this.removeRandomGeneratedDuck();
@@ -103,10 +105,9 @@ function DuckLayer(){
         }
     };
 
-    this.duckAnimation = function(){
-        var player0animation = ['assets/p0_duck01', 'assets/p0_duck02', 'assets/p0_duck03', ];
-    };
-
+    // this.duckAnimation = function(){
+    //     var player0animation = ['assets/p0_duck01', 'assets/p0_duck02', 'assets/p0_duck03', ];
+    // };
 
     this.hitDuck = function(squareId) {
         this.duckHit = true; //changing duckHit to true if duck was in div clicked
