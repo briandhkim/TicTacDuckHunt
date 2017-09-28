@@ -50,12 +50,16 @@ function TicTacMain(dim,winCond){	//will eventually need to take in winning cond
 			this.playerTurn = 1;
 			$('.player0Area').unbind('click', playerTurnStart);
 			$('.player1Area').bind('click',playerTurnStart);
+			$('body').removeClass('cursorPlayer0');
+			$('body').addClass('cursorPlayer1');
             console.log("player 1 turn");
 			return;
 		}else if(this.playerTurn == 1){
             this.playerTurn = 0;
 			$('.player1Area').unbind('click',playerTurnStart);
 			$('.player0Area').bind('click',playerTurnStart);
+			$('body').removeClass('cursorPlayer1');
+			$('body').addClass('cursorPlayer0');
             console.log("player 0 turn");
 			return;
 		}
