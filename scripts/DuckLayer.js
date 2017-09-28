@@ -4,6 +4,7 @@ function DuckLayer(){
     this.duckOccupiedSquares = [];
     this.dogOccupiedSquares = [];
     this.duckHit = false;
+    this.dogHit = false;
     this.turnTime = 5000;
     this.currentTurnTime = 0;
     this.interval = 250;
@@ -172,6 +173,7 @@ function DuckLayer(){
     // };
 
     this.hitDuck = function(squareId) {
+        audioHandler.hit();
         this.duckHit = true; //changing duckHit to true if duck was in div clicked
         if (ticTacMain.playerTurn === 0) {
             this.player0Score += this.pointPerDuck; //update this.player0Score
@@ -192,6 +194,7 @@ function DuckLayer(){
     };
 
     this.hitDog = function(squareID){
+        this.dogHit = false;
         this.stopTimer();
         $("#" + squareID).css("background", "url(assets/dog_shot.png) no-repeat center");
     };
