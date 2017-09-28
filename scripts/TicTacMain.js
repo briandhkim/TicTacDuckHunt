@@ -54,12 +54,12 @@ function TicTacMain(dim,winCond){	//will eventually need to take in winning cond
 		if(duckLayer.dogHit){	//if the dog hit bool turns true, stop game
 				if(this.playerTurn == 0){
 					$('.player0Area').unbind('click',playerTurnStart);
-					$('.winnerMessageDisplay').text('P2 Wins: Player 1 shot the dog');
+					$('.winnerMessageDisplay').text('P2 Wins: Player 1 shot the dog!');
 					// this.gameOver = true;
 					return;
 				}else if(this.playerTurn ==1){
 					$('.player1Area').unbind('click',playerTurnStart);
-					$('.winnerMessageDisplay').text('P1 Wins: Player 2 shot the dog');
+					$('.winnerMessageDisplay').text('P1 Wins: Player 2 shot the dog!');
 					return;
 				}
 			}

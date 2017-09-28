@@ -124,6 +124,7 @@ function DuckLayer(){
         }
         else{
             this.dogOccupiedSquares.push(randomDuckSquare);
+            console.log("NEW DOG POSITION")
         }
         var baseTimeWindow = this.turnTime / 5; //1000
         var percentageOfBaseTimeWindow = (Math.floor(Math.random()*(15-5))+5) * 0.1;
@@ -158,7 +159,7 @@ function DuckLayer(){
                     var indexToRemove = this.duckOccupiedSquares.indexOf(this.duckDurations[key]);
                     this.duckOccupiedSquares.splice(indexToRemove, 1);
                 }
-                else{
+                else if (this.dogOccupiedSquares.indexOf(ID) !== -1){
                     var indexToRemove = this.dogOccupiedSquares.indexOf(this.duckDurations[key]);
                     this.dogOccupiedSquares.splice(indexToRemove, 1);
                     console.log("DOG REMOVED")
