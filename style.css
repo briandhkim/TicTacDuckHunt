@@ -110,7 +110,10 @@ caput mortuum - rgb(84,42,22)
 .startButton{
 	background-color: #48dc48;
 	color:white;
-
+	height: 50px;
+	display:flex;
+	align-items: center;
+	justify-content: center;
 }
 .rowLower{
 	height: 23%;
