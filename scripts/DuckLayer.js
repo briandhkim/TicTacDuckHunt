@@ -79,6 +79,7 @@ function DuckLayer(){
         this.currentTurnTime += this.interval; //adding half a second to currentTurnTime every time the interval runs
         if (this.currentTurnTime >= this.turnTime) { //checking if currentTime === 5 seconds and if it is, stopTimer
             this.stopTimer();
+            ticTacMain.changePlayerTurn();
         }
         if(this.currentTurnTime === 0){
             return
