@@ -10,14 +10,32 @@ function DuckLayer(){
     this.percentChangeDuckAppears = 0.90;
     this.duckDurations = {}; //key = time spent in square, value = ID of square
     this.pointPerDuck = 10;
+    this.timeRemaining = 5000;
+    this.timer = null;
+    this.timePerInterval = 10;
 
     this.startTimer = function(){ //Clicking on player gun starts turn = starts timer
         if (this.duckHit === false){ //check if duckHit === false
             this.playerTimer = setInterval(this.intervalFunction, this.interval); // will call generateDucks every half a second and generateDucks will either have the duck or not
+            this.startTimerCountdown();
         }
     };
 
-    //progress bar width change for timer and add to HTML
+    this.startTimerCountdown = function(){
+        this.timer = setInterval(this.timerAnimation, this.timePerInterval);
+    };
+
+    this.timerAnimation = function(){
+        this.timeRemaining -= 10;
+        if(this.timeRemaining <= 0){
+            this.timeRemaining = 0;
+            clearInterval(this.timer);
+            console.log('time ran out');
+        }
+        var percentRemaining = this.timeRemaining / this.turnTime * 100;
+        $(".timer").css('width', percentRemaining + '%');
+    }.bind(this);
+
 
     this.intervalFunction = function(){
         this.generateRandomDuck();
@@ -104,10 +122,10 @@ function DuckLayer(){
         this.duckDurations[duckLeaveTime] = randomDuckSquare;
         // console.log("Duck created at" + randomDuckSquare + " and will leave at " + duckLeaveTime + "at time" + this.currentTurnTime)
         if(!dogGenerate) {
-            $("#" + randomDuckSquare).css("background-image", "assets/p0_duck01.png");
+            $("#" + randomDuckSquare).css("background-image", "assets/p0_duck01.png no-repeat center");
         }
         else{
-            $("#" + randomDuckSquare).css("background-image", "assets/dog01.png");
+            $("#" + randomDuckSquare).css("background-image", "assets/dog01.png no-repeat center");
         }
     };
 
@@ -148,11 +166,12 @@ function DuckLayer(){
     };
 
     this.updateDisplay = function() {
-        var gameSquare = $('.gameSquare'); //creating array of all elements with class of "gameSquare"
         var gameSquareID = [];
-        for (var i = 0; i < gameSquare.length; i++) { //looping through gameSquare array pushing ID of all squares
-            gameSquareID.push(gameSquare[i].attr['id']);
-        }
+        $(".gameSquare").each(function() { //creating object of all elements with class of "gameSquare"
+            var tempID = $(this).attr('id');
+            gameSquareID.push(tempID);
+            // console.log(gameSquareID);
+        });
         for (var j = 0; j < gameSquareID.length; j++) { //put dead ducks on squares based on ticTacMain.player0Squares
             for (var p0 = 0; p0 < ticTacMain.player0Squares.length; p0++) {
                 if (gameSquareID.indexOf(ticTacMain.player0Squares[p0]) !== -1) {
