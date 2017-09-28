@@ -44,8 +44,8 @@ function DuckLayer(){
 
     this.stopTimer = function(){
         this.currentTurnTime = 0;
-        // console.log("Stop timer called");
         clearInterval(this.playerTimer); //stopping duck creation
+        clearInterval(this.timer);
         this.checkWinCondition(); //check win
         this.updateDisplay(); //updateDisplay
         this.resetDuckVar();
@@ -59,6 +59,7 @@ function DuckLayer(){
     };
 
     this.resetDuckVar = function(){
+        console.log("RESET DUCK VAR");
         this.duckOccupiedSquares = [];
         this.dogOccupiedSquares = [];
         this.duckHit = false;
@@ -67,7 +68,6 @@ function DuckLayer(){
     };
 
     this.generateRandomDuck = function() {
-        // console.log("generateDuck ran");
         this.currentTurnTime += this.interval; //adding half a second to currentTurnTime every time the interval runs
         if (this.currentTurnTime >= this.turnTime) { //checking if currentTime === 5 seconds and if it is, stopTimer
             this.stopTimer();
@@ -108,7 +108,6 @@ function DuckLayer(){
 
         var randomIndex = Math.floor(Math.random() * availableUnoccupiedSquares.length); //making random index based on availableUnoccupiedSquares length
         var randomDuckSquare = availableUnoccupiedSquares[randomIndex]; //assigning the unoccupiedSquare at index of randomDuckSquare, or duck, to a var
-        // console.log(randomDuckSquare);
         if(!dogGenerate){//a duck now occupies that square so push the ID of the square to the duckOccupiedSquares array
             this.duckOccupiedSquares.push(randomDuckSquare);
         }
