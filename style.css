@@ -3,10 +3,16 @@
 	src:  url('assets/manaspc.ttf') format('woff2')
 }
 
+@font-face {
+	font-family: 'duckhunt';
+	src:  url('assets/duckhunt.ttf') format('woff2')
+}
+
 html,body{
 	overflow-x: hidden;
 	font-family: manaspc, Arial;
 	color: #fb9a38;
+	background: black;
 }
 
 
@@ -69,7 +75,7 @@ caput mortuum - rgb(84,42,22)
 	height: 98%;
 	margin-top:0.5%;
 	margin-left: 0.25%;
-	border: 1px solid;
+	/*border: 1px solid;*/
 	border-radius: 7%;
 	/*background-color: rgba(0,0,0,0.9);*/
 	padding: 16px;
@@ -95,7 +101,7 @@ caput mortuum - rgb(84,42,22)
 }
 .radioGridSelect, .radioWinSelect{
 	height: 12%;
-	border: 1px solid;
+	/*border: 1px solid;*/
 	/*margin-left: 2.088%;*/
 }
 .radioGridSelectLabel, .radioWinSelectLabel{
@@ -113,7 +119,7 @@ caput mortuum - rgb(84,42,22)
 }
 .startInput{
 	/*height: 20%;*/
-	border: 1px solid;
+	/*border: 1px solid;*/
 }
 .startButton{
 	background-color: #48dc48;
@@ -141,16 +147,19 @@ caput mortuum - rgb(84,42,22)
 	padding-bottom: 10px;
 }
 .rowLower>div{
-	border: 1px solid;
+	/*border: 1px solid;*/
 }
 .scoreAndTimerAndDucks>div{
 	height: 100%;
-	border: 1px solid orange;
+	/*border: 1px solid orange;*/
 	padding: 0;
+	background: black;
+	font-size: 50px;
 }
+
 .timerAndDuckDisplay>div{
 	height:50%;
-	border: 1px solid green;
+	/*border: 1px solid green;*/
 	padding: 0;
 }
 .littleDuck{
@@ -159,16 +168,20 @@ caput mortuum - rgb(84,42,22)
 }
 
 .player0Area {
+	background: black;
 	background-image: url("assets/zapperGreen.png");
 	background-size: auto 100%;
 	background-repeat: no-repeat;
 	background-position: right;
+
 }
 .player1Area {
+	background: black;
 	background-image: url("assets/zapperPurple.png");
 	background-size: auto 100%;
 	background-repeat: no-repeat;
 	background-position: left;
+
 }
 
 .transTimer {
