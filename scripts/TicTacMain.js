@@ -8,6 +8,8 @@ function TicTacMain(dim,winCond){	//will eventually need to take in winning cond
 	this.availableSquareArray = []; //will be populated createBoard containing all square ids
 	this.player0Squares = []; //ids of player occupied squares
 	this.player1Squares = []; 
+	this.gameOver = false; 		//set to true if a player wins. 
+	this.gameWinner = 0;		/*changed in functions checking winning condition*/
 	this.createBoard = function(){
 		var divRowHeight = 100/this.dimension;
 		var gameSquareWidth = 100/this.dimension;
@@ -45,23 +47,36 @@ function TicTacMain(dim,winCond){	//will eventually need to take in winning cond
 			//splice squareID from availableSquareArray and push to playerSquare array to current player
 
 	this.changePlayerTurn = function(){
-		console.log("ran changePlayerTurn");
-		if(this.playerTurn == 0){
-			this.playerTurn = 1;
-			$('.player0Area').unbind('click', playerTurnStart);
-			$('.player1Area').bind('click',playerTurnStart);
-			$('body').removeClass('cursorPlayer0');
-			$('body').addClass('cursorPlayer1');
-            console.log("player 1 turn");
-			return;
-		}else if(this.playerTurn == 1){
-            this.playerTurn = 0;
-			$('.player1Area').unbind('click',playerTurnStart);
-			$('.player0Area').bind('click',playerTurnStart);
-			$('body').removeClass('cursorPlayer1');
-			$('body').addClass('cursorPlayer0');
-            console.log("player 0 turn");
-			return;
+		console.log("ran changePlayerTurn in TicTacMain");
+		if(!this.gameOver){
+			if(this.playerTurn == 0){
+				this.playerTurn = 1;
+				$('.player0Area').unbind('click', playerTurnStart);
+				$('.player1Area').bind('click',playerTurnStart);
+				$('body').removeClass('cursorPlayer0');
+				$('body').addClass('cursorPlayer1');
+            	console.log("player 1 turn");
+				return;
+			}else if(this.playerTurn == 1){
+            	this.playerTurn = 0;
+				$('.player1Area').unbind('click',playerTurnStart);
+				$('.player0Area').bind('click',playerTurnStart);
+				$('body').removeClass('cursorPlayer1');
+				$('body').addClass('cursorPlayer0');
+            	console.log("player 0 turn");
+				return;
+			}
+		}else if(this.gameOver){
+			if(this.playerTurn == 0){
+				$('.player0Area').unbind('click',playerTurnStart);
+			}else if(this.playerTurn ==1){
+				$('.player1Area').unbind('click',playerTurnStart);
+			}
+			if(this.gameWinner==0){
+				$('.winnerMessageDisplay').text('Player 1 Wins');
+			}else if(this.gameWinner == 1){
+				$('.winnerMessageDisplay').text('Player 2 Wins');
+			}
 		}
 		//unlocks gun for current player
 		//change crosshairs to match current player
@@ -94,10 +109,16 @@ function TicTacMain(dim,winCond){	//will eventually need to take in winning cond
 				}
 				if(player0Pt ==this.winNumber){
 					console.log('player 0 wins; triggered at row win check');
+					this.gameOver = true;
+					this.gameWinner = 0;
+					return;
 					//call function that updates ui with player 0 win
 				}
 				if(player1Pt == this.winNumber){
 					console.log('player 1 wins; triggered tat row win check');
+					this.gameOver = true;
+					this.gameWinner = 1;
+					return;
 					//call function updating ui with player 1 win
 				}
 			}
@@ -122,10 +143,16 @@ function TicTacMain(dim,winCond){	//will eventually need to take in winning cond
 				}
 				if(player0Pt == this.winNumber){
 					console.log('player 0 wins; triggered at col win check');
+					this.gameOver = true;
+					this.gameWinner = 0;
+					return;
 					//call function updating ui with player 0 win
 				}
 				if(player1Pt == this.winNumber){
 					console.log('player 1 wins; triggered at col win check');
+					this.gameOver = true;
+					this.gameWinner = 1;
+					return;
 				}
 			}
 		}
@@ -148,11 +175,15 @@ function TicTacMain(dim,winCond){	//will eventually need to take in winning cond
 			}
 			if(player0PtLR == this.winNumber){
 				console.log('plaer 0 wins; triggered at diagonal win check');
+				this.gameOver = true;
 				//call function for ui update
+				this.gameWinner =0;
 				return;
 			}
 			if(player1PtLR == this.winNumber){
 				console.log('player 1 wins; triggered at diagonal win check');
+				this.gameOver = true;
+				this.gameWinner = 1;
 				return;
 			}
 		}
@@ -173,11 +204,15 @@ function TicTacMain(dim,winCond){	//will eventually need to take in winning cond
 				}
 				if(player0PtRL == this.winNumber){
 					console.log('player 0 wins; triggered at diagonal win check');
+					this.gameOver = true;
 					//call function for ui update
+					this.gameWinner = 0;
 					return;
 				}
 				if(player1PtRL == this.winNumber){
 					console.log('player 1 wins; triggered at diagonal win check');
+					this.gameOver = true;
+					this.gameWinner = 1;
 					return;
 				}
 				i++;

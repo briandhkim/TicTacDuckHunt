@@ -123,6 +123,19 @@ caput mortuum - rgb(84,42,22)
 	align-items: center;
 	justify-content: center;
 }
+.restartButton{
+	border: 1px solid white;
+	height: 30px;
+}
+.volumeControl{
+	border: 1px solid white;
+	height: 30px;
+}
+.winnerMessageDisplay{
+	border: 1px solid white;
+	height: 100px;
+	color: white;
+}
 .rowLower{
 	height: 23%;
 	padding-bottom: 10px;
