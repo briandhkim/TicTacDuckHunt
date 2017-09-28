@@ -1,6 +1,14 @@
 html,body{
 	overflow-x: hidden;
+	font-family: manaspc, Arial;
+	color: #fb9a38;
 }
+
+@font-face {
+	font-family: 'manaspc';
+	src:  url('assets/manaspc.ttf') format('woff2')
+}
+
 
 /*bootstrap grid: 
 	1 	grid = 8.333% 
@@ -43,10 +51,11 @@ caput mortuum - rgb(84,42,22)
 	padding-top: 10px;
 }
 .ruleArea{
-	background-color: rgba(84,42,22,0.95);
+	background-color: black;
 }
 .gameScreen{
 	background-color: rgb(220,212,214);
+
 }
 .gameScreenMonitor{
 	height: 98%;
@@ -54,8 +63,11 @@ caput mortuum - rgb(84,42,22)
 	margin-left: 0.25%;
 	border: 1px solid;
 	border-radius: 7%;
-	background-color: rgba(0,0,0,0.9);
+	/*background-color: rgba(0,0,0,0.9);*/
 	padding: 0;
+	background-image: url("assets/background.png");
+	background-size: 100% 100%;
+	background-repeat:no-repeat;
 }
 .gameScreenMonitor>div.row{
 	/*height: ;*/
@@ -67,7 +79,7 @@ caput mortuum - rgb(84,42,22)
 	display:inline-block;
 }
 .buttonArea{
-	background-color: rgba(84,42,22, 0.95);
+	background-color: black;
 	padding: 0;
 }
 .buttonArea > div{
@@ -81,7 +93,10 @@ caput mortuum - rgb(84,42,22)
 .radioGridSelectLabel, .radioWinSelectLabel{
 	margin-top:5px;
 	height: 60%;
-	background-color: gold;
+	background-color: #00e8d8;
+	border-radius: 8px;
+	color:black;
+	font-size: 16px;
 	/*border-radius: -20px; look up radial gradient*/
 	
 }
@@ -93,7 +108,8 @@ caput mortuum - rgb(84,42,22)
 	border: 1px solid;
 }
 .startButton{
-	background-color: white;
+	background-color: #48dc48;
+	color:white;
 
 }
 .rowLower{
@@ -116,4 +132,17 @@ caput mortuum - rgb(84,42,22)
 .littleDuck{
 	height: 100%;
 	border: 1px solid;
+}
+
+.player0Area {
+	background-image: url("assets/zapperGreen.png");
+	background-size: auto 100%;
+	background-repeat: no-repeat;
+	background-position: right;
+}
+.player1Area {
+	background-image: url("assets/zapperPurple.png");
+	background-size: auto 100%;
+	background-repeat: no-repeat;
+	background-position: left;
 }
