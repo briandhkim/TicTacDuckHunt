@@ -131,10 +131,10 @@ function TicTacMain(dim,winCond){	//will eventually need to take in winning cond
 		}
 	};
 	this.checkWinDiag = function(){ 		//this function checks both tLeft-bRight and tRight-bLeft diagonals
-		
+		var player0PtLR = 0; 
+		var player1PtLR = 0;
 		for(var i=0; i<this.dimension; i++){ 	//checking top left to bottom right
-			var player0PtLR = 0; 
-			var player1PtLR = 0;
+			
 			var currentSquare = $('#'+i+i);		//the col/row index in this direction should increment equally; therefore only one loop
 			if(currentSquare.hasClass('player0Sq')){
 				player0PtLR++;
@@ -156,7 +156,7 @@ function TicTacMain(dim,winCond){	//will eventually need to take in winning cond
 				return;
 			}
 		}
-		for(var i=0; i<this.dimension; i++){
+		for(var i=0; i<this.dimension;){
 			var player0PtRL = 0;
 			var player1PtRL = 0;
 			for(var j=this.dimension-1; j>=0; j--){
@@ -180,6 +180,7 @@ function TicTacMain(dim,winCond){	//will eventually need to take in winning cond
 					console.log('player 1 wins; triggered at diagonal win check');
 					return;
 				}
+				i++;
 			}
 		}
 	};
