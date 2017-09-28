@@ -1,4 +1,5 @@
 function TicTacMain(dim,winCond){	//will eventually need to take in winning condition number
+	this.self = this;
 	this.dimension = dim;
 	this.winNumber = winCond; 
 	this.playerTurn = 0;	//will always be either 0 or 1
@@ -18,7 +19,7 @@ function TicTacMain(dim,winCond){	//will eventually need to take in winning cond
 			}
 		}
 		console.log(this.availableSquareArray);
-	};
+	}.bind(this);
 
 	this.clickGameSquare = function(squareID){ //will have $().attr('id') passed in
         //conditional checking player turn was removed | duck object can access that data
