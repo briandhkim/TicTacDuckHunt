@@ -2,6 +2,7 @@ function DuckLayer(){
     this.player0Score = 0;
     this.player1Score = 0;
     this.duckOccupiedSquares = [];
+    this.dogOccupiedSquares = [];
     this.duckHit = false;
     this.turnTime = 5000;
     this.currentTurnTime = 0;
@@ -41,6 +42,7 @@ function DuckLayer(){
 
     this.resetDuckVar = function(){
         this.duckOccupiedSquares = [];
+        this.dogOccupiedSquares = [];
         this.duckHit = false;
         this.currentTurnTime = 0;
         this.duckDurations = {};
@@ -71,9 +73,17 @@ function DuckLayer(){
             return
         }
 
+        //chance of dog
+        var dogGenerate = false;
+        if(this.dogOccupiedSquares.length === 0){
+            if(Math.random() < 0.10){
+                dogGenerate = true;
+            }
+        }
+
         var availableUnoccupiedSquares = [];
         for(var i = 0; i < ticTacMain.availableSquareArray.length; i++){ //looping through array in ticTacMain.js containing all available div IDs
-            if(this.duckOccupiedSquares.indexOf(ticTacMain.availableSquareArray[i]) === -1){ //checking if duckOccupied squares array contains the same ID in the availableSquareArray
+            if(this.duckOccupiedSquares.indexOf(ticTacMain.availableSquareArray[i]) === -1 && this.dogOccupiedSquares.indexOf(ticTacMain.availableSquareArray[i]) === -1){ //checking if duckOccupied squares array contains the same ID in the availableSquareArray
                 availableUnoccupiedSquares.push(ticTacMain.availableSquareArray[i]) //if there is no match, push those IDs to newly made array
             }
         }
@@ -81,15 +91,24 @@ function DuckLayer(){
         var randomIndex = Math.floor(Math.random() * availableUnoccupiedSquares.length); //making random index based on availableUnoccupiedSquares length
         var randomDuckSquare = availableUnoccupiedSquares[randomIndex]; //assigning the unoccupiedSquare at index of randomDuckSquare, or duck, to a var
         // console.log(randomDuckSquare);
-        this.duckOccupiedSquares.push(randomDuckSquare); //a duck now occupies that square so push the ID of the square to the duckOccupiedSquares array
-
+        if(!dogGenerate){//a duck now occupies that square so push the ID of the square to the duckOccupiedSquares array
+            this.duckOccupiedSquares.push(randomDuckSquare);
+        }
+        else{
+            this.dogOccupiedSquares.push(randomDuckSquare);
+        }
         var baseTimeWindow = this.turnTime / 5; //1000
         var percentageOfBaseTimeWindow = (Math.floor(Math.random()*(15-5))+5) * 0.1;
         var duckDuration = baseTimeWindow * percentageOfBaseTimeWindow;
         var duckLeaveTime = duckDuration + this.currentTurnTime;
         this.duckDurations[duckLeaveTime] = randomDuckSquare;
         // console.log("Duck created at" + randomDuckSquare + " and will leave at " + duckLeaveTime + "at time" + this.currentTurnTime)
-        $("#"+randomDuckSquare).css("background-image", "assets/p0_duck01.png");
+        if(!dogGenerate) {
+            $("#" + randomDuckSquare).css("background-image", "assets/p0_duck01.png");
+        }
+        else{
+            $("#" + randomDuckSquare).css("background-image", "assets/dog01.png");
+        }
     };
 
     this.removeRandomGeneratedDuck = function(){
@@ -98,8 +117,14 @@ function DuckLayer(){
             if(parseInt(key) <= this.currentTurnTime){ //if the key (time spent in square) is <= the currentTurnTime then remove duck
                 var ID = this.duckDurations[key];
                 // console.log(ID + "removed at time of " + this.currentTurnTime);
-                var indexToRemove = this.duckOccupiedSquares.indexOf(this.duckDurations[key]);
-                this.duckOccupiedSquares.splice(indexToRemove);
+                if(this.duckOccupiedSquares.indexOf(this.duckDurations[key] !== 1)) {
+                    var indexToRemove = this.duckOccupiedSquares.indexOf(this.duckDurations[key]);
+                    this.duckOccupiedSquares.splice(indexToRemove);
+                }
+                else{
+                    var indexToRemove = this.dogOccupiedSquares.indexOf(this.duckDurations[key]);
+                    this.dogOccupiedSquares.splice(indexToRemove);
+                }
                 $("#" + ID).css("background-image", "none");
             }
         }
