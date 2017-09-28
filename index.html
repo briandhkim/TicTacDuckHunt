@@ -6,6 +6,7 @@
 	<script type="text/javascript" src="scripts/TicTacMain.js"></script>
 	<script type="text/javascript" src="scripts/DuckLayer.js"></script>
 	<script type="text/javascript" src="scripts/main.js"></script>
+	<script type="text/javascript" src="scripts/AudioHandler.js"></script>
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>
@@ -67,26 +68,26 @@
 		<div class="row rowLower">	<!--contains player turn display, score display-->
 			<div class="col-sm-3 player0Area"></div>
 			<div class="col-sm-6 scoreAndTimerAndDucks">	<!--score, timer, and small ducks div-->
-				<div class="col-sm-3 player0Score">Score<span class="player0ScoreVal"></span>
+				<div class="col-sm-3 player0Score text-center">Score: <span class="player0ScoreVal"></span>
 				</div>
 				<div class="col-sm-6 timerAndDuckDisplay">
 					<div class="col-sm-12 duckDisplay">
-						<div class="col-xs-1 col-xs-offset-1 littleDuck">d</div>
-						<div class="col-xs-1 littleDuck">d</div>
-						<div class="col-xs-1 littleDuck">d</div>
-						<div class="col-xs-1 littleDuck">d</div>
+						<div class="col-xs-1 col-xs-offset-1 littleDuck"></div>
+						<div class="col-xs-1 littleDuck"></div>
+						<div class="col-xs-1 littleDuck"></div>
+						<div class="col-xs-1 littleDuck"></div>
 						<div class="col-xs-2 littleDuck"></div>
-						<div class="col-xs-1 littleDuck">d</div>
-						<div class="col-xs-1 littleDuck">d</div>
-						<div class="col-xs-1 littleDuck">d</div>
-						<div class="col-xs-1 littleDuck">d</div>
+						<div class="col-xs-1 littleDuck"></div>
+						<div class="col-xs-1 littleDuck"></div>
+						<div class="col-xs-1 littleDuck"></div>
+						<div class="col-xs-1 littleDuck"></div>
 					</div>
 					<div class="col-sm-12 timerDisplay">
 						<div class="transTimer"></div>
 						<div class="timer"></div>
 					</div>
 				</div>	
-				<div class="col-sm-3 player1Score">Score<span class="player1ScoreVal"></span>
+				<div class="col-sm-3 player1Score text-center">Score: <span class="player1ScoreVal"></span>
 				</div>
 			</div>		<!--end of score, timer, and small ducks div-->
 			<div class="col-sm-3 player1Area"></div>

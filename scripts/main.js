@@ -11,11 +11,13 @@ function startGame(){
 		}
 		ticTacMain = new TicTacMain(dimension,winCond);
 		duckLayer = new DuckLayer();
+		audioHandler = new AudioHandler();
 		ticTacMain.createBoard(dimension);
 		$('body').removeClass('cursorDefault');
 		$('body').addClass('cursorPlayer0');
 		$('.player0Area').bind('click',playerTurnStart);
 		gameStarted = true;
+        audioHandler.start();
 	}
 }
 

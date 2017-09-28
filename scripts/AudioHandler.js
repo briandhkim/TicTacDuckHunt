@@ -1,28 +1,30 @@
 function AudioHandler(){
     this.flap = function(){
-        var audio = new Audio("audio/flip.wav");
+        var audio = new Audio("assets/audio_flap.wav");
         audio.play();
     };
-    this. = function(){
-        var audio = new Audio("audio/match.wav");
+    this.hit = function(){
+        var audio = new Audio("assets/audio_hit.wav");
         audio.play();
     };
-    this. = function(){
-        var radiationSounds = ["audio/radiation01.wav", "audio/radiation02.wav", "audio/radiation03.wav"];
-        var randomSoundIndex = Math.floor(Math.random()*(radiationSounds.length));
-        var audio = new Audio(radiationSounds[randomSoundIndex]);
+    this.miss = function(){
+        var audio = new Audio("assets/audio_miss.wav");
         audio.play();
     };
-    this. = function(){
-        var audio = new Audio("audio/restart.wav");
+    this.quack = function(){
+        var audio = new Audio("assets/audio_quack.wav");
         audio.play();
     };
-    this. = function(){
-        var audio = new Audio("audio/win.wav");
+    this.dog = function(){
+        var audio = new Audio("assets/audio_dog.wav");
         audio.play();
     };
-    this. = function(){
-        var audio = new Audio("audio/lose.wav");
+    this.shoot = function(){
+        var audio = new Audio("assets/audio_shoot.wav");
+        audio.play();
+    };
+    this.start = function(){
+        var audio = new Audio("assets/audio_start.wav");
         audio.play();
     }
 }

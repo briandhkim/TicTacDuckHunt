@@ -6,7 +6,7 @@ function DuckLayer(){
     this.duckHit = false;
     this.turnTime = 5000;
     this.currentTurnTime = 0;
-    this.interval = 100;
+    this.interval = 250;
     this.percentChangeDuckAppears = 0.90;
     this.duckDurations = {}; //key = time spent in square, value = ID of square
     this.pointPerDuck = 10;
@@ -38,8 +38,9 @@ function DuckLayer(){
 
 
     this.intervalFunction = function(){
-        this.generateRandomDuck();
         this.removeRandomGeneratedDuck();
+        this.generateRandomDuck();
+
     }.bind(this);
 
     this.stopTimer = function(){
@@ -80,6 +81,7 @@ function DuckLayer(){
         if (this.currentTurnTime >= this.turnTime) { //checking if currentTime === 5 seconds and if it is, stopTimer
             this.stopTimer();
             ticTacMain.changePlayerTurn();
+            audioHandler.miss();
         }
         if(this.currentTurnTime === 0){
             return
@@ -113,12 +115,11 @@ function DuckLayer(){
                 availableUnoccupiedSquares.push(ticTacMain.availableSquareArray[i]) //if there is no match, push those IDs to newly made array
             }
         }
-
         var randomIndex = Math.floor(Math.random() * availableUnoccupiedSquares.length); //making random index based on availableUnoccupiedSquares length
         var randomDuckSquare = availableUnoccupiedSquares[randomIndex]; //assigning the unoccupiedSquare at index of randomDuckSquare, or duck, to a var
-
         if(!dogGenerate){//a duck now occupies that square so push the ID of the square to the duckOccupiedSquares array
             this.duckOccupiedSquares.push(randomDuckSquare);
+            console.log("DUCK OCCUPIED SQUARES = " + this.duckOccupiedSquares)
         }
         else{
             this.dogOccupiedSquares.push(randomDuckSquare);
@@ -131,13 +132,20 @@ function DuckLayer(){
         if(!dogGenerate) {
             if(ticTacMain.playerTurn === 0){
                 $("#" + randomDuckSquare).css("background", "url(assets/p0_duck01.png) no-repeat center");
+                if(this.currentTurnTime < this.turnTime * .7) {
+                    audioHandler.quack();
+                }
             }
             else{
                 $("#" + randomDuckSquare).css("background", "url(assets/p1_duck01.png) no-repeat center");
+                if(this.currentTurnTime < this.turnTime * .7) {
+                    audioHandler.quack();
+                }
             }
         }
         else{
             $("#" + randomDuckSquare).css("background", "url(assets/dog01.png) no-repeat center");
+            audioHandler.dog();
         }
     };
 
@@ -163,19 +171,16 @@ function DuckLayer(){
     // };
 
     this.hitDuck = function(squareId) {
-        console.log("Duck Hit! - Current player is " + ticTacMain.playerTurn)
         this.duckHit = true; //changing duckHit to true if duck was in div clicked
         if (ticTacMain.playerTurn === 0) {
             this.player0Score += this.pointPerDuck; //update this.player0Score
             ticTacMain.player0Squares.push(squareId);
-            console.log("YOU HIT IT " + squareId)
         } else {
             this.player1Score += this.pointPerDuck; //update this.player1Score
             ticTacMain.player1Squares.push(squareId);
         }
         ticTacMain.availableSquareArray.splice(ticTacMain.availableSquareArray.indexOf(squareId), 1 );
         this.stopTimer();
-        console.log("End of hit duck code block, player is - " + ticTacMain.playerTurn)
         if(ticTacMain.playerTurn === 0){
             $("#" + squareId).addClass("player0Sq")
         }
@@ -186,31 +191,10 @@ function DuckLayer(){
     };
 
     this.updateDisplay = function(){
-        // var gameSquareID = [];
-        // $(".gameSquare").each(function() { //creating object of all elements with class of "gameSquare"
-        //     var tempID = $(this).attr('id');
-        //     gameSquareID.push(tempID);
-        // });
-        // for (var j = 0; j < gameSquareID.length; j++) { //put dead ducks on squares based on ticTacMain.player0Squares
-        //     for (var p0 = 0; p0 < ticTacMain.player0Squares.length; p0++) {
-        //         if (gameSquareID.indexOf(ticTacMain.player0Squares[p0]) !== -1) {
-        //             $('.' + gameSquareID[j]).css('background-image', 'assets/p0_duckDead.png');
-        //         }
-        //     }
-        //     for (var p1 = 0; p1 < ticTacMain.player1Squares.length; p1++) { //put dead ducks on squares based on ticTacMain.player1Squares
-        //         if (gameSquareID.indexOf(ticTacMain.player1Squares[p1]) !== -1) {
-        //             $('.' + gameSquareID[j]).css('background-image', 'assets/p1_duckDead.png');
-        //         }
-        //     }
-        // }
-        console.log("UPDATE DISPLAY FUNCTION")
-        console.log(ticTacMain.player0Squares);
         for(var i = 0; i < ticTacMain.player0Squares.length; i++){
-            console.log("UPDATE" + ticTacMain.player0Squares[i]);
             $("#" + ticTacMain.player0Squares[i]).css("background", "url(assets/p0_duckDead.png) no-repeat center");
         }
         for(var i = 0; i < ticTacMain.player1Squares.length; i++){
-            console.log("UPDATE" + ticTacMain.player1Squares[i]);
             $("#" + ticTacMain.player1Squares[i]).css("background", "url(assets/p1_duckDead.png) no-repeat center");
         }
 
