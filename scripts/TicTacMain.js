@@ -58,6 +58,8 @@ function TicTacMain(dim,winCond){	//will eventually need to take in winning cond
 				$('.player1Area').bind('click',playerTurnStart);
 				$('body').removeClass('cursorPlayer0');
 				$('body').addClass('cursorPlayer1');
+				$('.player0Name').removeClass('playerFocusHighlight');
+				$('.player1Name').addClass('playerFocusHighlight');
             	console.log("player 1 turn");
 				return;
 			}else if(this.playerTurn == 1){
@@ -66,6 +68,8 @@ function TicTacMain(dim,winCond){	//will eventually need to take in winning cond
 				$('.player0Area').bind('click',playerTurnStart);
 				$('body').removeClass('cursorPlayer1');
 				$('body').addClass('cursorPlayer0');
+				$('.player1Name').removeClass('playerFocusHighlight');
+				$('.player0Name').addClass('playerFocusHighlight');
             	console.log("player 0 turn");
 				return;
 			}
