@@ -1,4 +1,4 @@
-var DuckLayer = function(){
+function DuckLayer(){
     this.player0Score = 0;
     this.player1Score = 0;
     this.duckOccupiedSquares = [];
@@ -107,19 +107,40 @@ var DuckLayer = function(){
     this.hitDuck = function(squareId) {
         this.duckHit = true; //changing duckHit to true if duck was in div clicked
         this.stopTimer();
-        if (ticTacMain.playerTurn === 0) { //update this.player0Score and this.player1Score
-            this.player0Score += this.pointPerDuck;
+        if (ticTacMain.playerTurn === 0) {
+            this.player0Score += this.pointPerDuck; //update this.player0Score
+            ticTacMain.player0Squares.push(squareId);
         } else {
-            this.player1Score += this.pointPerDuck;
+            this.player1Score += this.pointPerDuck; //update this.player1Score
+            ticTacMain.player1Squares.push(squareId);
         }
         this.updateDisplay(); //updates the display
     };
 
     this.updateDisplay = function() {
-        //put dead ducks on squares based on ticTacMain.player0Squares and ticTacMain.player1Squares
-        //updateScore in html.index;
-        if ('.gameScore')//add duck to screen
+        var gameSquare = $('.gameSquare'); //creating array of all elements with class of "gameSquare"
+        var gameSquareID = [];
+        for (var i = 0; i < gameSquare.length; i++) { //looping through gameSquare array pushing ID of all squares
+            gameSquareID.push(gameSquare[i].attr['id']);
+        }
+        for (var j = 0; j < gameSquareID.length; j++) { //put dead ducks on squares based on ticTacMain.player0Squares
+            for (var p0 = 0; p0 < ticTacMain.player0Squares.length; p0++) {
+                if (gameSquareID.indexOf(ticTacMain.player0Squares[p0]) !== -1) {
+                    $('.' + gameSquareID[j]).css('background-image', 'assets/p0_duck03_dead.png');
+                }
+            }
+            for (var p1 = 0; p1 < ticTacMain.player1Squares.length; p1++) { //put dead ducks on squares based on ticTacMain.player1Squares
+                if (gameSquareID.indexOf(ticTacMain.player1Squares[p1]) !== -1) {
+                    $('.' + gameSquareID[j]).css('background-image', 'assets/p1_duck03_dead.png');
+                }
+            }
+        }
+        if (ticTacMain.playerTurn === 0) { //updateScore in html.index;
+            $('.player0ScoreVal').text(this.player0Score);
+        } else {
+            $('.player1ScoreVal').text(this.player1Score);
+        }
         ticTacMain.changePlayerTurn(); //calls ticTacMain.changePlayerTurn
     };
-};
+}
 
