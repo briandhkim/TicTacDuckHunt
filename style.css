@@ -170,11 +170,17 @@ caput mortuum - rgb(84,42,22)
 	/*border: 1px solid green;*/
 	padding: 0;
 }
+/*.timerDisplay{
+	font-size: 20px;
+}*/
+.duckDisplay{
+	font-size: 50px;
+	/*color: white;*/
+}
 .littleDuck{
 	height: 100%;
-	border: 1px solid;
+	/*border: 1px solid;*/
 }
-
 .player0Area {
 	background: black;
 	background-image: url("assets/zapperGreen.png");
