@@ -11,6 +11,7 @@ function startGame(){
 		}
 		ticTacMain = new TicTacMain(dimension,winCond);
 		duckLayer = new DuckLayer();
+        duckLayer.duckAnimation();
 		audioHandler = new AudioHandler();
 		ticTacMain.createBoard(dimension);
 		$('body').removeClass('cursorDefault');

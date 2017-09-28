@@ -57,15 +57,18 @@ caput mortuum - rgb(84,42,22)
 	padding-top: 10px;
 }
 .ruleArea{
+	font-family: duckhunt, Arial;
+	font-size: 50px;
 	background-color: black;
+	color: #48dc48;
 }
 .rule-title{
 	margin: 10px 5% 10px 5%;
-	height: 10%;
+	height: auto;
 	background-color: #00e8d8;
 	border-radius: 8px;
 	color:black;
-	font-size: 16px;
+	font-size: 25px;
 
 }
 .gameScreen{
