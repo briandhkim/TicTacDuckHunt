@@ -22,10 +22,13 @@ function TicTacMain(dim,winCond){	//will eventually need to take in winning cond
 
 	this.clickGameSquare = function(squareID){ //will have $().attr('id') passed in
         //conditional checking player turn was removed | duck object can access that data
-		for(var i=0; i<duck.duckOccupiedSquares.length; i++){	//traverse through available squares with ducks inside them
-			if(duck.duckOccupiedSquares[i]==squareID){	//if clicked squareID is inside the array, call hitDuck function
+		for(var i=0; i<duckLayer.duckOccupiedSquares.length; i++){	//traverse through available squares with ducks inside them
+			if(duckLayer.duckOccupiedSquares[i]==squareID){	//if clicked squareID is inside the array, call hitDuck function
 				// return duck.hitDuck();	//may need to use return before function call to exit loop
-				duck.hitDuck(squareID);	//hitDuck function needs to update player0/1Squares array
+				duckLayer.hitDuck(squareID);	//hitDuck function needs to update player0/1Squares array
+			}
+			else if(duckLayer.dogOccupiedSquares[i]==squareID){
+				//FUNCTION THAT ENDS GAME
 			}
 		}
 	};
