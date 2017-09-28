@@ -62,9 +62,10 @@ function TicTacMain(dim,winCond){	//will eventually need to take in winning cond
 		ticTacMain.checkWinCol();
 		ticTacMain.checkWinDiag();	*/
 	this.checkWinRow = function (){
-		var player0Pt = 0;	//if there are enough consequtive rows in play, this point will match the necessary win square number
-		var player1Pt = 0;
+		
 		for(var i=0; i<this.dimension;i++){		//outer loop iterates rows
+			var player0Pt = 0;	//if there are enough consequtive rows in play, this point will match the necessary win square number
+			var player1Pt = 0;
 			for(var j=0; j<this.dimension;j++){	//inner loop iterates through each square inside the row
 				var currentSquare = $('#'+i+j); //targets the current square in iteration for comparison
 				if(currentSquare.hasClass('player0Sq')){	//if the square has class matching whichever player that clicked; checking square div class not image class
@@ -89,9 +90,10 @@ function TicTacMain(dim,winCond){	//will eventually need to take in winning cond
 		}
 	};
 	this.checkWinCol = function(){
-		var player0Pt = 0;
-		var player1Pt = 0;
+		
 		for(var i=0; i<this.dimension; i++){ 		//outer loop keeps id number confined to column
+			var player0Pt = 0;
+			var player1Pt = 0;
 			for(var j=0; j<this.dimension; j++){ 	//inner loop iterates through each row at every column
 				var currentSquare = $('#'+j+i);
 				if(currentSquare.hasClass('player0Sq')){
@@ -115,9 +117,10 @@ function TicTacMain(dim,winCond){	//will eventually need to take in winning cond
 		}
 	};
 	this.checkWinDiag = function(){ 		//this function checks both tLeft-bRight and tRight-bLeft diagonals
-		var player0PtLR = 0; 
-		var player1PtLR = 0;
+		
 		for(var i=0; i<this.dimension; i++){ 	//checking top left to bottom right
+			var player0PtLR = 0; 
+			var player1PtLR = 0;
 			var currentSquare = $('#'+i+i);		//the col/row index in this direction should increment equally; therefore only one loop
 			if(currentSquare.hasClass('player0Sq')){
 				player0PtLR++;
@@ -139,9 +142,9 @@ function TicTacMain(dim,winCond){	//will eventually need to take in winning cond
 				return;
 			}
 		}
-		var player0PtRL = 0;
-		var player1PtRL = 0;
 		for(var i=0; i<this.dimension; i++){
+			var player0PtRL = 0;
+			var player1PtRL = 0;
 			for(var j=this.dimension-1; j>=0; j--){
 				var currentSquare2 = $('#'+i+j);
 				if(currentSquare2.hasClass('player0Sq')){
