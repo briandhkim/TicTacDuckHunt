@@ -242,6 +242,7 @@ function DuckLayer(){
     this.hitDog = function(squareID){
         this.dogHit = true;
         this.stopTimer();
+        this.checkWinCondition();
         $("#" + squareID).css("background", "url(assets/dog_shot.png) no-repeat center");
     };
 
