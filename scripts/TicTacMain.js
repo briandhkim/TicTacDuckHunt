@@ -14,12 +14,14 @@ function TicTacMain(dim,winCond){	//will eventually need to take in winning cond
 		for(var i=0; i<this.dimension; i++){
 			$('<div>').addClass('row').attr('id','row'+i).appendTo('.gameScreenMonitor').css('height',divRowHeight+'%');
 			for(var j=0; j<this.dimension; j++){
-				$('<div>').addClass('gameSquare').attr('id',i.toString()+j.toString()).css({'width':gameSquareWidth+'%','height':'100%'}).click(self.clickGameSquare).appendTo('#row'+i);
+				$('<div>').addClass('gameSquare').attr('id',i.toString()+j.toString()).css({'width':gameSquareWidth+'%','height':'100%'}).click(function(){
+					ticTacMain.clickGameSquare($(this).attr('id'));
+				}).appendTo('#row'+i);
 				this.availableSquareArray.push(i.toString()+j.toString());
 			}
 		}
 		console.log(this.availableSquareArray);
-	}.bind(this);
+	};
 
 	this.clickGameSquare = function(squareID){ //will have $().attr('id') passed in
         //conditional checking player turn was removed | duck object can access that data
@@ -27,6 +29,7 @@ function TicTacMain(dim,winCond){	//will eventually need to take in winning cond
 			if(duckLayer.duckOccupiedSquares[i]==squareID){	//if clicked squareID is inside the array, call hitDuck function
 				// return duck.hitDuck();	//may need to use return before function call to exit loop
 				duckLayer.hitDuck(squareID);	//hitDuck function needs to update player0/1Squares array
+				return;
 			}
 			else if(duckLayer.dogOccupiedSquares[i]==squareID){
 				//FUNCTION THAT ENDS GAME
