@@ -127,7 +127,12 @@ function DuckLayer(){
         var duckLeaveTime = duckDuration + this.currentTurnTime;
         this.duckDurations[duckLeaveTime] = randomDuckSquare;
         if(!dogGenerate) {
-            $("#" + randomDuckSquare).css("background", "url(assets/p0_duck01.png) no-repeat center");
+            if(ticTacMain.playerTurn === 0){
+                $("#" + randomDuckSquare).css("background", "url(assets/p0_duck01.png) no-repeat center");
+            }
+            else{
+                $("#" + randomDuckSquare).css("background", "url(assets/p1_duck01.png) no-repeat center");
+            }
         }
         else{
             $("#" + randomDuckSquare).css("background", "url(assets/dog01.png) no-repeat center");
@@ -193,6 +198,10 @@ function DuckLayer(){
         for(var i = 0; i < ticTacMain.player0Squares.length; i++){
             console.log("UPDATE" + ticTacMain.player0Squares[i]);
             $("#" + ticTacMain.player0Squares[i]).css("background", "url(assets/p0_duckDead.png) no-repeat center");
+        }
+        for(var i = 0; i < ticTacMain.player1Squares.length; i++){
+            console.log("UPDATE" + ticTacMain.player1Squares[i]);
+            $("#" + ticTacMain.player1Squares[i]).css("background", "url(assets/p1_duckDead.png) no-repeat center");
         }
 
         if (ticTacMain.playerTurn === 0) { //updateScore in html.index;
