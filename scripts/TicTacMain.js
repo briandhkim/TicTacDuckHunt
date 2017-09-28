@@ -36,6 +36,8 @@ function TicTacMain(dim,winCond){	//will eventually need to take in winning cond
 			}
 			else if(duckLayer.dogOccupiedSquares[i]==squareID){
 				//FUNCTION THAT ENDS GAME
+				duckLayer.hitDog(squareID);
+				return;
 			}
 		}
 	};
