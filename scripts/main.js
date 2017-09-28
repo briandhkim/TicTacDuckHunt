@@ -15,3 +15,6 @@ function startGame(){
 $(document).ready(function(){
 	$('.startButton').click(startGame);
 });
+
+//click handlers for guns that initiate duckLayer.startTimer()
+//add padding to game screen

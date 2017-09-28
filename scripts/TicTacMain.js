@@ -45,6 +45,8 @@ var TicTacMain = function(dim,winCond){	//will eventually need to take in winnin
 			this.playerTurn++;
 			return;
 		}
+		//unlocks gun for current player
+		//change crosshairs to match current player
 	}; 
 	/*called by placePiece either decrement or increment playerTurn depending on player turn
 		duck obje*/
