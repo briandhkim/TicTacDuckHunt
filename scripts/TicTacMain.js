@@ -1,4 +1,5 @@
 function TicTacMain(dim,winCond){	//will eventually need to take in winning condition number
+	this.self = this;
 	this.dimension = dim;
 	this.winNumber = winCond; 
 	this.playerTurn = 0;	//will always be either 0 or 1
@@ -13,19 +14,22 @@ function TicTacMain(dim,winCond){	//will eventually need to take in winning cond
 		for(var i=0; i<this.dimension; i++){
 			$('<div>').addClass('row').attr('id','row'+i).appendTo('.gameScreenMonitor').css('height',divRowHeight+'%');
 			for(var j=0; j<this.dimension; j++){
-				$('<div>').addClass('gameSquare').attr('id',i.toString()+j.toString()).css({'width':gameSquareWidth+'%','height':'100%'}).click(self.clickGameSquae).appendTo('#row'+i);
+				$('<div>').addClass('gameSquare').attr('id',i.toString()+j.toString()).css({'width':gameSquareWidth+'%','height':'100%'}).click(self.clickGameSquare).appendTo('#row'+i);
 				this.availableSquareArray.push(i.toString()+j.toString());
 			}
 		}
 		console.log(this.availableSquareArray);
-	};
+	}.bind(this);
 
 	this.clickGameSquare = function(squareID){ //will have $().attr('id') passed in
         //conditional checking player turn was removed | duck object can access that data
-		for(var i=0; i<duck.duckOccupiedSquares.length; i++){	//traverse through available squares with ducks inside them
-			if(duck.duckOccupiedSquares[i]==squareID){	//if clicked squareID is inside the array, call hitDuck function
+		for(var i=0; i<duckLayer.duckOccupiedSquares.length; i++){	//traverse through available squares with ducks inside them
+			if(duckLayer.duckOccupiedSquares[i]==squareID){	//if clicked squareID is inside the array, call hitDuck function
 				// return duck.hitDuck();	//may need to use return before function call to exit loop
-				duck.hitDuck(squareID);	//hitDuck function needs to update player0/1Squares array
+				duckLayer.hitDuck(squareID);	//hitDuck function needs to update player0/1Squares array
+			}
+			else if(duckLayer.dogOccupiedSquares[i]==squareID){
+				//FUNCTION THAT ENDS GAME
 			}
 		}
 	};
@@ -38,15 +42,18 @@ function TicTacMain(dim,winCond){	//will eventually need to take in winning cond
 			//splice squareID from availableSquareArray and push to playerSquare array to current player
 
 	this.changePlayerTurn = function(){
+		console.log("ran changePlayerTurn");
 		if(this.playerTurn == 0){
-			this.playerTurn++;
+			this.playerTurn = 1;
 			$('.player0Area').unbind('click', playerTurnStart);
 			$('.player1Area').bind('click',playerTurnStart);
+            console.log("player 2 turn");
 			return;
 		}else if(this.playerTurn == 1){
-			this.playerTurn--;
+            this.playerTurn = 0;
 			$('.player1Area').unbind('click',playerTurnStart);
 			$('.player0Area').bind('click',playerTurnStart);
+            console.log("player 1 turn");
 			return;
 		}
 		//unlocks gun for current player
