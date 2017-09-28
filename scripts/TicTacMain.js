@@ -1,4 +1,4 @@
-var TicTacMain = function(dim,winCond){	//will eventually need to take in winning condition number
+function TicTacMain(dim,winCond){	//will eventually need to take in winning condition number
 	this.dimension = dim;
 	this.winNumber = winCond; 
 	this.playerTurn = 0;	//will always be either 0 or 1
@@ -22,10 +22,13 @@ var TicTacMain = function(dim,winCond){	//will eventually need to take in winnin
 
 	this.clickGameSquare = function(squareID){ //will have $().attr('id') passed in
         //conditional checking player turn was removed | duck object can access that data
-		for(var i=0; i<duck.duckOccupiedSquares.length; i++){	//traverse through available squares with ducks inside them
-			if(duck.duckOccupiedSquares[i]==squareID){	//if clicked squareID is inside the array, call hitDuck function
+		for(var i=0; i<duckLayer.duckOccupiedSquares.length; i++){	//traverse through available squares with ducks inside them
+			if(duckLayer.duckOccupiedSquares[i]==squareID){	//if clicked squareID is inside the array, call hitDuck function
 				// return duck.hitDuck();	//may need to use return before function call to exit loop
-				duck.hitDuck(squareID);	//hitDuck function needs to update player0/1Squares array
+				duckLayer.hitDuck(squareID);	//hitDuck function needs to update player0/1Squares array
+			}
+			else if(duckLayer.dogOccupiedSquares[i]==squareID){
+				//FUNCTION THAT ENDS GAME
 			}
 		}
 	};
@@ -39,10 +42,14 @@ var TicTacMain = function(dim,winCond){	//will eventually need to take in winnin
 
 	this.changePlayerTurn = function(){
 		if(this.playerTurn == 0){
-			this.playerTurn--;
+			this.playerTurn++;
+			$('.player0Area').unbind('click', playerTurnStart);
+			$('.player1Area').bind('click',playerTurnStart);
 			return;
 		}else if(this.playerTurn == 1){
-			this.playerTurn++;
+			this.playerTurn--;
+			$('.player1Area').unbind('click',playerTurnStart);
+			$('.player0Area').bind('click',playerTurnStart);
 			return;
 		}
 		//unlocks gun for current player

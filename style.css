@@ -1,12 +1,12 @@
+@font-face {
+	font-family: 'manaspc';
+	src:  url('assets/manaspc.ttf') format('woff2')
+}
+
 html,body{
 	overflow-x: hidden;
 	font-family: manaspc, Arial;
 	color: #fb9a38;
-}
-
-@font-face {
-	font-family: 'manaspc';
-	src:  url('assets/manaspc.ttf') format('woff2')
 }
 
 
@@ -64,7 +64,7 @@ caput mortuum - rgb(84,42,22)
 	border: 1px solid;
 	border-radius: 7%;
 	/*background-color: rgba(0,0,0,0.9);*/
-	padding: 0;
+	padding: 16px;
 	background-image: url("assets/background.png");
 	background-size: 100% 100%;
 	background-repeat:no-repeat;
