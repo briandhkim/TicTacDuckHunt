@@ -194,7 +194,7 @@ function DuckLayer(){
     };
 
     this.hitDog = function(squareID){
-        this.dogHit = false;
+        this.dogHit = true;
         this.stopTimer();
         $("#" + squareID).css("background", "url(assets/dog_shot.png) no-repeat center");
     };
