@@ -122,10 +122,10 @@ function DuckLayer(){
         this.duckDurations[duckLeaveTime] = randomDuckSquare;
         // console.log("Duck created at" + randomDuckSquare + " and will leave at " + duckLeaveTime + "at time" + this.currentTurnTime)
         if(!dogGenerate) {
-            $("#" + randomDuckSquare).css("background-image", "assets/p0_duck01.png no-repeat center");
+            $("#" + randomDuckSquare).css("background", "url(assets/p0_duck01.png) no-repeat center");
         }
         else{
-            $("#" + randomDuckSquare).css("background-image", "assets/dog01.png no-repeat center");
+            $("#" + randomDuckSquare).css("background", "url(assets/dog01.png) no-repeat center");
         }
     };
 
@@ -189,7 +189,6 @@ function DuckLayer(){
         } else {
             $('.player1ScoreVal').text(this.player1Score);
         }
-        ticTacMain.changePlayerTurn(); //calls ticTacMain.changePlayerTurn
     };
 }
 
