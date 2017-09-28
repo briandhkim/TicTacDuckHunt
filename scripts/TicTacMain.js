@@ -39,10 +39,14 @@ function TicTacMain(dim,winCond){	//will eventually need to take in winning cond
 
 	this.changePlayerTurn = function(){
 		if(this.playerTurn == 0){
-			this.playerTurn--;
+			this.playerTurn++;
+			$('.player0Area').unbind('click', playerTurnStart);
+			$('.player1Area').bind('click',playerTurnStart);
 			return;
 		}else if(this.playerTurn == 1){
-			this.playerTurn++;
+			this.playerTurn--;
+			$('.player1Area').unbind('click',playerTurnStart);
+			$('.player0Area').bind('click',playerTurnStart);
 			return;
 		}
 		//unlocks gun for current player
