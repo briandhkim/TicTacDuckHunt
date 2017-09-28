@@ -1,4 +1,4 @@
-var TicTacMain = function(dim,winCond){	//will eventually need to take in winning condition number
+function TicTacMain(dim,winCond){	//will eventually need to take in winning condition number
 	this.dimension = dim;
 	this.winNumber = winCond; 
 	this.playerTurn = 0;	//will always be either 0 or 1
@@ -39,10 +39,14 @@ var TicTacMain = function(dim,winCond){	//will eventually need to take in winnin
 
 	this.changePlayerTurn = function(){
 		if(this.playerTurn == 0){
-			this.playerTurn--;
+			this.playerTurn++;
+			$('.player0Area').unbind('click', playerTurnStart);
+			$('.player1Area').bind('click',playerTurnStart);
 			return;
 		}else if(this.playerTurn == 1){
-			this.playerTurn++;
+			this.playerTurn--;
+			$('.player1Area').unbind('click',playerTurnStart);
+			$('.player0Area').bind('click',playerTurnStart);
 			return;
 		}
 		//unlocks gun for current player
