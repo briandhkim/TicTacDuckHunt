@@ -132,23 +132,23 @@ function DuckLayer(){
         this.duckDurations[duckLeaveTime] = randomDuckSquare;
         if(!dogGenerate) {
             if(ticTacMain.playerTurn === 0){
-                $('#' + randomDuckSquare).addClass('animateDuck0'); //adding animations via class
-                // $("#" + randomDuckSquare).css("background", "url(assets/p0_duck01.png) no-repeat center");
+                // $('#' + randomDuckSquare).addClass('animateDuck0'); //adding animations via class
+                $("#" + randomDuckSquare).css("background", "url(assets/p0_duck01.png) no-repeat center");
                 // if(this.currentTurnTime < this.turnTime * .7) {
                     audioHandler.quack();
                 // }
             }
             else{
-                $('#' + randomDuckSquare).addClass('animateDuck1'); //adding animations via class
-                // $("#" + randomDuckSquare).css("background", "url(assets/p1_duck01.png) no-repeat center");
+                // $('#' + randomDuckSquare).addClass('animateDuck1'); //adding animations via class
+                $("#" + randomDuckSquare).css("background", "url(assets/p1_duck01.png) no-repeat center");
                 // if(this.currentTurnTime < this.turnTime * .7) {
                     audioHandler.quack();
                 // }
             }
         }
         else{
-            $('#' + randomDuckSquare).addClass('animateDog'); //adding animations via class
-            // $("#" + randomDuckSquare).css("background", "url(assets/dog01.png) no-repeat center");
+            // $('#' + randomDuckSquare).addClass('animateDog'); //adding animations via class
+            $("#" + randomDuckSquare).css("background", "url(assets/dog01.png) no-repeat center");
             audioHandler.dog();
         }
     };
@@ -186,6 +186,52 @@ function DuckLayer(){
     //     }
     // };
 
+    this.duckAnimation = function(){
+        var player0animation = ['assets/p0_duck01', 'assets/p0_duck02', 'assets/p0_duck03', ];
+
+        this.timer = setInterval(function(){
+            $(".gameSquare").each(function() { //creating object of all elements with class of "gameSquare"
+                if($(this).css('background-image').indexOf('assets/p0_duck01.png') !== -1){
+                    $(this).css('background-image', 'url(assets/p0_duck02.png)')
+                }
+                else if($(this).css('background-image').indexOf('assets/p0_duck02.png') !== -1){
+                    $(this).css('background-image', 'url(assets/p0_duck03.png)')
+                }
+                else if($(this).css('background-image').indexOf('assets/p0_duck03.png') !== -1){
+                    $(this).css('background-image', 'url(assets/p0_duck04.png)')
+                }
+                else if($(this).css('background-image').indexOf('assets/p0_duck04.png') !== -1){
+                    $(this).css('background-image', 'url(assets/p0_duck01.png)')
+                }
+                if($(this).css('background-image').indexOf('assets/p1_duck01.png') !== -1){
+                    $(this).css('background-image', 'url(assets/p1_duck02.png)')
+                }
+                else if($(this).css('background-image').indexOf('assets/p1_duck02.png') !== -1){
+                    $(this).css('background-image', 'url(assets/p1_duck03.png)')
+                }
+                else if($(this).css('background-image').indexOf('assets/p1_duck03.png') !== -1){
+                    $(this).css('background-image', 'url(assets/p1_duck04.png)')
+                }
+                else if($(this).css('background-image').indexOf('assets/p1_duck04.png') !== -1){
+                    $(this).css('background-image', 'url(assets/p1_duck01.png)')
+                }
+                else if($(this).css('background-image').indexOf('assets/dog01.png') !== -1){
+                    $(this).css('background-image', 'url(assets/dog02.png)')
+                }
+                else if($(this).css('background-image').indexOf('assets/dog02.png') !== -1){
+                    $(this).css('background-image', 'url(assets/dog03.png)')
+                }
+                else if($(this).css('background-image').indexOf('assets/dog03.png') !== -1){
+                    $(this).css('background-image', 'url(assets/dog04.png)')
+                }
+                else if($(this).css('background-image').indexOf('assets/dog04.png') !== -1){
+                    $(this).css('background-image', 'url(assets/dog01.png)')
+                }
+
+            });
+        }, 250)
+    };
+
     this.hitDuck = function(squareId) {
         audioHandler.hit();
         this.duckHit = true; //changing duckHit to true if duck was in div clicked
@@ -214,6 +260,7 @@ function DuckLayer(){
     this.hitDog = function(squareID){
         this.dogHit = true;
         this.stopTimer();
+        this.checkWinCondition();
         $("#" + squareID).css("background", "url(assets/dog_shot.png) no-repeat center");
     };
 
