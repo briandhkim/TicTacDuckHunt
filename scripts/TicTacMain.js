@@ -13,7 +13,7 @@ function TicTacMain(dim,winCond){	//will eventually need to take in winning cond
 		for(var i=0; i<this.dimension; i++){
 			$('<div>').addClass('row').attr('id','row'+i).appendTo('.gameScreenMonitor').css('height',divRowHeight+'%');
 			for(var j=0; j<this.dimension; j++){
-				$('<div>').addClass('gameSquare').attr('id',i.toString()+j.toString()).css({'width':gameSquareWidth+'%','height':'100%'}).click(self.clickGameSquae).appendTo('#row'+i);
+				$('<div>').addClass('gameSquare').attr('id',i.toString()+j.toString()).css({'width':gameSquareWidth+'%','height':'100%'}).click(self.clickGameSquare).appendTo('#row'+i);
 				this.availableSquareArray.push(i.toString()+j.toString());
 			}
 		}
@@ -41,15 +41,18 @@ function TicTacMain(dim,winCond){	//will eventually need to take in winning cond
 			//splice squareID from availableSquareArray and push to playerSquare array to current player
 
 	this.changePlayerTurn = function(){
+		console.log("ran changePlayerTurn");
 		if(this.playerTurn == 0){
-			this.playerTurn++;
+			this.playerTurn = 1;
 			$('.player0Area').unbind('click', playerTurnStart);
 			$('.player1Area').bind('click',playerTurnStart);
+            console.log("player 2 turn");
 			return;
 		}else if(this.playerTurn == 1){
-			this.playerTurn--;
+            this.playerTurn = 0;
 			$('.player1Area').unbind('click',playerTurnStart);
 			$('.player0Area').bind('click',playerTurnStart);
+            console.log("player 1 turn");
 			return;
 		}
 		//unlocks gun for current player
