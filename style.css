@@ -1,12 +1,12 @@
+@font-face {
+	font-family: 'manaspc';
+	src:  url('assets/manaspc.ttf') format('woff2')
+}
+
 html,body{
 	overflow-x: hidden;
 	font-family: manaspc, Arial;
 	color: #fb9a38;
-}
-
-@font-face {
-	font-family: 'manaspc';
-	src:  url('assets/manaspc.ttf') format('woff2')
 }
 
 
