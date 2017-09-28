@@ -132,20 +132,23 @@ function DuckLayer(){
         this.duckDurations[duckLeaveTime] = randomDuckSquare;
         if(!dogGenerate) {
             if(ticTacMain.playerTurn === 0){
-                $("#" + randomDuckSquare).css("background", "url(assets/p0_duck01.png) no-repeat center");
+                $('#' + randomDuckSquare).addClass('animateDuck0'); //adding animations via class
+                // $("#" + randomDuckSquare).css("background", "url(assets/p0_duck01.png) no-repeat center");
                 // if(this.currentTurnTime < this.turnTime * .7) {
                     audioHandler.quack();
                 // }
             }
             else{
-                $("#" + randomDuckSquare).css("background", "url(assets/p1_duck01.png) no-repeat center");
+                $('#' + randomDuckSquare).addClass('animateDuck1'); //adding animations via class
+                // $("#" + randomDuckSquare).css("background", "url(assets/p1_duck01.png) no-repeat center");
                 // if(this.currentTurnTime < this.turnTime * .7) {
                     audioHandler.quack();
                 // }
             }
         }
         else{
-            $("#" + randomDuckSquare).css("background", "url(assets/dog01.png) no-repeat center");
+            $('#' + randomDuckSquare).addClass('animateDog'); //adding animations via class
+            // $("#" + randomDuckSquare).css("background", "url(assets/dog01.png) no-repeat center");
             audioHandler.dog();
         }
     };
@@ -163,13 +166,24 @@ function DuckLayer(){
                     this.dogOccupiedSquares.splice(indexToRemove, 1);
                     console.log("DOG REMOVED")
                 }
-                $("#" + ID).css("background-image", "none");
+                // $("#" + ID).css("background-image", "none");
             }
         }
     };
 
     // this.duckAnimation = function(){
-    //     var player0animation = ['assets/p0_duck01', 'assets/p0_duck02', 'assets/p0_duck03', ];
+    //     if (ticTacMain.playerTurn === 0) {
+    //         function p0_animation() {
+    //             var frameHeight = 102;
+    //             var frames = 15;
+    //             var frame = 0;
+    //             var div = document.getElementById("animation");
+    //             setInterval(function () {
+    //                 var frameOffset = (++frame % frames) * -frameHeight;
+    //                 div.style.backgroundPosition = "0px " + frameOffset + "px";
+    //             }, 100);
+    //         }
+    //     }
     // };
 
     this.hitDuck = function(squareId) {
@@ -185,10 +199,14 @@ function DuckLayer(){
         ticTacMain.availableSquareArray.splice(ticTacMain.availableSquareArray.indexOf(squareId), 1 );
         this.stopTimer();
         if(ticTacMain.playerTurn === 0){
-            $("#" + squareId).addClass("player0Sq")
+            // $("#" + squareId).addClass("player0Sq");
+            $('#' + squareId).removeClass('animateDuck0'); //removing animations
+            $('#' + squareId).removeClass('animateDog');
         }
         else{
-            $("#" +squareId).addClass("player1Sq")
+            // $("#" +squareId).addClass("player1Sq");
+            $('#' + squareId).removeClass('animateDuck1'); //removing animations
+            $('#' + squareId).removeClass('animateDog');
         }
         this.checkWinCondition(); //check win
     };
