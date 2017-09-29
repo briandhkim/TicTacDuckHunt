@@ -27,6 +27,13 @@ function TicTacMain(dim,winCond){	//will eventually need to take in winning cond
 
 	this.clickGameSquare = function(squareID){ //will have $().attr('id') passed in
         audioHandler.shoot();
+		//white screen
+		$(".gameScreenMonitor").css("background", "none");
+
+		setTimeout(function(){
+            $(".gameScreenMonitor").css("background", "url(assets/background.png)").css("background-size", "100% 100%")
+		}, 10);
+
 		//conditional checking player turn was removed | duck object can access that data
 		for(var i=0; i<duckLayer.duckOccupiedSquares.length; i++){	//traverse through available squares with ducks inside them
 			if(duckLayer.duckOccupiedSquares[i]==squareID){	//if clicked squareID is inside the array, call hitDuck function
