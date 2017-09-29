@@ -8,6 +8,7 @@ function TicTacMain(dim,winCond){	//will eventually need to take in winning cond
 	this.availableSquareArray = []; //will be populated createBoard containing all square ids
 	this.player0Squares = []; //ids of player occupied squares
 	this.player1Squares = []; 
+	this.totalSquareNumber = 0;
 	this.gameOver = false; 		//set to true if a player wins. 
 	this.gameWinner = 0;		/*changed in functions checking winning condition*/
 	this.createBoard = function(){
@@ -64,7 +65,15 @@ function TicTacMain(dim,winCond){	//will eventually need to take in winning cond
 				}
 			}
 		if(!this.gameOver){
-			
+			this.totalSquareNumber = this.player0Squares.length+this.player1Squares.length;
+			if(this.totalSquareNumber===(this.dimension*this.dimension)){
+				this.gameOver = true;
+				if(duckLayer.player0Score > duckLayer.player1Score){
+					$('.winnerMessageDisplay').text('Player 1 wins with more ducks');
+				}else if(duckLayer.player0Score < duckLayer.player1Score){
+					$('.winnerMessageDisplay').text('Player 2 Wins with more');
+				}
+			}
 			if(this.playerTurn == 0){
 				this.playerTurn = 1;
 				$('.player0Area').unbind('click', playerTurnStart);
@@ -73,7 +82,7 @@ function TicTacMain(dim,winCond){	//will eventually need to take in winning cond
 				$('body').addClass('cursorPlayer1');
 				$('.player0Name').removeClass('playerFocusHighlight');
 				$('.player1Name').addClass('playerFocusHighlight');
-            	console.log("player 1 turn");
+            	// console.log("player 1 turn");
 				return;
 			}else if(this.playerTurn == 1){
             	this.playerTurn = 0;
@@ -83,7 +92,7 @@ function TicTacMain(dim,winCond){	//will eventually need to take in winning cond
 				$('body').addClass('cursorPlayer0');
 				$('.player1Name').removeClass('playerFocusHighlight');
 				$('.player0Name').addClass('playerFocusHighlight');
-            	console.log("player 0 turn");
+            	// console.log("player 0 turn");
 				return;
 			}
 		}else if(this.gameOver){

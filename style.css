@@ -126,7 +126,7 @@ caput mortuum - rgb(84,42,22)
 	/*height: 20%;*/
 	/*border: 1px solid;*/
 }
-.startButton{
+.startButton, .restartButtonDiv{
 	margin-top: 50px;
 	background-color: #48dc48;
 	color:white;
@@ -139,7 +139,7 @@ caput mortuum - rgb(84,42,22)
 }
 .restartButton{
 	/*border: 1px solid white;*/
-	height: 50px;
+	/*height: 50px;*/
 }
 .volumeControl{
 	/*border: 1px solid white;*/
