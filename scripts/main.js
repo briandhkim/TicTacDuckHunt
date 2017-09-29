@@ -23,6 +23,20 @@ function startGame(){
 	}
 }
 
+function resetGame(){
+	// if(gameStarted){
+	// 	gameStarted = false;
+	// 	$('.gameSquare').remove();
+	// 	$('body').removeClass('cursorPlayer0').addClass('cursorDefault');
+	// 	$('.player0Name').addClass('playerFocusHighlight');
+	// 	$('.player0Area').unbind('click',playerTurnStart);
+	// 	ticTacMain = null;
+	// 	duckLayer = null;
+	// 	audioHandler = null;
+	// }
+	location.reload();
+}
+
 //add and remove this click handler by class toggle in tictac object
 function playerTurnStart(){		//click handler for player areas  | starts each player's turn and timer
 	if(gameStarted){
@@ -32,6 +46,7 @@ function playerTurnStart(){		//click handler for player areas  | starts each pla
 
 $(document).ready(function(){
 	$('.startButton').click(startGame);
+	$('.restartButtonDiv').click(resetGame);
 });
 
 //click handlers for guns that initiate duckLayer.startTimer()
