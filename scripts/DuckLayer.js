@@ -36,6 +36,7 @@ function DuckLayer(){
             console.log('time ran out');
 
         }
+        this.pointPerDuck = Math.round(5 + (15 * (this.timerTimeRemaining / this.turnTime)));
         var percentRemaining = this.timerTimeRemaining / this.turnTime * 100;
         $(".timer").css('width', percentRemaining + '%');
     }.bind(this);
@@ -61,7 +62,7 @@ function DuckLayer(){
         // ticTacMain.changePlayerTurn(); //this.changePlayerTurn
         this.timerTimeRemaining = 5000;
         $(".timer").css('width', "100%");
-
+        this.pointPerDuck = 10;
     };   //bind this?
 
     this.checkWinCondition = function(){

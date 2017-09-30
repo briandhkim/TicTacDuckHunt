@@ -109,9 +109,11 @@ button{
 	background-image: url("assets/background.png");
 	background-size: 100% 100%;
 	background-repeat:no-repeat;
+	/*background-color: black;*/
 }
 .gameScreenMonitor>.uiMenu{
 	position:absolute;
+	display:flex;
 	left:50%;
 	top:50%;
 	transform: translate(-50%, -50%);
@@ -120,11 +122,33 @@ button{
 	background-image: url("assets/UImenu.png");
 	background-size: 100% 100%;
 	background-repeat:no-repeat;
-	display:flex;
 	align-items: center;
 	justify-content: center;
 	color: white;
 	font-size: 20px;
+}
+
+.gameScreenMonitor>.instructionsMenu{
+	position:absolute;
+	left:50%;
+	top:50%;
+	transform: translate(-50%, -50%);
+	width:50%;
+	height:70%;
+	background-image: url("assets/instructionsMenu.png");
+	background-size: 100% 100%;
+	background-repeat:no-repeat;
+	color: white;
+	font-size: 20px;
+}
+
+.gameScreenMonitor>.instructionsMenu>h1, .gameScreenMonitor>.instructionsMenu>h2{
+	text-align: center;
+}
+
+.gameScreenMonitor>.instructionsMenu>ul{
+	list-style: square;
+	margin:15px;
 }
 
 .gameScreenMonitor>.uiMenu>.uiMenuText{

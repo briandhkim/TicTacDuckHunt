@@ -32,7 +32,9 @@ function startGame(){
 		$('.winnerMessageDisplay').text("player1 click gun to start");
 		gameStarted = true;
         audioHandler.start();
+        $(".instructionsMenu").hide();
         displayUIMenu("Player 1: Press your zapper to start your turn!")
+
 	}
 }
 
@@ -61,7 +63,9 @@ function removeUIMenu(){
 	$(".uiMenu").hide();
 }
 function displayUIMenu(message){
-    $(".uiMenu").show().text(message).css("text-align", "center");
+    $(".uiMenu").show();
+	$(".uiMenuText").text(message).css("text-align", "center")/*.css("display", "flex");*/
+    // $(".uiMenuText").css("margin", "0 8px 0 8px")
 }
 
 //add and remove this click handler by class toggle in tictac object
