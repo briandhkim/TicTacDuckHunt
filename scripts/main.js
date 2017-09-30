@@ -10,6 +10,7 @@ var ticTacMain = null;
 var duckLayer = null;
 var gameStarted =false;
 var audioHandler = null;
+var playerTurnStartClicked = false;
 
 function startGame(){
 	if(!gameStarted){
@@ -49,6 +50,7 @@ function resetGame(){
 		duckLayer.timerTimeRemaining = 0;
 		duckLayer = null;
 		audioHandler = null;
+		playerTurnStartClicked = false;
 		displayUIMenu("Select board size, number of ducks for win, and press START")
 	}
 	// location.reload();
@@ -64,7 +66,8 @@ function displayUIMenu(message){
 //add and remove this click handler by class toggle in tictac object
 function playerTurnStart(){		//click handler for player areas  | starts each player's turn and timer
 	removeUIMenu();
-	if(gameStarted){
+	if(gameStarted&&!playerTurnStartClicked){
+		playerTurnStartClicked = true;
 		if(ticTacMain.playerTurn == 0){
 			$('.winnerMessageDisplay').text('player 1 is playing');
 		}else if (ticTacMain.playerTurn ==1){

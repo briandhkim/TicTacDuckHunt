@@ -58,7 +58,8 @@ function TicTacMain(dim,winCond){	//will eventually need to take in winning cond
 			//splice squareID from availableSquareArray and push to playerSquare array to current player
 
 	this.changePlayerTurn = function(){
-		console.log("ran changePlayerTurn in TicTacMain");
+		// console.log("ran changePlayerTurn in TicTacMain");
+		playerTurnStartClicked = false;
 		if(duckLayer.dogHit){	//if the dog hit bool turns true, stop game
 				if(this.playerTurn == 0){
 					$('.player0Area').unbind('click',playerTurnStart);
