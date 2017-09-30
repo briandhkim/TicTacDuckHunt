@@ -24,6 +24,7 @@ function startGame(){
 		audioHandler = new AudioHandler();	//audioHandler missing var| set var audioHandler to null up top (Brian)
 		ticTacMain.createBoard(dimension);
 		$('.gameScreenMonitor').removeClass('cursorDefault');
+		$('.container-fluid').removeClass('gunCursorDefault').addClass('gunCursorPlayer0');
 		$('.gameScreenMonitor').addClass('cursorPlayer0');
 		$('.player0Name').addClass('playerFocusHighlight');
 		$('.player0Area').bind('click',playerTurnStart);
@@ -35,6 +36,7 @@ function startGame(){
 function resetGame(){
 	if(gameStarted){
 		gameStarted = false;
+		$('.container-fluid').removeClass('gunCursorPlayer0 gunCursorPlayer1').addClass('gunCursorDefault');
 		$('.gameSquare').remove();
 		$('.gameScreenMonitor').removeClass('cursorPlayer0 cursorPlayer1').addClass('cursorDefault');
 		$('.player0Name, .player1Name').removeClass('playerFocusHighlight');
