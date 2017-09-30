@@ -85,8 +85,8 @@ function TicTacMain(dim,winCond){	//will eventually need to take in winning cond
 				this.playerTurn = 1;
 				$('.player0Area').unbind('click', playerTurnStart);
 				$('.player1Area').bind('click',playerTurnStart);
-				$('.gamescreen').removeClass('cursorPlayer0');
-				$('.gamescreen').addClass('cursorPlayer1');
+				$('.gameScreenMonitor').removeClass('cursorPlayer0');
+				$('.gameScreenMonitor').addClass('cursorPlayer1');
 				$('.player0Name').removeClass('playerFocusHighlight');
 				$('.player1Name').addClass('playerFocusHighlight');
             	// console.log("player 1 turn");
@@ -95,8 +95,8 @@ function TicTacMain(dim,winCond){	//will eventually need to take in winning cond
             	this.playerTurn = 0;
 				$('.player1Area').unbind('click',playerTurnStart);
 				$('.player0Area').bind('click',playerTurnStart);
-				$('.gamescreen').removeClass('cursorPlayer1');
-				$('.gamescreen').addClass('cursorPlayer0');
+				$('.gameScreenMonitor').removeClass('cursorPlayer1');
+				$('.gameScreenMonitor').addClass('cursorPlayer0');
 				$('.player1Name').removeClass('playerFocusHighlight');
 				$('.player0Name').addClass('playerFocusHighlight');
             	// console.log("player 0 turn");
