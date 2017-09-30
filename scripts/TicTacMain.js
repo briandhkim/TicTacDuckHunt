@@ -89,6 +89,7 @@ function TicTacMain(dim,winCond){	//will eventually need to take in winning cond
 				$('.container-fluid').removeClass('gunCursorPlayer0').addClass('gunCursorPlayer1');
 				$('.player0Name').removeClass('playerFocusHighlight');
 				$('.player1Name').addClass('playerFocusHighlight');
+				$('.winnerMessageDisplay').text("player 2 click gun to start turn");
             	// console.log("player 1 turn");
 				return;
 			}else if(this.playerTurn == 1){
@@ -99,6 +100,7 @@ function TicTacMain(dim,winCond){	//will eventually need to take in winning cond
 				$('.container-fluid').removeClass('gunCursorPlayer1').addClass('gunCursorPlayer0');
 				$('.player1Name').removeClass('playerFocusHighlight');
 				$('.player0Name').addClass('playerFocusHighlight');
+				$('.winnerMessageDisplay').text("player 1 click gun to start turn");
             	// console.log("player 0 turn");
 				return;
 			}

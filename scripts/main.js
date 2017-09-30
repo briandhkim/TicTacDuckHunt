@@ -28,6 +28,7 @@ function startGame(){
 		$('.gameScreenMonitor').addClass('cursorPlayer0');
 		$('.player0Name').addClass('playerFocusHighlight');
 		$('.player0Area').bind('click',playerTurnStart);
+		$('.winnerMessageDisplay').text("player1 click gun to start");
 		gameStarted = true;
         audioHandler.start();
 	}
@@ -53,6 +54,11 @@ function resetGame(){
 //add and remove this click handler by class toggle in tictac object
 function playerTurnStart(){		//click handler for player areas  | starts each player's turn and timer
 	if(gameStarted){
+		if(ticTacMain.playerTurn == 0){
+			$('.winnerMessageDisplay').text('player 1 is playing');
+		}else if (ticTacMain.playerTurn ==1){
+			$('.winnerMessageDisplay').text('player 2 is playing');
+		}
 		duckLayer.startTimer();
 	}
 }
