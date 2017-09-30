@@ -16,9 +16,12 @@ function TicTacMain(dim,winCond){	//will eventually need to take in winning cond
 		for(var i=0; i<this.dimension; i++){
 			$('<div>').addClass('row').attr('id','row'+i).appendTo('.gameScreenMonitor').css('height',divRowHeight+'%');
 			for(var j=0; j<this.dimension; j++){
-				$('<div>').addClass('gameSquare').attr('id',i.toString()+j.toString()).css({'width':gameSquareWidth+'%','height':'100%'}).click(function(){
+				var boardGrid = $('<div>').addClass('gameSquare').attr('id',i.toString()+j.toString()).css({'width':gameSquareWidth+'%','height':'100%', 'z-index':'1'}).click(function(){
 					ticTacMain.clickGameSquare($(this).attr('id'));
-				}).appendTo('#row'+i);
+				});
+				var innerDiv = $("<div>").css({'height':'200px', 'width':'200px', 'margin':'auto'});
+				boardGrid.append(innerDiv);
+				$("#row" + i).append(boardGrid);
 				this.availableSquareArray.push(i.toString()+j.toString());
 			}
 		}
