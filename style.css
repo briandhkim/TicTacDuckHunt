@@ -33,6 +33,12 @@ caput mortuum - rgb(84,42,22)
 .gunCursorDefault{
 	cursor: url(assets/cursorDefault.png), auto;
 }
+.gunCursorPlayer0{
+	cursor: url(assets/cursorPlayer0.png),auto;
+}
+.gunCursorPlayer1{
+	cursor: url(assets/cursorPlayer1.png),auto;
+}
 .cursorDefault{
 	cursor: url(assets/cursorOrange.png) 50 50,auto;
 }
@@ -44,7 +50,7 @@ caput mortuum - rgb(84,42,22)
 	/*purple*/
 	cursor: url(assets/cursorPurple.png) 50 50, auto;
 }
-.button, input, .player0Area, .player1Area{
+.button, input, .player0Area, .player1Area{	
 	cursor: pointer;
 }
 button{
