@@ -31,6 +31,7 @@ function startGame(){
 		$('.winnerMessageDisplay').text("player1 click gun to start");
 		gameStarted = true;
         audioHandler.start();
+        displayUIMenu("Player 1: Press your zapper to start your turn!")
 	}
 }
 
@@ -45,14 +46,24 @@ function resetGame(){
 		$('.player0ScoreVal, .player1ScoreVal').text('0');
 		$('.winnerMessageDisplay').text('select options above and click start');
 		ticTacMain = null;
+		duckLayer.timerTimeRemaining = 0;
 		duckLayer = null;
 		audioHandler = null;
+		displayUIMenu("Select board size, number of ducks for win, and press START")
 	}
 	// location.reload();
 }
 
+function removeUIMenu(){
+	$(".uiMenu").hide();
+}
+function displayUIMenu(message){
+    $(".uiMenu").show().text(message).css("text-align", "center");
+}
+
 //add and remove this click handler by class toggle in tictac object
 function playerTurnStart(){		//click handler for player areas  | starts each player's turn and timer
+	removeUIMenu();
 	if(gameStarted){
 		if(ticTacMain.playerTurn == 0){
 			$('.winnerMessageDisplay').text('player 1 is playing');

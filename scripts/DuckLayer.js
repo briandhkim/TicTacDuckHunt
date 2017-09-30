@@ -10,7 +10,7 @@ function DuckLayer(){
     this.interval = 250;
     this.duckDurations = {}; //key = time spent in square, value = ID of square
     this.pointPerDuck = 10;
-    this.timeRemaining = 5000;
+    this.timerTimeRemaining = 5000;
     this.timer = null;
     this.timePerInterval = 10;
 
@@ -26,17 +26,17 @@ function DuckLayer(){
     };
 
     this.timerAnimation = function(){
-        if(this.timeRemaining / this.turnTime <= .33){
+        if(this.timerTimeRemaining / this.turnTime <= .33){
             $(".timer").css("background-color", "red");
         }
-        this.timeRemaining -= 10;
-        if(this.timeRemaining <= 0){
-            this.timeRemaining = 0;
+        this.timerTimeRemaining -= 10;
+        if(this.timerTimeRemaining <= 0){
+            this.timerTimeRemaining = 0;
             clearInterval(this.timer);
             console.log('time ran out');
 
         }
-        var percentRemaining = this.timeRemaining / this.turnTime * 100;
+        var percentRemaining = this.timerTimeRemaining / this.turnTime * 100;
         $(".timer").css('width', percentRemaining + '%');
     }.bind(this);
 
@@ -59,7 +59,7 @@ function DuckLayer(){
         this.updateDisplay(); //updateDisplay
         this.resetDuckVar();    //may need to be moved
         // ticTacMain.changePlayerTurn(); //this.changePlayerTurn
-        this.timeRemaining = 5000;
+        this.timerTimeRemaining = 5000;
         $(".timer").css('width', "100%");
 
     };   //bind this?

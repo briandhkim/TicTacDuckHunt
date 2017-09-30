@@ -62,12 +62,14 @@ function TicTacMain(dim,winCond){	//will eventually need to take in winning cond
 		if(duckLayer.dogHit){	//if the dog hit bool turns true, stop game
 				if(this.playerTurn == 0){
 					$('.player0Area').unbind('click',playerTurnStart);
-					$('.winnerMessageDisplay').text('P2 Wins: Player 1 shot the dog!');
+					displayUIMenu("Player 2 Wins: Player 1 shot the dog!");
+					//$('.winnerMessageDisplay').text('P2 Wins: Player 1 shot the dog!');
 					// this.gameOver = true;
 					return;
 				}else if(this.playerTurn ==1){
 					$('.player1Area').unbind('click',playerTurnStart);
-					$('.winnerMessageDisplay').text('P1 Wins: Player 2 shot the dog!');
+                    displayUIMenu("Player 1 Wins: Player 2 shot the dog!");
+					//$('.winnerMessageDisplay').text('P1 Wins: Player 2 shot the dog!');
 					return;
 				}
 			}
@@ -85,22 +87,24 @@ function TicTacMain(dim,winCond){	//will eventually need to take in winning cond
 				this.playerTurn = 1;
 				$('.player0Area').unbind('click', playerTurnStart);
 				$('.player1Area').bind('click',playerTurnStart);
-				$('.gameScreenMonitor').removeClass('cursorPlayer0').addClass('cursorPlayer1');
-				$('.container-fluid').removeClass('gunCursorPlayer0').addClass('gunCursorPlayer1');
-				$('.player0Name').removeClass('playerFocusHighlight');
-				$('.player1Name').addClass('playerFocusHighlight');
-				$('.winnerMessageDisplay').text("player 2 click gun to start turn");
+                $('.gameScreenMonitor').removeClass('cursorPlayer0').addClass('cursorPlayer1');
+                $('.container-fluid').removeClass('gunCursorPlayer0').addClass('gunCursorPlayer1');
+                displayUIMenu("Player 2: Press your zapper to start your turn!");
+				// $('.player0Name').removeClass('playerFocusHighlight');
+				// $('.player1Name').addClass('playerFocusHighlight');
+
             	// console.log("player 1 turn");
 				return;
 			}else if(this.playerTurn == 1){
             	this.playerTurn = 0;
 				$('.player1Area').unbind('click',playerTurnStart);
 				$('.player0Area').bind('click',playerTurnStart);
-				$('.gameScreenMonitor').removeClass('cursorPlayer1').addClass('cursorPlayer0');
-				$('.container-fluid').removeClass('gunCursorPlayer1').addClass('gunCursorPlayer0');
-				$('.player1Name').removeClass('playerFocusHighlight');
-				$('.player0Name').addClass('playerFocusHighlight');
-				$('.winnerMessageDisplay').text("player 1 click gun to start turn");
+
+                $('.gameScreenMonitor').removeClass('cursorPlayer1').addClass('cursorPlayer0');
+                $('.container-fluid').removeClass('gunCursorPlayer1').addClass('gunCursorPlayer0');
+                displayUIMenu("Player 1: Press your zapper to start your turn!");
+				// $('.player1Name').removeClass('playerFocusHighlight');
+				// $('.player0Name').addClass('playerFocusHighlight');
             	// console.log("player 0 turn");
 				return;
 			}
@@ -111,9 +115,11 @@ function TicTacMain(dim,winCond){	//will eventually need to take in winning cond
 				$('.player1Area').unbind('click',playerTurnStart);
 			}
 			if(this.gameWinner==0){
-				$('.winnerMessageDisplay').text('Player 1 Wins');
+                displayUIMenu("Player 1 Wins!");
+				//$('.winnerMessageDisplay').text('Player 1 Wins');
 			}else if(this.gameWinner == 1){
-				$('.winnerMessageDisplay').text('Player 2 Wins');
+                displayUIMenu("Player 2 Wins!");
+				//$('.winnerMessageDisplay').text('Player 2 Wins');
 			}
 		}
 		//unlocks gun for current player
