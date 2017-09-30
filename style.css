@@ -71,9 +71,10 @@ button{
 	height: 77%;
 	padding-top: 10px;
 }
-.ruleArea{
+.titleArea{
 	font-family: duckhunt, Arial;
-	font-size: 75px;
+	font-size: 115px;
+
 	background-color: black;
 	color: #48dc48;
 }
@@ -86,6 +87,12 @@ button{
 	font-size: 25px;
 
 }
+.player0Name, .player1Name{
+	position: relative;
+	top: 70%;
+	font-size: 45px;
+}
+
 .gameScreen{
 	background-color: rgb(220,212,214);
 
@@ -229,14 +236,14 @@ button{
 	background-repeat: no-repeat;
 	background-position: right;
 }
-.player0Name{
-	position: absolute;
-	right: 0;
-	bottom: 0;
-	/*color: white;*/
-	color: black;
-	font-size: 25px;
-}
+/*.player0Name{*/
+	/*position: absolute;*/
+	/*right: 0;*/
+	/*bottom: 0;*/
+	/*!*color: white;*!*/
+	/*color: #fb9a38;*/
+	/*font-size: 25px;*/
+/*}*/
 .player1Area {
 	background: black;
 	background-image: url("assets/zapperPurple.png");
@@ -244,13 +251,13 @@ button{
 	background-repeat: no-repeat;
 	background-position: left;
 }
-.player1Name{
-	position: absolute;
-	left: 0;
-	bottom: 0;
-	color: black;
-	font-size: 25px;
-}
+/*.player1Name{*/
+	/*position: absolute;*/
+	/*left: 0;*/
+	/*bottom: 0;*/
+	/*color: #fb9a38;*/
+	/*font-size: 25px;*/
+/*}*/
 .playerFocusHighlight{
 	text-shadow: 0 0 20px #21a4e2;
 	color: #fb9a38;
