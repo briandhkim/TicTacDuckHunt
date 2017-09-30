@@ -14,8 +14,8 @@ function startGame(){
         duckLayer.duckAnimation();
 		audioHandler = new AudioHandler();
 		ticTacMain.createBoard(dimension);
-		$('body').removeClass('cursorDefault');
-		$('body').addClass('cursorPlayer0');
+		$('.gameScreen').removeClass('cursorDefault');
+		$('.gameScreen').addClass('cursorPlayer0');
 		$('.player0Name').addClass('playerFocusHighlight');
 		$('.player0Area').bind('click',playerTurnStart);
 		gameStarted = true;

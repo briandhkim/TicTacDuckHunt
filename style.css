@@ -30,16 +30,22 @@ dark liver - rgb(82,74,65)
 ash grey - rgb(176,180,180)
 caput mortuum - rgb(84,42,22)
 */
-.cursorDefault{
+.gameScreen{
 	cursor: url(assets/cursorOrange.png) 50 50,auto;
 }
-.cursorPlayer0{
+.gameScreen.cursorPlayer0{
 	/*green*/
 	cursor: url(assets/cursorGreen.png) 50 50, auto;
 }
-.cursorPlayer1{
+.gameScreen.cursorPlayer1{
 	/*purple*/
 	cursor: url(assets/cursorPurple.png) 50 50, auto;
+}
+.button, input, .player0Area, .player1Area{
+	cursor: pointer;
+}
+button{
+	cursor:pointer;
 }
 
 .mainWrapperRow{	/*overall container div*/
@@ -126,7 +132,7 @@ caput mortuum - rgb(84,42,22)
 	/*height: 20%;*/
 	/*border: 1px solid;*/
 }
-.startButton, .restartButtonDiv{
+.button{
 	margin-top: 50px;
 	background-color: #48dc48;
 	color:white;
