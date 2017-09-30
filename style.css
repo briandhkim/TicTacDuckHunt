@@ -30,6 +30,9 @@ dark liver - rgb(82,74,65)
 ash grey - rgb(176,180,180)
 caput mortuum - rgb(84,42,22)
 */
+.gunCursorDefault{
+	cursor: url(assets/cursorDefault.png), auto;
+}
 .cursorDefault{
 	cursor: url(assets/cursorOrange.png) 50 50,auto;
 }
