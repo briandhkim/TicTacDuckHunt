@@ -1,6 +1,13 @@
+/*Saturday edit notes - brian
+audioHandler is not instantiated before being used - added var aduiHandler=null below var gameStarted
+reset button had remove/addClass typo - fixed typo
+score was not reset to blank(or zero) when reset was pressed
+added 0 to html playerScore span
+*/
 var ticTacMain = null;
 var duckLayer = null;
 var gameStarted =false;
+var audioHandler = null;
 
 function startGame(){
 	if(!gameStarted){
@@ -12,7 +19,7 @@ function startGame(){
 		ticTacMain = new TicTacMain(dimension,winCond);
 		duckLayer = new DuckLayer();
         duckLayer.duckAnimation();
-		audioHandler = new AudioHandler();
+		audioHandler = new AudioHandler();	//audioHandler missing var| set var audioHandler to null up top (Brian)
 		ticTacMain.createBoard(dimension);
 		$('body').removeClass('cursorDefault');
 		$('body').addClass('cursorPlayer0');
@@ -24,17 +31,18 @@ function startGame(){
 }
 
 function resetGame(){
-	// if(gameStarted){
-	// 	gameStarted = false;
-	// 	$('.gameSquare').remove();
-	// 	$('body').removeClass('cursorPlayer0').addClass('cursorDefault');
-	// 	$('.player0Name').addClass('playerFocusHighlight');
-	// 	$('.player0Area').unbind('click',playerTurnStart);
-	// 	ticTacMain = null;
-	// 	duckLayer = null;
-	// 	audioHandler = null;
-	// }
-	location.reload();
+	if(gameStarted){
+		gameStarted = false;
+		$('.gameSquare').remove();
+		$('body').removeClass('cursorPlayer0 cursorPlayer1').addClass('cursorDefault');
+		$('.player0Name, .player1Name').removeClass('playerFocusHighlight');
+		$('.player0Area, .player1Area').unbind('click',playerTurnStart);
+		$('.player0ScoreVal, .player1ScoreVal').text('0');
+		ticTacMain = null;
+		duckLayer = null;
+		audioHandler = null;
+	}
+	// location.reload();
 }
 
 //add and remove this click handler by class toggle in tictac object

@@ -78,7 +78,7 @@ function TicTacMain(dim,winCond){	//will eventually need to take in winning cond
 				if(duckLayer.player0Score > duckLayer.player1Score){
 					$('.winnerMessageDisplay').text('Player 1 wins with more ducks');
 				}else if(duckLayer.player0Score < duckLayer.player1Score){
-					$('.winnerMessageDisplay').text('Player 2 Wins with more');
+					$('.winnerMessageDisplay').text('Player 2 Wins with more ducks');
 				}
 			}
 			if(this.playerTurn == 0){
