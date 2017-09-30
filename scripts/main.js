@@ -41,6 +41,7 @@ function resetGame(){
 		gameStarted = false;
 		$('.container-fluid').removeClass('gunCursorPlayer0 gunCursorPlayer1').addClass('gunCursorDefault');
 		$('.gameSquare').remove();
+		$('.gameScreenMonitor .row').remove();
 		$('.gameScreenMonitor').removeClass('cursorPlayer0 cursorPlayer1').addClass('cursorDefault');
 		$('.player0Name, .player1Name').removeClass('playerFocusHighlight');
 		$('.player0Area, .player1Area').unbind('click',playerTurnStart);
