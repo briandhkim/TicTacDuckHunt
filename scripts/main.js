@@ -77,6 +77,20 @@ function playerTurnStart(){		//click handler for player areas  | starts each pla
 $(document).ready(function(){
 	$('.startButton').click(startGame);
 	$('.restartButtonDiv').click(resetGame);
+	$('#condition-4, #condition-5[type=radio]').attr('disabled',true);
+	$('.radioGridSelectInput').change(function(){
+		if(!$('#grid-5[type=radio]').is(':checked')){
+			$('#condition-5[type=radio]').attr('disabled',true);
+		}
+		if(!$('#grid-4[type=radio]').is(':checked')){
+			$('#condition-4[type=radio]').attr('disabled',true);
+		}
+		if($('#grid-4').is(':checked')){
+			$('#condition-4[type=radio]').attr('disabled',false);
+		}else if($('#grid-5').is(':checked')){
+			$('#condition-4,#condition-5[type=radio]').attr('disabled',false);
+		}
+	});
 });
 
 //click handlers for guns that initiate duckLayer.startTimer()
