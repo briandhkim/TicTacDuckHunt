@@ -122,6 +122,7 @@ function DuckLayer(){
             console.log("DUCK OCCUPIED SQUARES = " + this.duckOccupiedSquares)
         } else{
             this.dogOccupiedSquares.push(randomDuckSquare);
+            console.log("NEW DOG POSITION")
         }
         var baseTimeWindow = this.turnTime / 5; //1000
         var percentageOfBaseTimeWindow = (Math.floor(Math.random()*(15-5))+5) * 0.1;
