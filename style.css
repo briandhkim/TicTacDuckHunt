@@ -167,14 +167,14 @@ button{
 	margin-left:2.0888%;
 }
 .radioGridSelect, .radioWinSelect{
-	margin-top: 0;
-	height: 12%;
+	margin-top: 5%;
+	height: 23%;
 	/*border: 1px solid;*/
 	/*margin-left: 2.088%;*/
 }
 .radioGridSelectLabel, .radioWinSelectLabel{
 	margin:10px 5% 10px 5%;
-	height: 60%;
+	height: 40%;
 	background-color: #00e8d8;
 	border-radius: 8px;
 	color:black;
@@ -185,9 +185,8 @@ button{
 .radioGridSelectInput, .radioWinSelectInput{
 	height: 30%;
 }
-.startInput{
-	/*height: 20%;*/
-	/*border: 1px solid;*/
+.startInput, .restartButton{
+	height: 12%;
 }
 .button{
 	margin-top: 50px;
@@ -199,10 +198,6 @@ button{
 	justify-content: center;
 	border-radius: 8px;
 	font-size: 25px;
-}
-.restartButton{
-	/*border: 1px solid white;*/
-	/*height: 50px;*/
 }
 .volumeControl{
 	/*border: 1px solid white;*/
