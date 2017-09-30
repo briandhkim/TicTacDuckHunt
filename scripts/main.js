@@ -24,9 +24,11 @@ function startGame(){
 		audioHandler = new AudioHandler();	//audioHandler missing var| set var audioHandler to null up top (Brian)
 		ticTacMain.createBoard(dimension);
 		$('.gameScreenMonitor').removeClass('cursorDefault');
+		$('.container-fluid').removeClass('gunCursorDefault').addClass('gunCursorPlayer0');
 		$('.gameScreenMonitor').addClass('cursorPlayer0');
 		$('.player0Name').addClass('playerFocusHighlight');
 		$('.player0Area').bind('click',playerTurnStart);
+		$('.winnerMessageDisplay').text("player1 click gun to start");
 		gameStarted = true;
         audioHandler.start();
 	}
@@ -35,6 +37,7 @@ function startGame(){
 function resetGame(){
 	if(gameStarted){
 		gameStarted = false;
+		$('.container-fluid').removeClass('gunCursorPlayer0 gunCursorPlayer1').addClass('gunCursorDefault');
 		$('.gameSquare').remove();
 		$('.gameScreenMonitor').removeClass('cursorPlayer0 cursorPlayer1').addClass('cursorDefault');
 		$('.player0Name, .player1Name').removeClass('playerFocusHighlight');
@@ -51,6 +54,11 @@ function resetGame(){
 //add and remove this click handler by class toggle in tictac object
 function playerTurnStart(){		//click handler for player areas  | starts each player's turn and timer
 	if(gameStarted){
+		if(ticTacMain.playerTurn == 0){
+			$('.winnerMessageDisplay').text('player 1 is playing');
+		}else if (ticTacMain.playerTurn ==1){
+			$('.winnerMessageDisplay').text('player 2 is playing');
+		}
 		duckLayer.startTimer();
 	}
 }
