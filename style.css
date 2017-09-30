@@ -36,11 +36,11 @@ caput mortuum - rgb(84,42,22)
 .cursorDefault{
 	cursor: url(assets/cursorOrange.png) 50 50,auto;
 }
-.gameScreen.cursorPlayer0{
+.gameScreenMonitor.cursorPlayer0{
 	/*green*/
 	cursor: url(assets/cursorGreen.png) 50 50, auto;
 }
-.gameScreen.cursorPlayer1{
+.gameScreenMonitor.cursorPlayer1{
 	/*purple*/
 	cursor: url(assets/cursorPurple.png) 50 50, auto;
 }
@@ -85,6 +85,7 @@ button{
 
 }
 .gameScreenMonitor{
+	position:relative;
 	height: 98%;
 	margin-top:0.5%;
 	margin-left: 0.25%;
@@ -96,6 +97,28 @@ button{
 	background-size: 100% 100%;
 	background-repeat:no-repeat;
 }
+.gameScreenMonitor>.uiMenu{
+	position:absolute;
+	left:50%;
+	top:50%;
+	transform: translate(-50%, -50%);
+	width:50%;
+	height:15%;
+	background-image: url("assets/UImenu.png");
+	background-size: 100% 100%;
+	background-repeat:no-repeat;
+	display:flex;
+	align-items: center;
+	justify-content: center;
+	color: white;
+	font-size: 20px;
+}
+
+.gameScreenMonitor>.uiMenu>.uiMenuText{
+	margin:0 8px 0 8px;
+	text-align: center;
+}
+
 .gameScreenMonitor>div.row{
 	/*height: ;*/
 	/*display:inline-block;*/
