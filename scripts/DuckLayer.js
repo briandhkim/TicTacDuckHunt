@@ -111,7 +111,7 @@ function DuckLayer(){
         } else if (this.duckOccupiedSquares.length === 0) {
             percentChanceDuckAppears = 0.9
         }
-        var checkToProceed = Math.random(); //creates random number 0-1
+        var checkToProceed = Math.random();
         if(checkToProceed > percentChanceDuckAppears){ //if random number > percent given above
             return
         }
@@ -130,7 +130,7 @@ function DuckLayer(){
         }
         var randomIndex = Math.floor(Math.random() * availableUnoccupiedSquares.length); //making random index based on availableUnoccupiedSquares length
         var randomDuckSquare = availableUnoccupiedSquares[randomIndex]; //assigning the unoccupiedSquare at index of randomDuckSquare, or duck, to a var
-        if(!dogGenerate){//a duck now occupies that square so push the ID of the square to the duckOccupiedSquares array
+        if(!dogGenerate){ //a duck now occupies that square so push the ID of the square to the duckOccupiedSquares array
             this.duckOccupiedSquares.push(randomDuckSquare);
             console.log("DUCK OCCUPIED SQUARES = " + this.duckOccupiedSquares)
         } else{
@@ -148,15 +148,11 @@ function DuckLayer(){
             if(ticTacMain.playerTurn === 0){
                 $(duckAnimateSelection).addClass('animateDuck0'); //adding animations via class
                 // $("#" + randomDuckSquare).css("background", "url(assets/p0_duck01.png) no-repeat center");
-                // if(this.currentTurnTime < this.turnTime * .7) {
-                    audioHandler.quack();
-                // }
+                audioHandler.quack();
             } else{
                 $(duckAnimateSelection).addClass('animateDuck1'); //adding animations via class
                 // $("#" + randomDuckSquare).css("background", "url(assets/p1_duck01.png) no-repeat center");
-                // if(this.currentTurnTime < this.turnTime * .7) {
-                    audioHandler.quack();
-                // }
+                audioHandler.quack();
             }
         } else{
             $(duckAnimateSelection).addClass('animateDog'); //adding animations via class
@@ -199,10 +195,10 @@ function DuckLayer(){
         ticTacMain.availableSquareArray.splice(ticTacMain.availableSquareArray.indexOf(squareId), 1 );
         this.stopTimer();
         if(ticTacMain.playerTurn === 0){
-            // $("#" + squareId).addClass("player0Sq");
+            $("#" + squareId).addClass("player0Sq");
             $(duckAnimateSelection).removeClass('animateDuck0'); //removing animations
         } else{
-            // $("#" +squareId).addClass("player1Sq");
+            $("#" +squareId).addClass("player1Sq");
             $(duckAnimateSelection).removeClass('animateDuck1'); //removing animations
         }
         $(duckAnimateSelection).removeClass('animateDog');
