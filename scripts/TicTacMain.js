@@ -20,7 +20,7 @@ function TicTacMain(dim,winCond){	//will eventually need to take in winning cond
 				var boardGrid = $('<div>').addClass('gameSquare').attr('id',i.toString()+j.toString()).css({'width':gameSquareWidth+'%','height':'100%', 'z-index':'1'}).click(function(){
 					ticTacMain.clickGameSquare($(this).attr('id'));
 				});
-				var innerDiv = $("<div>").css({'height':'200px', 'width':'200px', 'margin':'auto'});
+				var innerDiv = $("<div>").css({'height':'100%', 'width':'auto' + 20, 'margin':"auto"});
 				boardGrid.append(innerDiv);
 				$("#row" + i).append(boardGrid);
 				this.availableSquareArray.push(i.toString()+j.toString());
@@ -101,7 +101,7 @@ function TicTacMain(dim,winCond){	//will eventually need to take in winning cond
 					//$('.winnerMessageDisplay').text('Player 2 Wins with more ducks');
 				}
 			}
-			if(this.playerTurn === 0){
+			else if(this.playerTurn === 0){
 				this.playerTurn = 1;
 				$('.player0Area').unbind('click', playerTurnStart);
 				$('.player1Area').bind('click',playerTurnStart);
@@ -114,7 +114,6 @@ function TicTacMain(dim,winCond){	//will eventually need to take in winning cond
                 $('.player0Score').css("opacity","0.3");
                 $('.player1Score').css("opacity","1");
 				$('.player1Name').addClass('playerFocusHighlight');
-
             	// console.log("player 1 turn");
 				return;
 			}else if(this.playerTurn === 1){

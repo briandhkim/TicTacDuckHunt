@@ -54,8 +54,9 @@ function DuckLayer(){
     }.bind(this);
     this.intervalFunction = function(){
         this.currentTimeUpdater();
-        this.removeRandomGeneratedDuck();
+
         this.generateRandomDuck();
+        this.removeRandomGeneratedDuck();
     }.bind(this);
 
     this.currentTimeUpdater = function(){
@@ -103,6 +104,9 @@ function DuckLayer(){
     };
 
     this.generateRandomDuck = function() {
+        if(this.currentTurnTime === this.turnTime * 0.95){
+            return
+        }
         var percentChanceDuckAppears = 0.90;
         if (this.currentTurnTime >= this.turnTime) { //checking if currentTime === 5 seconds and if it is, stopTimer
             this.stopTimer();
@@ -138,6 +142,9 @@ function DuckLayer(){
                 availableUnoccupiedSquares.push(ticTacMain.availableSquareArray[i]) //if there is no match, push those IDs to newly made array
             }
         }
+        if(availableUnoccupiedSquares.length === 0) {
+            return
+        }
         var randomIndex = Math.floor(Math.random() * availableUnoccupiedSquares.length); //making random index based on availableUnoccupiedSquares length
         var randomDuckSquare = availableUnoccupiedSquares[randomIndex]; //assigning the unoccupiedSquare at index of randomDuckSquare, or duck, to a var
         if(!dogGenerate){ //a duck now occupies that square so push the ID of the square to the duckOccupiedSquares array
@@ -172,19 +179,19 @@ function DuckLayer(){
 
     this.removeRandomGeneratedDuck = function(){
         for (var key in this.duckDurations) { //looking for key in duckDurations object
-            if (parseInt(key) <= this.currentTurnTime){ //if the key (time spent in square) is <= the currentTurnTime then remove duck
+            if (parseInt(key) <= this.currentTurnTime){ //if the key (time it should leave the square) is <= the currentTurnTime then remove duck
                 var ID = this.duckDurations[key];
                 var duckAnimateSelection = $('#' + ID)[0].children[0];
                 if (this.duckOccupiedSquares.indexOf(ID) !== -1) {
                     var indexToRemove = this.duckOccupiedSquares.indexOf(this.duckDurations[key]);
                     this.duckOccupiedSquares.splice(indexToRemove, 1);
                     $(duckAnimateSelection).removeClass('animateDuck0').removeClass('animateDuck1');
-                } else {
+                } else if (this.dogOccupiedSquares.indexOf(ID) !== -1){
                     var indexToRemove = this.dogOccupiedSquares.indexOf(this.duckDurations[key]);
                     this.dogOccupiedSquares.splice(indexToRemove, 1);
                     $(duckAnimateSelection).removeClass('animateDog');
-                    console.log("DOG REMOVED")
                 }
+                delete this.duckDurations[key]
             }
         }
     };
