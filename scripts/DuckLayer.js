@@ -9,7 +9,7 @@ function DuckLayer(){
     this.currentTurnTime = 0;
     this.interval = 250;
     this.duckDurations = {}; //key = time spent in square, value = ID of square
-    this.pointPerDuck = 10;
+    this.pointPerDuck = 20;
     this.timerTimeRemaining = 5000;
     this.timer = null;
     this.timePerInterval = 10;
@@ -33,15 +33,25 @@ function DuckLayer(){
         if(this.timerTimeRemaining <= 0){
             this.timerTimeRemaining = 0;
             clearInterval(this.timer);
-            console.log('time ran out');
+            // console.log('time ran out');
 
         }
-        this.pointPerDuck = Math.round(5 + (15 * (this.timerTimeRemaining / this.turnTime)));
         var percentRemaining = this.timerTimeRemaining / this.turnTime * 100;
+
+        if(percentRemaining >= 80){
+            this.pointPerDuck = 20;
+        }
+        else if(percentRemaining <=20){
+            this.pointPerDuck = 5;
+        }
+        else{
+            var middleTime = this.timerTimeRemaining - 1000;
+            var percentOfMiddleTime = middleTime / 3000;
+            this.pointPerDuck = 5 + Math.round(15 * percentOfMiddleTime);
+        }
+        // console.log(this.pointPerDuck);
         $(".timer").css('width', percentRemaining + '%');
     }.bind(this);
-
-
     this.intervalFunction = function(){
         this.currentTimeUpdater();
         this.removeRandomGeneratedDuck();
@@ -129,11 +139,9 @@ function DuckLayer(){
         var randomDuckSquare = availableUnoccupiedSquares[randomIndex]; //assigning the unoccupiedSquare at index of randomDuckSquare, or duck, to a var
         if(!dogGenerate){//a duck now occupies that square so push the ID of the square to the duckOccupiedSquares array
             this.duckOccupiedSquares.push(randomDuckSquare);
-            console.log("DUCK OCCUPIED SQUARES = " + this.duckOccupiedSquares)
         }
         else{
             this.dogOccupiedSquares.push(randomDuckSquare);
-            console.log("NEW DOG POSITION")
         }
         var baseTimeWindow = this.turnTime / 5; //1000
         var percentageOfBaseTimeWindow = (Math.floor(Math.random()*(15-5))+5) * 0.1;
@@ -166,7 +174,6 @@ function DuckLayer(){
                 else if (this.dogOccupiedSquares.indexOf(ID) !== -1){
                     var indexToRemove = this.dogOccupiedSquares.indexOf(this.duckDurations[key]);
                     this.dogOccupiedSquares.splice(indexToRemove, 1);
-                    console.log("DOG REMOVED")
                 }
                 $("#" + ID).css("background-image", "none");
             }
@@ -217,7 +224,7 @@ function DuckLayer(){
 
 
 
-        }, 250)
+        }, 400)
 
     };
 
