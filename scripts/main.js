@@ -46,7 +46,6 @@ function resetGame(){
 		$(".animateDuck0").removeClass("animateDuck0");
         $(".animateDuck1").removeClass("animateDuck1");
         $(".animateDog").removeClass("animateDog");
-		duckLayer.currentTurnTime = 0;
 		duckLayer.stopTimer();
 		$('.container-fluid').removeClass('gunCursorPlayer0 gunCursorPlayer1').addClass('gunCursorDefault');
 		$('.gameSquare').remove();
