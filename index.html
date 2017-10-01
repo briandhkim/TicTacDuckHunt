@@ -15,22 +15,44 @@
 </head>
 
 
-<body class="cursorDefault">
-<div class="container-fluid ">	<!--overall container div-->
+<body>
+<div class="container-fluid gunCursorDefault">	<!--overall container div-->
 	<div class="row mainWrapperRow"> <!--this row contains everything visible on the page-->
 		<div class="row rowUpper">	<!--rowUpper: contains game screen, instruction/rules, game options-->
-			<div class="col-sm-2 ruleArea text-center">	<!--instruction/rules section | will be set to display none in small screen-->
+			<div class="col-sm-2 titleArea text-center">	<!--instruction/rules section | will be set to display none in small screen-->
 				Tic Tac Duck Hunt
-				<div class="rule-title text-center">Hit the birds to mark a spot - but don't hit the dog!</div>
-			</div>	
+				<!--<div class="rule-title text-center">Hit a duck to mark a spot - but don't hit the dog!</div>-->
+			</div>
 			<div class="col-xs-12 col-sm-8 gameScreen">	<!--main game screen area-->
-				<div class="col-sm-12 gameScreenMonitor">
+				<div class="col-sm-12 gameScreenMonitor cursorDefault">
+					<div class="uiMenu">
+						<span class ="uiMenuText"></span>
+					</div>
+					<div class="instructionsMenu">
+						<h1>Instructions</h1>
+
+						<ul>
+							<li>Shoot ducks to mark a square</li>
+							<li>Hitting the dog is an instant loss</li>
+							<li>Mark a square before the timer runs out, or lose your turn</li>
+							<li>Each duck hit results in 5 - 20 points depending on how quickly it is shot</li>
+							<li>If game results in a tie, highest score wins</li>
+						</ul>
+						<br>
+						<h2>Select board size, number of ducks to win, and press START to play!</h2>
+
+					</div>
 				</div>
 			</div>
 			<div class="col-xs-12 col-sm-2 buttonArea">	<!--area for screen option button, start button, etc-->
+				<div class="col-xs-11 startInput">
+					<div class="startButton text-center button">
+						START
+					</div>
+				</div>	<!--end of start button div-->
 				<div class="col-xs-11 radioGridSelect">
 					<div class="row radioGridSelectLabel text-center">
-						select board grid
+						select board size
 					</div>
 					<div class="row radioGridSelectInput text-center" id="girdOptions">
 						<input type="radio" name="grid" id='grid-3' value="3" checked>
@@ -40,10 +62,12 @@
 						<input type="radio" name="grid"	id="grid-5" value="5">
 						<label for="grid-5">5</label>
 					</div>
-				</div>
+				</div>	<!--end of radioGridSelect div-->
 				<div class="col-xs-11 radioWinSelect">
 					<div class="row radioWinSelectLabel text-center">
 						select number of ducks for win
+						<br>
+						"default" = board size
 					</div>
 					<div class="row radioWinSelectInput text-center" id="winOptions">
 						<input type="radio" name="win" id="condition-default" value="default" checked>
@@ -55,33 +79,30 @@
 						<input type="radio" name="win" id="condition-5" value="5">
 						<label for="condition-5">5</label>
 					</div>
-				</div>
-				<div class="col-xs-11 startInput">
-					<div class="startButton text-center">
-						START
-					</div>
-				</div>
+				</div>	<!--end of radioWinSelect div-->
+				
 				<div class="col-xs-11 restartButton text-center">
-					<div class="restartButtonDiv text-center">
+					<div class="restartButtonDiv text-center button">
 						RESET
 					</div>
-				</div>
-				<div class="col-xs-11 volumeControl">
-					<!--reserved for volume control-->
-				</div>
-				<div class="col-xs-11 winnerMessageDisplay text-center">
-					
-				</div>
-			</div>
+				</div>	<!--end of reset button div-->
+				<!-- <div class="col-xs-11 volumeControl">
+					reserved for volume control
+				</div> -->
+				<!--<div class="col-xs-11 winnerMessageDisplay text-center">-->
+					<!--select options above and click start-->
+				<!--</div>-->
+
+			</div>	<!--end of buttonArea div-->
 		</div>	<!--end of rowUpper div-->
 		<div class="row rowLower">	<!--contains player turn display, score display-->
 			<div class="col-sm-3 player0Area text-right">
 				<span class="player0Name">
-					Player 1: <br>click gun to start
+					Player 1
 				</span>
 			</div>
 			<div class="col-sm-6 scoreAndTimerAndDucks">	<!--score, timer, and small ducks div-->
-				<div class="col-sm-3 player0Score text-center">Score: <span class="player0ScoreVal"></span>
+				<div class="col-sm-3 player0Score text-center">Score: <span class="player0ScoreVal">0</span>
 				</div>
 				<div class="col-sm-6 timerAndDuckDisplay">
 					<div class="col-sm-12 duckDisplay text-center">
@@ -95,19 +116,19 @@
 						<div class="col-xs-1 littleDuck"></div>
 						<div class="col-xs-1 littleDuck"></div> -->
 						<br>	<!--being lazy using br-->
-						Turn Timer
+						<!--Turn Timer-->
 					</div>
 					<div class="col-sm-12 timerDisplay text-center">
 						<div class="transTimer"></div>
 						<div class="timer"></div>
 					</div>
 				</div>	
-				<div class="col-sm-3 player1Score text-center">Score: <span class="player1ScoreVal"></span>
+				<div class="col-sm-3 player1Score text-center">Score: <span class="player1ScoreVal">0</span>
 				</div>
 			</div>		<!--end of score, timer, and small ducks div-->
 			<div class="col-sm-3 player1Area text-left">
 				<span class="player1Name">
-					Player 2: <br>click gun to start
+					Player 2
 				</span>
 			</div>
 		</div>	<!--end of rowLower div-->

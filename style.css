@@ -30,16 +30,31 @@ dark liver - rgb(82,74,65)
 ash grey - rgb(176,180,180)
 caput mortuum - rgb(84,42,22)
 */
+.gunCursorDefault{
+	cursor: url(assets/cursorDefault.png), auto;
+}
+.gunCursorPlayer0{
+	cursor: url(assets/cursorPlayer0.png),auto;
+}
+.gunCursorPlayer1{
+	cursor: url(assets/cursorPlayer1.png),auto;
+}
 .cursorDefault{
 	cursor: url(assets/cursorOrange.png) 50 50,auto;
 }
-.cursorPlayer0{
+.gameScreenMonitor.cursorPlayer0{
 	/*green*/
 	cursor: url(assets/cursorGreen.png) 50 50, auto;
 }
-.cursorPlayer1{
+.gameScreenMonitor.cursorPlayer1{
 	/*purple*/
 	cursor: url(assets/cursorPurple.png) 50 50, auto;
+}
+.button, .radioGridSelect, .radioWinSelect, .player0Area, .player1Area{	
+	cursor: pointer;
+}
+button{
+	cursor:pointer;
 }
 
 .mainWrapperRow{	/*overall container div*/
@@ -56,9 +71,10 @@ caput mortuum - rgb(84,42,22)
 	height: 77%;
 	padding-top: 10px;
 }
-.ruleArea{
+.titleArea{
 	font-family: duckhunt, Arial;
-	font-size: 75px;
+	font-size: 115px;
+
 	background-color: black;
 	color: #48dc48;
 }
@@ -71,11 +87,18 @@ caput mortuum - rgb(84,42,22)
 	font-size: 25px;
 
 }
+.player0Name, .player1Name{
+	position: relative;
+	top: 70%;
+	font-size: 45px;
+}
+
 .gameScreen{
 	background-color: rgb(220,212,214);
 
 }
 .gameScreenMonitor{
+	position:relative;
 	height: 98%;
 	margin-top:0.5%;
 	margin-left: 0.25%;
@@ -86,7 +109,53 @@ caput mortuum - rgb(84,42,22)
 	background-image: url("assets/background.png");
 	background-size: 100% 100%;
 	background-repeat:no-repeat;
+	/*background-color: black;*/
 }
+.gameScreenMonitor>.uiMenu{
+	position:absolute;
+	display:flex;
+	left:50%;
+	top:50%;
+	transform: translate(-50%, -50%);
+	width:50%;
+	height:15%;
+	background-image: url("assets/UImenu.png");
+	background-size: 100% 100%;
+	background-repeat:no-repeat;
+	align-items: center;
+	justify-content: center;
+	color: white;
+	font-size: 20px;
+}
+
+.gameScreenMonitor>.instructionsMenu{
+	position:absolute;
+	left:50%;
+	top:50%;
+	transform: translate(-50%, -50%);
+	width:50%;
+	height:70%;
+	background-image: url("assets/instructionsMenu.png");
+	background-size: 100% 100%;
+	background-repeat:no-repeat;
+	color: white;
+	font-size: 20px;
+}
+
+.gameScreenMonitor>.instructionsMenu>h1, .gameScreenMonitor>.instructionsMenu>h2{
+	text-align: center;
+}
+
+.gameScreenMonitor>.instructionsMenu>ul{
+	list-style: square;
+	margin:15px;
+}
+
+.gameScreenMonitor>.uiMenu>.uiMenuText{
+	margin:0 8px 0 8px;
+	text-align: center;
+}
+
 .gameScreenMonitor>div.row{
 	/*height: ;*/
 	/*display:inline-block;*/
@@ -104,14 +173,14 @@ caput mortuum - rgb(84,42,22)
 	margin-left:2.0888%;
 }
 .radioGridSelect, .radioWinSelect{
-	margin-top: 0;
-	height: 12%;
+	margin-top: 5%;
+	height: 23%;
 	/*border: 1px solid;*/
 	/*margin-left: 2.088%;*/
 }
 .radioGridSelectLabel, .radioWinSelectLabel{
 	margin:10px 5% 10px 5%;
-	height: 60%;
+	height: 40%;
 	background-color: #00e8d8;
 	border-radius: 8px;
 	color:black;
@@ -122,11 +191,10 @@ caput mortuum - rgb(84,42,22)
 .radioGridSelectInput, .radioWinSelectInput{
 	height: 30%;
 }
-.startInput{
-	/*height: 20%;*/
-	/*border: 1px solid;*/
+.startInput, .restartButton{
+	height: 12%;
 }
-.startButton, .restartButtonDiv{
+.button{
 	margin-top: 50px;
 	background-color: #48dc48;
 	color:white;
@@ -136,10 +204,6 @@ caput mortuum - rgb(84,42,22)
 	justify-content: center;
 	border-radius: 8px;
 	font-size: 25px;
-}
-.restartButton{
-	/*border: 1px solid white;*/
-	/*height: 50px;*/
 }
 .volumeControl{
 	/*border: 1px solid white;*/
@@ -191,14 +255,14 @@ caput mortuum - rgb(84,42,22)
 	background-repeat: no-repeat;
 	background-position: right;
 }
-.player0Name{
-	position: absolute;
-	right: 0;
-	bottom: 0;
-	/*color: white;*/
-	color: black;
-	font-size: 25px;
-}
+/*.player0Name{*/
+	/*position: absolute;*/
+	/*right: 0;*/
+	/*bottom: 0;*/
+	/*!*color: white;*!*/
+	/*color: #fb9a38;*/
+	/*font-size: 25px;*/
+/*}*/
 .player1Area {
 	background: black;
 	background-image: url("assets/zapperPurple.png");
@@ -206,13 +270,13 @@ caput mortuum - rgb(84,42,22)
 	background-repeat: no-repeat;
 	background-position: left;
 }
-.player1Name{
-	position: absolute;
-	left: 0;
-	bottom: 0;
-	color: black;
-	font-size: 25px;
-}
+/*.player1Name{*/
+	/*position: absolute;*/
+	/*left: 0;*/
+	/*bottom: 0;*/
+	/*color: #fb9a38;*/
+	/*font-size: 25px;*/
+/*}*/
 .playerFocusHighlight{
 	text-shadow: 0 0 20px #21a4e2;
 	color: #fb9a38;

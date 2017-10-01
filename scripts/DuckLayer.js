@@ -8,10 +8,9 @@ function DuckLayer(){
     this.turnTime = 5000;
     this.currentTurnTime = 0;
     this.interval = 250;
-    this.percentChangeDuckAppears = 0.90;
     this.duckDurations = {}; //key = time spent in square, value = ID of square
     this.pointPerDuck = 10;
-    this.timeRemaining = 5000;
+    this.timerTimeRemaining = 5000;
     this.timer = null;
     this.timePerInterval = 10;
 
@@ -27,33 +26,43 @@ function DuckLayer(){
     };
 
     this.timerAnimation = function(){
-        this.timeRemaining -= 10;
-        if(this.timeRemaining <= 0){
-            this.timeRemaining = 0;
+        if(this.timerTimeRemaining / this.turnTime <= .33){
+            $(".timer").css("background-color", "red");
+        }
+        this.timerTimeRemaining -= 10;
+        if(this.timerTimeRemaining <= 0){
+            this.timerTimeRemaining = 0;
             clearInterval(this.timer);
             console.log('time ran out');
+
         }
-        var percentRemaining = this.timeRemaining / this.turnTime * 100;
+        this.pointPerDuck = Math.round(5 + (15 * (this.timerTimeRemaining / this.turnTime)));
+        var percentRemaining = this.timerTimeRemaining / this.turnTime * 100;
         $(".timer").css('width', percentRemaining + '%');
     }.bind(this);
 
 
     this.intervalFunction = function(){
+        this.currentTimeUpdater();
         this.removeRandomGeneratedDuck();
         this.generateRandomDuck();
-
     }.bind(this);
 
+    this.currentTimeUpdater = function(){
+        this.currentTurnTime += this.interval; //adding half a second to currentTurnTime every time the interval runs
+    };
+
     this.stopTimer = function(){
+        $(".timer").css("background-color", "gray");
         this.currentTurnTime = 0;
         clearInterval(this.playerTimer); //stopping duck creation
         clearInterval(this.timer);
         this.updateDisplay(); //updateDisplay
         this.resetDuckVar();    //may need to be moved
         // ticTacMain.changePlayerTurn(); //this.changePlayerTurn
-        this.timeRemaining = 5000;
+        this.timerTimeRemaining = 5000;
         $(".timer").css('width', "100%");
-
+        this.pointPerDuck = 10;
     };   //bind this?
 
     this.checkWinCondition = function(){
@@ -84,7 +93,7 @@ function DuckLayer(){
     };
 
     this.generateRandomDuck = function() {
-        this.currentTurnTime += this.interval; //adding half a second to currentTurnTime every time the interval runs
+        var percentChanceDuckAppears = 0.90;
         if (this.currentTurnTime >= this.turnTime) { //checking if currentTime === 5 seconds and if it is, stopTimer
             this.stopTimer();
             ticTacMain.changePlayerTurn();
@@ -96,14 +105,14 @@ function DuckLayer(){
         if (this.duckOccupiedSquares.length === 3) {            //determine percentage change of duck creation
             return                                              //looking at the length of duckOccupiedSquares array to determine the percentChange
         } else if (this.duckOccupiedSquares.length === 2) {
-            this.percentChangeDuckAppears = 0.33
+            percentChanceDuckAppears = 0.33
         } else if (this.duckOccupiedSquares.length === 1) {
-            this.percentChangeDuckAppears = 0.75
+            percentChanceDuckAppears = 0.75
         } else if (this.duckOccupiedSquares.length === 0) {
-            this.percentChangeDuckAppears = 0.9
+            percentChanceDuckAppears = 0.9
         }
         var checkToProceed = Math.random(); //creates random number 0-1
-        if(checkToProceed > this.percentChangeDuckAppears){ //if random number > percent given above
+        if(checkToProceed > percentChanceDuckAppears){ //if random number > percent given above
             return
         }
         //chance of dog
@@ -135,6 +144,7 @@ function DuckLayer(){
         this.duckDurations[duckLeaveTime] = randomDuckSquare;
         var duckAnimateSelection = $('#' + randomDuckSquare)[0].children[0];
         if(!dogGenerate) {
+            audioHandler.quack();
             if(ticTacMain.playerTurn === 0){
                 $(duckAnimateSelection).addClass('animateDuck0'); //adding animations via class
                 // $("#" + randomDuckSquare).css("background", "url(assets/p0_duck01.png) no-repeat center");
