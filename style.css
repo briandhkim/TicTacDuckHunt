@@ -319,3 +319,45 @@ button, input{
 	background-color: gray;
 	position: absolute;
 }
+
+/* animation using classes */
+.animateDuck0 {
+	position: relative;
+	height: 200px;
+	width: 200px;
+	background: url('assets/p0_duck_animation.png') no-repeat center;
+	animation: play0 .7s steps(4) infinite;
+}
+
+@keyframes play0 {
+	from { background-position: 0; }
+	to { background-position: -850px; }
+}
+
+.animateDuck1 {
+	position: relative;
+	height: 200px;
+	width: 200px;
+	/*background-color: black;*/
+	background: url('assets/p1_duck_animation.png') no-repeat center;
+	animation: play1 .7s steps(4) infinite;
+}
+
+@keyframes play1 {
+	from { background-position: 0; }
+	to { background-position: -850px; }
+}
+
+.animateDog {
+	position: relative;
+	height: 200px;
+	width: 200px;
+	background: url('assets/dog_animation.png') no-repeat center;
+	/*background-color: black;*/
+	animation: playdog .7s steps(3) infinite;
+}
+
+@keyframes playdog {
+	from { background-position: 0; }
+	to { background-position: -590px; }
+}

@@ -21,8 +21,8 @@ function startGame(){
 		}
 		ticTacMain = new TicTacMain(dimension,winCond);
 		duckLayer = new DuckLayer();
-        duckLayer.duckAnimation();
-		audioHandler = new AudioHandler();	//audioHandler missing var| set var audioHandler to null up top (Brian)
+        // duckLayer.duckAnimation();
+		audioHandler = new AudioHandler(); //audioHandler missing var| set var audioHandler to null up top (Brian)
 		ticTacMain.createBoard(dimension);
 		$('.gameScreenMonitor').removeClass('cursorDefault');
 		$('.container-fluid').removeClass('gunCursorDefault').addClass('gunCursorPlayer0');
