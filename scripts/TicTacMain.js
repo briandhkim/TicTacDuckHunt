@@ -65,12 +65,23 @@ function TicTacMain(dim,winCond){	//will eventually need to take in winning cond
 
 					displayUIMenu("Player 2 Wins: Player 1 shot the dog!  Press RESET to play again!");
 					//$('.winnerMessageDisplay').text('P2 Wins: Player 1 shot the dog!');
-					// this.gameOver = true;
+                    $('.player0Area').css("opacity","0.3");
+                    $('.player1Area').css("opacity","1");
+                    $('.player0Score').css("opacity","0.3");
+                    $('.player1Score').css("opacity","1");
+                    $('.player1Name').addClass("playerFocusHighlight");
+                    $('.player0Name').removeClass("playerFocusHighlight");
+					this.gameOver = true;
 					return;
 				}else if(this.playerTurn ===1){
 					$('.player1Area').unbind('click',playerTurnStart);
-
-                    displayUIMenu("Player 1 Wins: Player 2 shot the dog!  Press START to play again!");
+                    $('.player1Area').css("opacity","0.3");
+                    $('.player0Area').css("opacity","1");
+                    $('.player1Score').css("opacity","0.3");
+                    $('.player0Score').css("opacity","1");
+                    $('.player0Name').addClass("playerFocusHighlight");
+                    $('.player1Name').removeClass("playerFocusHighlight");
+                    displayUIMenu("Player 1 Wins: Player 2 shot the dog!  Press RESET to play again!");
 					//$('.winnerMessageDisplay').text('P1 Wins: Player 2 shot the dog!');
 					return;
 				}
@@ -95,6 +106,10 @@ function TicTacMain(dim,winCond){	//will eventually need to take in winning cond
                 $('.container-fluid').removeClass('gunCursorPlayer0').addClass('gunCursorPlayer1');
                 displayUIMenu("Player 2: Press your zapper to start your turn!");
 				$('.player0Name').removeClass('playerFocusHighlight');
+				$('.player0Area').css("opacity","0.3");
+                $('.player1Area').css("opacity","1");
+                $('.player0Score').css("opacity","0.3");
+                $('.player1Score').css("opacity","1");
 				$('.player1Name').addClass('playerFocusHighlight');
 
             	// console.log("player 1 turn");
@@ -108,6 +123,10 @@ function TicTacMain(dim,winCond){	//will eventually need to take in winning cond
                 $('.container-fluid').removeClass('gunCursorPlayer1').addClass('gunCursorPlayer0');
                 displayUIMenu("Player 1: Press your zapper to start your turn!");
 				$('.player1Name').removeClass('playerFocusHighlight');
+                $('.player1Area').css("opacity","0.3");
+                $('.player0Area').css("opacity","1");
+                $('.player1Score').css("opacity","0.3");
+                $('.player0Score').css("opacity","1");
 				$('.player0Name').addClass('playerFocusHighlight');
             	// console.log("player 0 turn");
 				return;

@@ -219,15 +219,9 @@ function DuckLayer(){
                 else if($(this).css('background-image').indexOf('assets/dog04.png') !== -1){
                     $(this).css('background-image', 'url(assets/dog01.png)')
                 }
-
             });
-
-
-
         }, 400)
-
     };
-
     this.hitDuck = function(squareId) {
         audioHandler.hit();
         this.duckHit = true; //changing duckHit to true if duck was in div clicked
