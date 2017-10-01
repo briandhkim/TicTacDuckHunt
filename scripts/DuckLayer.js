@@ -70,12 +70,16 @@ function DuckLayer(){
         this.currentTurnTime = 0;
         this.duckDurations = {};
         $(".gameSquare").each(function() { //removing background images at the end of the player turn"
+            var duckAnimateSelection = $(this)[0].children[0];
             if (ticTacMain.playerTurn === 0) {
-                $(this).removeClass('animateDuck0');
+                // $(this).removeClass('animateDuck0');
+                $(duckAnimateSelection).removeClass('animateDuck0');
             } else {
-                $(this).removeClass('animateDuck1');
+                // $(this).removeClass('animateDuck1');
+                $(duckAnimateSelection).removeClass('animateDuck1');
             }
-            $(this).removeClass('animateDog');
+            // $(this).removeClass('animateDog');
+            $(duckAnimateSelection).removeClass('animateDog');
         });
     };
 
@@ -159,63 +163,17 @@ function DuckLayer(){
                 if (this.duckOccupiedSquares.indexOf(ID) !== -1) {
                     var indexToRemove = this.duckOccupiedSquares.indexOf(this.duckDurations[key]);
                     this.duckOccupiedSquares.splice(indexToRemove, 1);
-                    $(duckAnimateSelection).removeClass('animateDuck0').removeClass('animateDuck1').removeClass('animateDog').css("background", "none");
+                    $(duckAnimateSelection).removeClass('animateDuck0').removeClass('animateDuck1');
                 } else {
                     var indexToRemove = this.dogOccupiedSquares.indexOf(this.duckDurations[key]);
                     this.dogOccupiedSquares.splice(indexToRemove, 1);
+                    $(duckAnimateSelection).removeClass('animateDog');
                     console.log("DOG REMOVED")
                 }
                 // $("#" + ID).css("background-image", "none");
-
             }
         }
     };
-
-    // this.duckAnimation = function(){
-    //     var player0animation = ['assets/p0_duck01', 'assets/p0_duck02', 'assets/p0_duck03', ];
-    //
-    //     this.timer = setInterval(function(){
-    //         $(".gameSquare").each(function() { //creating object of all elements with class of "gameSquare"
-    //             if($(this).css('background-image').indexOf('assets/p0_duck01.png') !== -1){
-    //                 $(this).css('background-image', 'url(assets/p0_duck02.png)')
-    //             }
-    //             else if($(this).css('background-image').indexOf('assets/p0_duck02.png') !== -1){
-    //                 $(this).css('background-image', 'url(assets/p0_duck03.png)')
-    //             }
-    //             else if($(this).css('background-image').indexOf('assets/p0_duck03.png') !== -1){
-    //                 $(this).css('background-image', 'url(assets/p0_duck04.png)')
-    //             }
-    //             else if($(this).css('background-image').indexOf('assets/p0_duck04.png') !== -1){
-    //                 $(this).css('background-image', 'url(assets/p0_duck01.png)')
-    //             }
-    //             if($(this).css('background-image').indexOf('assets/p1_duck01.png') !== -1){
-    //                 $(this).css('background-image', 'url(assets/p1_duck02.png)')
-    //             }
-    //             else if($(this).css('background-image').indexOf('assets/p1_duck02.png') !== -1){
-    //                 $(this).css('background-image', 'url(assets/p1_duck03.png)')
-    //             }
-    //             else if($(this).css('background-image').indexOf('assets/p1_duck03.png') !== -1){
-    //                 $(this).css('background-image', 'url(assets/p1_duck04.png)')
-    //             }
-    //             else if($(this).css('background-image').indexOf('assets/p1_duck04.png') !== -1){
-    //                 $(this).css('background-image', 'url(assets/p1_duck01.png)')
-    //             }
-    //             else if($(this).css('background-image').indexOf('assets/dog01.png') !== -1){
-    //                 $(this).css('background-image', 'url(assets/dog02.png)')
-    //             }
-    //             else if($(this).css('background-image').indexOf('assets/dog02.png') !== -1){
-    //                 $(this).css('background-image', 'url(assets/dog03.png)')
-    //             }
-    //             else if($(this).css('background-image').indexOf('assets/dog03.png') !== -1){
-    //                 $(this).css('background-image', 'url(assets/dog04.png)')
-    //             }
-    //             else if($(this).css('background-image').indexOf('assets/dog04.png') !== -1){
-    //                 $(this).css('background-image', 'url(assets/dog01.png)')
-    //             }
-    //
-    //         });
-    //     }, 250)
-    // };
 
     this.hitDuck = function(squareId) {
         var duckAnimateSelection = $('#' + squareId)[0].children[0];
