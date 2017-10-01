@@ -73,7 +73,7 @@ function DuckLayer(){
         // ticTacMain.changePlayerTurn(); //this.changePlayerTurn
         this.timerTimeRemaining = 5000;
         $(".timer").css('width', "100%");
-        this.pointPerDuck = 10;
+        this.pointPerDuck = 20;
     };   //bind this?
 
     this.checkWinCondition = function(){
