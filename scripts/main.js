@@ -29,6 +29,8 @@ function startGame(){
 		$('.gameScreenMonitor').addClass('cursorPlayer0');
 		$('.player0Name').addClass('playerFocusHighlight');
 		$('.player0Area').bind('click',playerTurnStart);
+        $('.player1Area').css("opacity","0.3");
+        $('.player1Score').css("opacity","0.3");
 		$('.winnerMessageDisplay').text("player1 click gun to start");
 		gameStarted = true;
         audioHandler.start();
@@ -47,6 +49,10 @@ function resetGame(){
 		$('.gameScreenMonitor').removeClass('cursorPlayer0 cursorPlayer1').addClass('cursorDefault');
 		$('.player0Name, .player1Name').removeClass('playerFocusHighlight');
 		$('.player0Area, .player1Area').unbind('click',playerTurnStart);
+        $('.player0Area').css("opacity","1");
+		$('.player1Area').css("opacity","1");
+        $('.player0Score').css("opacity","1");
+        $('.player1Score').css("opacity","1");
 		$('.player0ScoreVal, .player1ScoreVal').text('0');
 		$('.winnerMessageDisplay').text('select options above and click start');
 		ticTacMain = null;
@@ -54,8 +60,8 @@ function resetGame(){
 		duckLayer = null;
 		audioHandler = null;
 		playerTurnStartClicked = false;
-		displayUIMenu("Select board size, number of ducks for win, and press START")
-	}
+		displayUIMenu("Select board size, number of ducks in a row to win, and press START to play!")
+}
 	// location.reload();
 }
 
@@ -65,7 +71,7 @@ function removeUIMenu(){
 function displayUIMenu(message){
     $(".uiMenu").show();
 	$(".uiMenuText").text(message).css("text-align", "center")/*.css("display", "flex");*/
-    // $(".uiMenuText").css("margin", "0 8px 0 8px")
+    $(".uiMenuText").css("margin", "0 20px")
 }
 
 //add and remove this click handler by class toggle in tictac object
@@ -83,6 +89,10 @@ function playerTurnStart(){		//click handler for player areas  | starts each pla
 }
 
 $(document).ready(function(){
+	//set browser zoom to 100%
+    document.body.style.webkitTransform =  1;    // Chrome, Opera, Safari
+    document.body.style.msTransform =   1;       // IE 9
+    document.body.style.transform = 1;     // General
 	$('.startButton').click(startGame);
 	$('.restartButtonDiv').click(resetGame);
 	$('#condition-4, #condition-5[type=radio]').attr('disabled',true);
