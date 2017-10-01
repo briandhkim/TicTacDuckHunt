@@ -54,7 +54,7 @@ function resetGame(){
 		duckLayer = null;
 		audioHandler = null;
 		playerTurnStartClicked = false;
-		displayUIMenu("Select board size, number of ducks for win, and press START")
+		displayUIMenu("Select board size, number of ducks for win, and press START to play!")
 	}
 	// location.reload();
 }
@@ -83,6 +83,10 @@ function playerTurnStart(){		//click handler for player areas  | starts each pla
 }
 
 $(document).ready(function(){
+	//set browser zoom to 100%
+    document.body.style.webkitTransform =  1;    // Chrome, Opera, Safari
+    document.body.style.msTransform =   1;       // IE 9
+    document.body.style.transform = 1;     // General
 	$('.startButton').click(startGame);
 	$('.restartButtonDiv').click(resetGame);
 	$('#condition-4, #condition-5[type=radio]').attr('disabled',true);
