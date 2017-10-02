@@ -17,10 +17,18 @@ function TicTacMain(dim,winCond){	//will eventually need to take in winning cond
 		for(var i=0; i<this.dimension; i++){
 			$('<div>').addClass('row').attr('id','row'+i).appendTo('.gameScreenMonitor').css('height',divRowHeight+'%');
 			for(var j=0; j<this.dimension; j++){
-				var boardGrid = $('<div>').addClass('gameSquare').attr('id',i.toString()+j.toString()).css({'width':gameSquareWidth+'%','height':'100%', 'z-index':'1'}).click(function(){
+				var boardGrid = $('<div>').addClass('gameSquare').attr('id',i.toString()+j.toString()).css({
+					'width':gameSquareWidth+'%',
+					'height':'100%', 
+					'z-index':'1'
+				}).click(function(){
 					ticTacMain.clickGameSquare($(this).attr('id'));
 				});
-				var innerDiv = $("<div>").css({'height':'100%', 'width':'auto' + 20, 'margin':"auto"});
+				var innerDiv = $("<div>").css({
+					'height':'100%', 
+					'width':'auto' + 20, 
+					'margin':"auto"
+				});
 				boardGrid.append(innerDiv);
 				$("#row" + i).append(boardGrid);
 				this.availableSquareArray.push(i.toString()+j.toString());
@@ -35,7 +43,10 @@ function TicTacMain(dim,winCond){	//will eventually need to take in winning cond
 		$(".gameScreenMonitor").css("background", "none");
 
 		setTimeout(function(){
-            $(".gameScreenMonitor").css("background", "url(assets/background.png)").css("background-size", "100% 100%")
+            $(".gameScreenMonitor").css({
+            	"background": "url(assets/background.png)",
+            	"background-size": "100% 100%"
+            });
 		}, 20);
 
 		//conditional checking player turn was removed | duck object can access that data
@@ -64,8 +75,7 @@ function TicTacMain(dim,winCond){	//will eventually need to take in winning cond
 		playerTurnStartClicked = false;
 		if(duckLayer.dogHit){	//if the dog hit bool turns true, stop game
 				if(this.playerTurn === 0){
-					$('.player0Area').unbind('click',playerTurnStart);
-                    $('.player0Area').css("opacity","0.3");
+					$('.player0Area').unbind('click',playerTurnStart).css("opacity","0.3");
                     $('.player1Area').css("opacity","1");
                     $('.player0Score').css("opacity","0.3");
                     $('.player1Score').css("opacity","1");
@@ -76,8 +86,7 @@ function TicTacMain(dim,winCond){	//will eventually need to take in winning cond
 					this.gameOver = true;
 					return;
 				}else if(this.playerTurn ===1){
-					$('.player1Area').unbind('click',playerTurnStart);
-                    $('.player1Area').css("opacity","0.3");
+					$('.player1Area').unbind('click',playerTurnStart).css("opacity","0.3");
                     $('.player0Area').css("opacity","1");
                     $('.player1Score').css("opacity","0.3");
                     $('.player0Score').css("opacity","1");

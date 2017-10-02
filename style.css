@@ -150,7 +150,20 @@ button, input{
 	list-style: square;
 	margin:15px;
 }
-
+.instructionsMenu>p{
+	margin-top: 20px;
+}
+@media screen and (max-width: 1584px){
+	.instructionsMenu{
+		font-size: 17px;
+	}
+	.instructionsMenu>ul{
+		font-size: 15px;
+	}
+	.instructionsMenu>p{
+		font-size: 12px;
+	}
+}
 .gameScreenMonitor>.uiMenu>.uiMenuText{
 	margin:0 20px;
 	text-align: center;
