@@ -65,15 +65,14 @@ function TicTacMain(dim,winCond){	//will eventually need to take in winning cond
 		if(duckLayer.dogHit){	//if the dog hit bool turns true, stop game
 				if(this.playerTurn === 0){
 					$('.player0Area').unbind('click',playerTurnStart);
-
-					displayUIMenu("Player 2 Wins: Player 1 shot the dog!  Press RESET to play again!");
-					//$('.winnerMessageDisplay').text('P2 Wins: Player 1 shot the dog!');
                     $('.player0Area').css("opacity","0.3");
                     $('.player1Area').css("opacity","1");
                     $('.player0Score').css("opacity","0.3");
                     $('.player1Score').css("opacity","1");
                     $('.player1Name').addClass("playerFocusHighlight");
                     $('.player0Name').removeClass("playerFocusHighlight");
+                    displayUIMenu("Player 2 Wins: Player 1 shot the dog!  Press RESET to play again!");
+                    //$('.winnerMessageDisplay').text('P2 Wins: Player 1 shot the dog!');
 					this.gameOver = true;
 					return;
 				}else if(this.playerTurn ===1){
@@ -86,6 +85,7 @@ function TicTacMain(dim,winCond){	//will eventually need to take in winning cond
                     $('.player1Name').removeClass("playerFocusHighlight");
                     displayUIMenu("Player 1 Wins: Player 2 shot the dog!  Press RESET to play again!");
 					//$('.winnerMessageDisplay').text('P1 Wins: Player 2 shot the dog!');
+					this.gameOver = true;
 					return;
 				}
 			}
@@ -93,11 +93,18 @@ function TicTacMain(dim,winCond){	//will eventually need to take in winning cond
 			this.totalSquareNumber = this.player0Squares.length+this.player1Squares.length;
 			if(this.totalSquareNumber===(this.dimension*this.dimension)){
 				this.gameOver = true;
+				if(this.playerTurn === 0){
+					$('.player0Area').unbind('click',playerTurnStart);
+				}else if(this.playerTurn ===1){
+					$('.player1Area').unbind('click',playerTurnStart);
+				}
 				if(duckLayer.player0Score > duckLayer.player1Score){
 					displayUIMenu("Player 1 wins with higher score!  Press RESET to play again!")
+					return;
 					//$('.winnerMessageDisplay').text('Player 1 wins with more ducks');
 				}else if(duckLayer.player0Score < duckLayer.player1Score){
                     displayUIMenu("Player 2 wins with higher score!  Press RESET to play again!")
+                    return;
 					//$('.winnerMessageDisplay').text('Player 2 Wins with more ducks');
 				}
 			}
