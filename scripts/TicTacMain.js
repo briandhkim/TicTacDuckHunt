@@ -242,66 +242,150 @@ function TicTacMain(dim,winCond){	//will eventually need to take in winning cond
 			}
 		}
 	};
-	this.checkWinDiag = function(){ 		//this function checks both tLeft-bRight and tRight-bLeft diagonals
-		var player0PtLR = 0; 
-		var player1PtLR = 0;
-		for(var i=0; i<this.dimension; i++){ 	//checking top left to bottom right
-			
-			var currentSquare = $('#'+i+i);		//the col/row index in this direction should increment equally; therefore only one loop
-			if(currentSquare.hasClass('player0Sq')){
-				player0PtLR++;
-			}else{
-				player0PtLR = 0;
-			}
-			if(currentSquare.hasClass('player1Sq')){
-				player1PtLR++;
-			}else{
-				player1PtLR = 0; 
-			}
-			if(player0PtLR == this.winNumber){
-				// console.log('player 0 wins; triggered at diagonal win check');
-				this.gameOver = true;
-				//call function for ui update
-				this.gameWinner =0;
-				return;
-			}
-			if(player1PtLR == this.winNumber){
-				// console.log('player 1 wins; triggered at diagonal win check');
-				this.gameOver = true;
-				this.gameWinner = 1;
-				return;
-			}
-		}
-		for(var i=0; i<this.dimension;){
-			var player0PtRL = 0;
-			var player1PtRL = 0;
-			for(var j=this.dimension-1; j>=0; j--){
-				var currentSquare2 = $('#'+i+j);
-				if(currentSquare2.hasClass('player0Sq')){
-					player0PtRL++;
-				}else{
-					player0PtRL = 0;
+	this.checkWinDiag = function(){
+		for(var i=0; i<this.dimension; i++) {
+            for (var j = 0; j <this.dimension; j++) {
+                var player0PtLR = 0;
+                var player1PtLR = 0;
+                var proceedP0 = true;
+                var proceedP1 = true;
+                var currentX = i;
+                var currentY = j;
+                var currentSquare = $('#'+ currentX + currentY);
+                if(currentSquare.hasClass('player0Sq') || currentSquare.hasClass('player1Sq')){
+                    player0PtLR = 1;
+                    player1PtLR = 1;
+                	while((currentX+1 < this.dimension) && (currentY+1 < this.dimension) && (player0PtLR != this.winNumber) && (player1PtLR != this.winNumber)){
+                        currentX += 1;
+                        currentY += 1;
+                        currentSquare = $('#'+ currentX + currentY);
+                        if(currentSquare.hasClass('player0Sq') && proceedP0){
+                            player0PtLR+=1;
+                        }
+                        else{
+                            proceedP0 = false;
+                            player0PtLR = 0;
+                        }
+                        if (currentSquare.hasClass('player1Sq') && proceedP1){
+                            player1PtLR+=1;
+                        }
+                        else{
+                        	proceedP1 = false;
+                            player1PtLR = 0;
+                        }
+					}
+
 				}
-				if(currentSquare2.hasClass('player1Sq')){
-					player1PtRL++;
-				}else{
-					player1PtRL = 0;
-				}
-				if(player0PtRL == this.winNumber){
-					// console.log('player 0 wins; triggered at diagonal win check');
+                var player0PtRL = 0;
+                var player1PtRL = 0;
+                proceedP0 = true;
+                proceedP1 = true;
+                currentX = i;
+                currentY = j;
+                currentSquare = $('#'+ currentX + currentY);
+                if(currentSquare.hasClass('player0Sq') || currentSquare.hasClass('player1Sq')){
+                    player0PtRL = 1;
+                    player1PtRL = 1;
+                	while((currentX-1 >= 0) && (currentY+1 < this.dimension) && (player0PtRL != this.winNumber) && (player1PtRL != this.winNumber)){
+                        currentX -= 1;
+                        currentY += 1;
+                        currentSquare = $('#'+ currentX + currentY);
+                        if(currentSquare.hasClass('player0Sq') && proceedP0){
+                            player0PtRL+=1;
+                        }
+                        else{
+                            proceedP0 = false;
+                            player0PtRL = 0;
+                        }
+                        if (currentSquare.hasClass('player1Sq') && proceedP1){
+                            player1PtRL+=1;
+                        }
+                        else{
+                            proceedP1 = false;
+                            player1PtRL = 0;
+                        }
+                    }
+                }
+                if(player0PtLR == this.winNumber || player0PtRL == this.winNumber){
+                	// console.log('player 0 wins; triggered at diagonal win check');
 					this.gameOver = true;
 					//call function for ui update
 					this.gameWinner = 0;
 					return;
 				}
-				if(player1PtRL == this.winNumber){
-					// console.log('player 1 wins; triggered at diagonal win check');
-					this.gameOver = true;
-					this.gameWinner = 1;
-					return;
+				else if(player1PtLR == this.winNumber || player1PtRL == this.winNumber){
+                    // console.log('player 1 wins; triggered at diagonal win check');
+                    this.gameOver = true;
+                    //call function for ui update
+                    this.gameWinner = 1;
+                    return;
 				}
-				i++;
-			}
-		}
-	};
+            }
+        }
+    }
+
+
+
+	// this.checkWinDiag = function(){ 		//this function checks both tLeft-bRight and tRight-bLeft diagonals
+	// 	var player0PtLR = 0;
+	// 	var player1PtLR = 0;
+	// 	for(var i=0; i<this.dimension; i++){ 	//checking top left to bottom right
+	//
+	// 		var currentSquare = $('#'+i+i);		//the col/row index in this direction should increment equally; therefore only one loop
+	// 		if(currentSquare.hasClass('player0Sq')){
+	// 			player0PtLR++;
+	// 		}else{
+	// 			player0PtLR = 0;
+	// 		}
+	// 		if(currentSquare.hasClass('player1Sq')){
+	// 			player1PtLR++;
+	// 		}else{
+	// 			player1PtLR = 0;
+	// 		}
+	// 		if(player0PtLR == this.winNumber){
+	// 			// console.log('player 0 wins; triggered at diagonal win check');
+	// 			this.gameOver = true;
+	// 			//call function for ui update
+	// 			this.gameWinner =0;
+	// 			return;
+	// 		}
+	// 		if(player1PtLR == this.winNumber){
+	// 			// console.log('player 1 wins; triggered at diagonal win check');
+	// 			this.gameOver = true;
+	// 			this.gameWinner = 1;
+	// 			return;
+	// 		}
+	// 	}
+	// 	for(var i=0; i<this.dimension;){
+	// 		var player0PtRL = 0;
+	// 		var player1PtRL = 0;
+	// 		for(var j=this.dimension-1; j>=0; j--){
+	// 			var currentSquare2 = $('#'+i+j);
+	// 			if(currentSquare2.hasClass('player0Sq')){
+	// 				player0PtRL++;
+	// 			}else{
+	// 				player0PtRL = 0;
+	// 			}
+	// 			if(currentSquare2.hasClass('player1Sq')){
+	// 				player1PtRL++;
+	// 			}else{
+	// 				player1PtRL = 0;
+	// 			}
+	// 			if(player0PtRL == this.winNumber){
+	// 				// console.log('player 0 wins; triggered at diagonal win check');
+	// 				this.gameOver = true;
+	// 				//call function for ui update
+	// 				this.gameWinner = 0;
+	// 				return;
+	// 			}
+	// 			if(player1PtRL == this.winNumber){
+	// 				// console.log('player 1 wins; triggered at diagonal win check');
+	// 				this.gameOver = true;
+	// 				this.gameWinner = 1;
+	// 				return;
+	// 			}
+	// 			i++;
+	// 		}
+	// 	}
+	// };
 }
