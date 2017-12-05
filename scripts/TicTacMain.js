@@ -34,7 +34,6 @@ function TicTacMain(dim,winCond){	//will eventually need to take in winning cond
 				this.availableSquareArray.push(i.toString()+j.toString());
 			}
 		}
-		// console.log(this.availableSquareArray);
 	};
 
 	this.clickGameSquare = function(squareID){ //will have $().attr('id') passed in
@@ -64,40 +63,31 @@ function TicTacMain(dim,winCond){	//will eventually need to take in winning cond
 		}
 	};
 
-	//needs to call hitDuck in duck object
-	//places either x or o on the square
-	//go through duckoccupied square in duck object to check condition
-			// will call function that switches player turn - changePalyerTurn
-			//needs to call function that updates global array of available squares
-			//splice squareID from availableSquareArray and push to playerSquare array to current player
-
 	this.changePlayerTurn = function(){
 		playerTurnStartClicked = false;
 		if(duckLayer.dogHit){	//if the dog hit bool turns true, stop game
-				if(this.playerTurn === 0){
-					$('.player0Area').unbind('click',playerTurnStart).css("opacity","0.3");
-                    $('.player1Area').css("opacity","1");
-                    $('.player0Score').css("opacity","0.3");
-                    $('.player1Score').css("opacity","1");
-                    $('.player1Name').addClass("playerFocusHighlight");
-                    $('.player0Name').removeClass("playerFocusHighlight");
-                    displayUIMenu("Player 2 Wins: Player 1 shot the dog!  Press RESET to play again!");
-                    //$('.winnerMessageDisplay').text('P2 Wins: Player 1 shot the dog!');
-					this.gameOver = true;
-					return;
-				}else if(this.playerTurn ===1){
-					$('.player1Area').unbind('click',playerTurnStart).css("opacity","0.3");
-                    $('.player0Area').css("opacity","1");
-                    $('.player1Score').css("opacity","0.3");
-                    $('.player0Score').css("opacity","1");
-                    $('.player0Name').addClass("playerFocusHighlight");
-                    $('.player1Name').removeClass("playerFocusHighlight");
-                    displayUIMenu("Player 1 Wins: Player 2 shot the dog!  Press RESET to play again!");
-					//$('.winnerMessageDisplay').text('P1 Wins: Player 2 shot the dog!');
-					this.gameOver = true;
-					return;
-				}
+			if(this.playerTurn === 0){
+				$('.player0Area').unbind('click',playerTurnStart).css("opacity","0.3");
+				$('.player1Area').css("opacity","1");
+				$('.player0Score').css("opacity","0.3");
+				$('.player1Score').css("opacity","1");
+				$('.player1Name').addClass("playerFocusHighlight");
+				$('.player0Name').removeClass("playerFocusHighlight");
+				displayUIMenu("Player 2 Wins: Player 1 shot the dog!  Press START to play again!");
+				this.gameOver = true;
+				return;
+			}else if(this.playerTurn ===1){
+				$('.player1Area').unbind('click',playerTurnStart).css("opacity","0.3");
+				$('.player0Area').css("opacity","1");
+				$('.player1Score').css("opacity","0.3");
+				$('.player0Score').css("opacity","1");
+				$('.player0Name').addClass("playerFocusHighlight");
+				$('.player1Name').removeClass("playerFocusHighlight");
+				displayUIMenu("Player 1 Wins: Player 2 shot the dog!  Press START to play again!");
+				this.gameOver = true;
+				return;
 			}
+		}
 		if(!this.gameOver){
 			this.totalSquareNumber = this.player0Squares.length+this.player1Squares.length;
 			if(this.totalSquareNumber===(this.dimension*this.dimension)){
@@ -110,11 +100,9 @@ function TicTacMain(dim,winCond){	//will eventually need to take in winning cond
 				if(duckLayer.player0Score > duckLayer.player1Score){
 					displayUIMenu("Player 1 wins with higher score!  Press RESET to play again!")
 					return;
-					//$('.winnerMessageDisplay').text('Player 1 wins with more ducks');
 				}else if(duckLayer.player0Score < duckLayer.player1Score){
                     displayUIMenu("Player 2 wins with higher score!  Press RESET to play again!")
                     return;
-					//$('.winnerMessageDisplay').text('Player 2 Wins with more ducks');
 				}
 			}
 			else if(this.playerTurn === 0){
@@ -130,7 +118,6 @@ function TicTacMain(dim,winCond){	//will eventually need to take in winning cond
                 $('.player0Score').css("opacity","0.3");
                 $('.player1Score').css("opacity","1");
 				$('.player1Name').addClass('playerFocusHighlight');
-            	// console.log("player 1 turn");
 				return;
 			}else if(this.playerTurn === 1){
             	this.playerTurn = 0;
@@ -157,28 +144,14 @@ function TicTacMain(dim,winCond){	//will eventually need to take in winning cond
 			}
 			if(this.gameWinner===0){
                 displayUIMenu("Player 1 Wins!  Press RESET to play again!");
-				//$('.winnerMessageDisplay').text('Player 1 Wins');
 			}else if(this.gameWinner === 1){
                 displayUIMenu("Player 2 Wins!  Press RESET to play again!");
-				//$('.winnerMessageDisplay').text('Player 2 Wins');
 			}
 		}
-		//unlocks gun for current player
-		//change crosshairs to match current player
-	}; 
-	/*called by placePiece either decrement or increment playerTurn depending on player turn
-		duck obje*/
-
-	/*function for winning condition*/
-	/*for checking win condition call the three functions after the function that places player markers on the board
-	e.g.
-		ticTacMain.checkWinRow();
-		ticTacMain.checkWinCol();
-		ticTacMain.checkWinDiag();	*/
+	};
 	this.checkWinRow = function (){
-		
 		for(var i=0; i<this.dimension;i++){		//outer loop iterates rows
-			var player0Pt = 0;	//if there are enough consequtive rows in play, this point will match the necessary win square number
+			var player0Pt = 0;	//if there are enough consecutive rows in play, this point will match the necessary win square number
 			var player1Pt = 0;
 			for(var j=0; j<this.dimension;j++){	//inner loop iterates through each square inside the row
 				var currentSquare = $('#'+i+j); //targets the current square in iteration for comparison
@@ -210,7 +183,6 @@ function TicTacMain(dim,winCond){	//will eventually need to take in winning cond
 		}
 	};
 	this.checkWinCol = function(){
-		
 		for(var i=0; i<this.dimension; i++){ 		//outer loop keeps id number confined to column
 			var player0Pt = 0;
 			var player1Pt = 0;
@@ -307,14 +279,12 @@ function TicTacMain(dim,winCond){	//will eventually need to take in winning cond
                     }
                 }
                 if(player0PtLR == this.winNumber || player0PtRL == this.winNumber){
-                	// console.log('player 0 wins; triggered at diagonal win check');
 					this.gameOver = true;
 					//call function for ui update
 					this.gameWinner = 0;
 					return;
 				}
 				else if(player1PtLR == this.winNumber || player1PtRL == this.winNumber){
-                    // console.log('player 1 wins; triggered at diagonal win check');
                     this.gameOver = true;
                     //call function for ui update
                     this.gameWinner = 1;
@@ -323,69 +293,4 @@ function TicTacMain(dim,winCond){	//will eventually need to take in winning cond
             }
         }
     }
-
-
-
-	// this.checkWinDiag = function(){ 		//this function checks both tLeft-bRight and tRight-bLeft diagonals
-	// 	var player0PtLR = 0;
-	// 	var player1PtLR = 0;
-	// 	for(var i=0; i<this.dimension; i++){ 	//checking top left to bottom right
-	//
-	// 		var currentSquare = $('#'+i+i);		//the col/row index in this direction should increment equally; therefore only one loop
-	// 		if(currentSquare.hasClass('player0Sq')){
-	// 			player0PtLR++;
-	// 		}else{
-	// 			player0PtLR = 0;
-	// 		}
-	// 		if(currentSquare.hasClass('player1Sq')){
-	// 			player1PtLR++;
-	// 		}else{
-	// 			player1PtLR = 0;
-	// 		}
-	// 		if(player0PtLR == this.winNumber){
-	// 			// console.log('player 0 wins; triggered at diagonal win check');
-	// 			this.gameOver = true;
-	// 			//call function for ui update
-	// 			this.gameWinner =0;
-	// 			return;
-	// 		}
-	// 		if(player1PtLR == this.winNumber){
-	// 			// console.log('player 1 wins; triggered at diagonal win check');
-	// 			this.gameOver = true;
-	// 			this.gameWinner = 1;
-	// 			return;
-	// 		}
-	// 	}
-	// 	for(var i=0; i<this.dimension;){
-	// 		var player0PtRL = 0;
-	// 		var player1PtRL = 0;
-	// 		for(var j=this.dimension-1; j>=0; j--){
-	// 			var currentSquare2 = $('#'+i+j);
-	// 			if(currentSquare2.hasClass('player0Sq')){
-	// 				player0PtRL++;
-	// 			}else{
-	// 				player0PtRL = 0;
-	// 			}
-	// 			if(currentSquare2.hasClass('player1Sq')){
-	// 				player1PtRL++;
-	// 			}else{
-	// 				player1PtRL = 0;
-	// 			}
-	// 			if(player0PtRL == this.winNumber){
-	// 				// console.log('player 0 wins; triggered at diagonal win check');
-	// 				this.gameOver = true;
-	// 				//call function for ui update
-	// 				this.gameWinner = 0;
-	// 				return;
-	// 			}
-	// 			if(player1PtRL == this.winNumber){
-	// 				// console.log('player 1 wins; triggered at diagonal win check');
-	// 				this.gameOver = true;
-	// 				this.gameWinner = 1;
-	// 				return;
-	// 			}
-	// 			i++;
-	// 		}
-	// 	}
-	// };
 }

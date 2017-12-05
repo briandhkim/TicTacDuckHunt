@@ -1,8 +1,4 @@
 function AudioHandler(){
-    this.flap = function(){
-        var audio = new Audio("assets/audio_flap.wav");
-        audio.play();
-    };
     this.hit = function(){
         var audio = new Audio("assets/audio_hit.wav");
         audio.play();

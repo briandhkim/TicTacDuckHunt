@@ -9,7 +9,7 @@ function DuckLayer(){
     this.currentTurnTime = 0;
     this.interval = 250;
     this.duckDurations = {}; //key = time spent in square, value = ID of square
-    this.pointPerDuck = 20;
+    this.pointsPerDuck = 20;
     this.timerTimeRemaining = 5000;
     this.timer = null;
     this.timePerInterval = 10;
@@ -33,28 +33,25 @@ function DuckLayer(){
         if(this.timerTimeRemaining <= 0){
             this.timerTimeRemaining = 0;
             clearInterval(this.timer);
-            // console.log('time ran out');
-
         }
         var percentRemaining = this.timerTimeRemaining / this.turnTime * 100;
 
         if(percentRemaining >= 80){
-            this.pointPerDuck = 20;
+            this.pointsPerDuck = 20;
         }
         else if(percentRemaining <=20){
-            this.pointPerDuck = 5;
+            this.pointsPerDuck = 5;
         }
         else{
             var middleTime = this.timerTimeRemaining - 1000;
             var percentOfMiddleTime = middleTime / 3000;
-            this.pointPerDuck = 5 + Math.round(15 * percentOfMiddleTime);
+            this.pointsPerDuck = 5 + Math.round(15 * percentOfMiddleTime);
         }
-        // console.log(this.pointPerDuck);
+        // console.log(this.pointsPerDuck);
         $(".timer").css('width', percentRemaining + '%');
     }.bind(this);
     this.intervalFunction = function(){
         this.currentTimeUpdater();
-
         this.generateRandomDuck();
         this.removeRandomGeneratedDuck();
     }.bind(this);
@@ -66,15 +63,14 @@ function DuckLayer(){
     this.stopTimer = function(){
         $(".timer").css("background-color", "gray");
         this.currentTurnTime = 0;
-        clearInterval(this.playerTimer); //stopping duck creation
+        clearInterval(this.playerTimer);
         clearInterval(this.timer);
-        this.updateDisplay(); //updateDisplay
-        this.resetDuckVar();    //may need to be moved
-        // ticTacMain.changePlayerTurn(); //this.changePlayerTurn
+        this.updateDisplay();
+        this.resetDuckVar();
         this.timerTimeRemaining = 5000;
         $(".timer").css('width', "100%");
-        this.pointPerDuck = 20;
-    };   //bind this?
+        this.pointsPerDuck = 20;
+    };
 
     this.checkWinCondition = function(){
         ticTacMain.checkWinCol();
@@ -92,13 +88,10 @@ function DuckLayer(){
         $(".gameSquare").each(function() { //removing background images at the end of the player turn"
             var duckAnimateSelection = $(this)[0].children[0];
             if (ticTacMain.playerTurn === 0) {
-                // $(this).removeClass('animateDuck0');
                 $(duckAnimateSelection).removeClass('animateDuck0');
             } else {
-                // $(this).removeClass('animateDuck1');
                 $(duckAnimateSelection).removeClass('animateDuck1');
             }
-            // $(this).removeClass('animateDog');
             $(duckAnimateSelection).removeClass('animateDog');
         });
     };
@@ -163,16 +156,13 @@ function DuckLayer(){
             audioHandler.quack();
             if(ticTacMain.playerTurn === 0){
                 $(duckAnimateSelection).addClass('animateDuck0'); //adding animations via class
-                // $("#" + randomDuckSquare).css("background", "url(assets/p0_duck01.png) no-repeat center");
                 audioHandler.quack();
             } else{
                 $(duckAnimateSelection).addClass('animateDuck1'); //adding animations via class
-                // $("#" + randomDuckSquare).css("background", "url(assets/p1_duck01.png) no-repeat center");
                 audioHandler.quack();
             }
         } else{
             $(duckAnimateSelection).addClass('animateDog'); //adding animations via class
-            // $("#" + randomDuckSquare).css("background", "url(assets/dog01.png) no-repeat center");
             audioHandler.dog();
         }
     };
@@ -201,10 +191,10 @@ function DuckLayer(){
         audioHandler.hit();
         this.duckHit = true; //changing duckHit to true if duck was in div clicked
         if (ticTacMain.playerTurn === 0) {
-            this.player0Score += this.pointPerDuck; //update this.player0Score
+            this.player0Score += this.pointsPerDuck; //update this.player0Score
             ticTacMain.player0Squares.push(squareId);
         } else {
-            this.player1Score += this.pointPerDuck; //update this.player1Score
+            this.player1Score += this.pointsPerDuck; //update this.player1Score
             ticTacMain.player1Squares.push(squareId);
         }
         ticTacMain.availableSquareArray.splice(ticTacMain.availableSquareArray.indexOf(squareId), 1 );
@@ -234,7 +224,6 @@ function DuckLayer(){
         for(var i = 0; i < ticTacMain.player1Squares.length; i++){
             $("#" + ticTacMain.player1Squares[i]).css("background", "url(assets/p1_duckDead.png) no-repeat center");
         }
-
         if (ticTacMain.playerTurn === 0) { //updateScore in html.index;
             $('.player0ScoreVal').text(this.player0Score);
         } else {
