@@ -267,6 +267,8 @@ button, input{
 	/*border: 1px solid orange;*/
 	padding: 0;
 	background: black;
+}
+.player0Score, .player1Score{
 	font-size: 50px;
 }
 
@@ -376,4 +378,51 @@ button, input{
 @keyframes playdog {
 	from { background-position: 0; }
 	to { background-position: -590px; }
+}
+
+@media screen and (max-width: 1200px){
+	.instructionsMenu h2{
+		font-size: 16px;
+	}
+	.instructionsMenu ul{
+		font-size: 13px;
+	}
+	.button{
+		margin-top:20px;
+	}
+	.radioGridSelect, .radioWinSelectInput{
+		font-size: 12.5px;
+	}
+	.radioGridSelectLabel, .radioWinSelectLabel{
+		font-size: 11px;
+	}
+	.titleArea{
+		font-size: 65px;
+	}
+	.rowLower{
+		margin: 0;
+	}
+	.player0Area, .player1Area{
+		background-size: 100% auto;
+	}
+	.player0Score, .player1Score{
+		font-size: 25px;
+	}
+	.player0Name, .player1Name{
+		font-size:30px;
+	}
+}
+
+@media screen and (max-width: 992px){
+
+}
+
+@media screen and (max-width: 992px) and (min-width: 768px){
+	.titleArea{
+		font-size: 45px;
+	}
+}
+
+@media screen and (max-width: 767px){
+
 }
