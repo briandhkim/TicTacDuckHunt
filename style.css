@@ -426,3 +426,48 @@ button, input{
 @media screen and (max-width: 767px){
 
 }
+
+.mobileDiv {
+	display: none;
+}
+
+@media screen and (max-width: 768px){
+    .buttonArea {
+		display: none;
+	}
+
+    .mobileDiv {
+		display: block;
+	}
+
+    .mobileDiv button {
+		margin: 1% 0 0 0;
+	}
+
+    .titleArea {
+		padding: 0;
+		font-size: 3em;
+		display: inline;
+	}
+
+    .rowUpper {
+		height: auto;
+	}
+
+    .rowUpper > div:nth-child(3) {
+		height: 81vmin;
+	}
+
+    .gameScreenMonitor > .uiMenu {
+		display: none;
+	}
+
+    .instructionsMenu {
+		display: none;
+	}
+
+    .animateDog, .animateDuck0, .animateDuck1 {
+		height: 50vh;
+	}
+
+}
