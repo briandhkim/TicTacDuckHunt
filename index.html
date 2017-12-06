@@ -18,8 +18,12 @@
 	</title>
 </head>
 
-
 <body>
+<div class="mobileVerticalMsg text-center">
+	<h1>
+		This game was designed to be played at landscape view.
+	</h1>
+</div>
 <div class="container-fluid gunCursorDefault">	<!--overall container div-->
 	<div class="row mainWrapperRow"> <!--this row contains everything visible on the page-->
 		<div class="row rowUpper">	<!--rowUpper: contains game screen, instruction/rules, game options-->
@@ -33,6 +37,7 @@
 						<span class ="uiMenuText"></span>
 					</div>
 					<div class="instructionsMenu">
+						<p>This game was designed to be played on landscape view for all mobile devices</p>
 						<h2>Instructions</h2>
 						<ul>
 							<li>Shoot ducks to mark a square</li>
@@ -139,6 +144,7 @@
 							<li>Mark a square before the timer runs out</li>
 							<li>Each duck hit results in 5 - 20 points depending on how quickly it is shot</li>
 							<li>If game results in a tie, highest score wins</li>
+							<li>In mobile, only one board size is available! Check our desktop version for the full game.</li>
 						</ul>
 						<!-- <br> -->
 						<h4>Select board size, number of ducks in a row to win, and press START to play!</h4>
@@ -156,10 +162,10 @@
 							<div class="row radioGridSelectInput text-center">
 								<input type="radio" name="grid-mobile" class='grid-3-mobile' value="3" checked>
 								<label for="grid-3-mobile">3</label>
-								<input type="radio" name="grid-mobile" class='grid-4-mobile' value="4">
+								<!-- <input type="radio" name="grid-mobile" class='grid-4-mobile' value="4">
 								<label for="grid-4-mobile">4</label>
 								<input type="radio" name="grid-mobile"	class="grid-5-mobile" value="5">
-								<label for="grid-5-mobile">5</label>
+								<label for="grid-5-mobile">5</label> -->
 							</div>
 						</div>	<!--end of radioGridSelect div-->
 						<div class="col-xs-12 radioWinSelect">
@@ -169,10 +175,10 @@
 							<div class="row radioWinSelectInput text-center" id="winOptions">
 								<input type="radio" name="win-mobile" class="condition-3-mobile" value="3" checked>
 								<label for="condition-3-mobile">3</label>
-								<input type="radio" name="win-mobile" class="condition-4-mobile" value="4">
+								<!-- <input type="radio" name="win-mobile" class="condition-4-mobile" value="4">
 								<label for="condition-4-mobile">4</label>
 								<input type="radio" name="win-mobile" class="condition-5-mobile" value="5">
-								<label for="condition-5-mobile">5</label>
+								<label for="condition-5-mobile">5</label> -->
 							</div>
 						</div>	<!--end of radioWinSelect div-->
 						<!--end of reset button div-->

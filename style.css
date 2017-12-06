@@ -33,6 +33,16 @@ dark liver - rgb(82,74,65)
 ash grey - rgb(176,180,180)
 caput mortuum - rgb(84,42,22)
 */
+.mobileVerticalMsg{
+	display: none;
+	position: absolute;
+	z-index: 1;
+	width: 100vw;
+	height: 100vw;
+}
+.mobileVerticalMsg h1{
+	margin-top: 30vw;
+}
 .gunCursorDefault{
 	cursor: url(assets/cursorDefault.png), auto;
 }
@@ -136,8 +146,8 @@ button, input{
 	left:50%;
 	top:50%;
 	transform: translate(-50%, -50%);
-	width:50%;
-	height:70%;
+	width:60%;
+	height:80%;
 	background-image: url("assets/instructionsMenu.png");
 	background-size: 100% 100%;
 	background-repeat:no-repeat;
@@ -167,7 +177,12 @@ button, input{
 	list-style: square;
 	margin:15px;
 }
-.instructionsMenu>p{
+.instructionsMenu>p:first-child{
+	margin-top: 10px;
+	padding: 0 10px;
+	font-size: 11px;
+}
+.instructionsMenu>p:not(:first-child){
 	margin-top: 20px;
 }
 @media screen and (max-width: 1584px){
@@ -567,6 +582,9 @@ button, input{
 
 	.mobile-modal {
 		height: 115vmin;
+	}
+	.modal-content{
+		background-color: #060606;
 	}
 
 	.modal-footer {

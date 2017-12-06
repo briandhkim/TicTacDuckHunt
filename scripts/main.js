@@ -106,6 +106,16 @@ function playerTurnStart(){		//click handler for player areas  | starts each pla
 	}
 }
 
+$(window).resize(()=>{
+	if(window.innerWidth < 420){
+		$('.mobileVerticalMsg').css('display','block');
+		$('body>.container-fluid').css('display','none');
+	}else if(window.innerWidth > 420){
+		$('.mobileVerticalMsg').css('display','none');
+		$('body>.container-fluid').css('display','block');
+	}
+});
+
 $(document).ready(function(){
 	//set browser zoom to 100%
     document.body.style.webkitTransform =  1;    // Chrome, Opera, Safari
@@ -153,4 +163,11 @@ $(document).ready(function(){
 			}	
 		}
 	});
+	if(window.innerWidth < 420){
+		$('.mobileVerticalMsg').css('display','block');
+		$('body>.container-fluid').css('display','none');
+	}else if(window.innerWidth > 420){
+		$('.mobileVerticalMsg').css('display','none');
+		$('body>.container-fluid').css('display','block');
+	}
 });
