@@ -23,11 +23,10 @@
 <div class="container-fluid gunCursorDefault">	<!--overall container div-->
 	<div class="row mainWrapperRow"> <!--this row contains everything visible on the page-->
 		<div class="row rowUpper">	<!--rowUpper: contains game screen, instruction/rules, game options-->
-			<div class="col-sm-2 col-xs-7 titleArea text-center">	<!--instruction/rules section | will be set to display none in small screen-->
+			<div class="col-sm-2 hidden-xs titleArea text-center">	<!--instruction/rules section | will be set to display none in small screen-->
 				Tic Tac Duck Hunt
 				<!--<div class="rule-title text-center">Hit a duck to mark a spot - but don't hit the dog!</div>-->
 			</div>
-			<button type="button" class="btn btn-info btn-lg col-xs-4 hidden-sm hidden-md hidden-lg" data-toggle="modal" data-target="#menuModal">Menu</button>
 			<div class="col-xs-12 col-sm-8 gameScreen">	<!--main game screen area-->
 				<div class="col-sm-12 gameScreenMonitor cursorDefault">
 					<div class="uiMenu">
@@ -109,6 +108,7 @@
 						<div class="transTimer"></div>
 						<div class="timer"></div>
 					</div>
+					<button type="button" class="btn btn-info col-xs-6 hidden-sm hidden-md hidden-lg" data-toggle="modal" data-target="#menuModal">Menu</button>
 				</div>	
 				<div class="col-sm-3 player1Score text-center">Score: <span class="player1ScoreVal">0</span>
 				</div>
@@ -131,6 +131,7 @@
 				</div>
 				<div class="modal-body mobile-modal">
 					<div class="instructionsMenuMobile">
+						<h1 class="titleArea">Tic Tac Duck Hunt</h1>
 						<h2>Instructions</h2>
 						<ul>
 							<li>Shoot ducks to mark a square</li>
@@ -144,7 +145,7 @@
 					</div>
 					<div class="col-xs-12 col-sm-2 buttonAreaMobile">	<!--area for screen option button, start button, etc-->
 						<div class="col-xs-12 startInput">
-							<div class="startButton text-center button" data-dismiss="modal">
+							<div class="startButtonMobile startButton text-center button" data-dismiss="modal">
 								START
 							</div>
 						</div>	<!--end of start button div-->

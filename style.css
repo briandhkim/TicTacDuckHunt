@@ -407,6 +407,48 @@ button, input{
 }
 
 @media screen and (max-width: 768px){
+	.animateDuck0 {
+		position: relative;
+		height: 50px;
+		width: 125px;
+		background: url('assets/p0_duck_animation.png') no-repeat center;
+		background-size: auto 100%;
+		animation: play0-mobile .7s steps(4) infinite;
+	}
+	
+	@keyframes play0-mobile {
+		from { background-position: 0; }
+		to { background-position: -475px; }
+	}
+	
+	.animateDuck1 {
+		position: relative;
+		height: 50px;
+		width: 125px;
+		background: url('assets/p1_duck_animation.png') no-repeat center;
+		background-size: auto 100%;
+		animation: play1-mobile .7s steps(4) infinite;
+	}
+	
+	@keyframes play1-mobile {
+		from { background-position: 0; }
+		to { background-position: -475px; }
+	}
+	
+	.animateDog {
+		position: relative;
+		height: 50px;
+		width: 125px;
+		background: url('assets/dog_animation.png') no-repeat center;
+		background-size: auto 100%;
+		animation: playdog-mobile .5s steps(3) infinite;
+	}
+	
+	@keyframes playdog-mobile {
+		from { background-position: 0; }
+		to { background-position: -690px; }
+	}
+
 	.buttonArea {
 		display: none;
 	}
@@ -422,11 +464,8 @@ button, input{
 	.titleArea {
 		padding: 0;
 		font-size: 3em;
-		display: inline;
-	}
-
-	.rowUpper {
-		height: auto;
+		text-align: center;
+		background: none;
 	}
 
 	.rowUpper > div:nth-child(3) {
@@ -469,6 +508,12 @@ button, input{
 		width: 100%;
 	}
 
+	.timerAndDuckDisplay > button {
+		position: absolute;
+		top: 50%;
+		left: 27%;
+	}
+
 	.player0Area {
 		background-position: left;
 	}
@@ -507,7 +552,7 @@ button, input{
 		top: 0;
 	}
 
-	.startButton, .radioGridSelect {
+	.startButton, .startButtonMobile, .radioGridSelect {
 		margin-top: 5px;
 	}
 
@@ -533,7 +578,7 @@ button, input{
 	}
 }
 
-/* @media screen and (max-width: 1200px) and (min-width: 740px){
+@media screen and (max-width: 1200px) and (min-width: 770px){
 	.instructionsMenu h2{
 		font-size: 16px;
 	}
@@ -564,10 +609,10 @@ button, input{
 	.player0Name, .player1Name{
 		font-size:30px;
 	}
-} */
+}
 
 /* @media screen and (max-width: 992px) and (min-width: 768px){
 	.titleArea{
 		font-size: 45px;
 	}
-} */
+}
