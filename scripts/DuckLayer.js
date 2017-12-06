@@ -214,15 +214,24 @@ function DuckLayer(){
         this.dogHit = true;
         this.stopTimer();
         this.checkWinCondition();
-        $("#" + squareID).css("background", "url(assets/dog_shot.png) no-repeat center");
+        $("#" + squareID).css({
+            "background": "url(assets/dog_shot.png) no-repeat center",
+            "background-size": "auto 100%"
+        });
     };
 
     this.updateDisplay = function(){
         for(var i = 0; i < ticTacMain.player0Squares.length; i++){
-            $("#" + ticTacMain.player0Squares[i]).css("background", "url(assets/p0_duckDead.png) no-repeat center");
+            $("#" + ticTacMain.player0Squares[i]).css({
+                "background": "url(assets/p0_duckDead.png) no-repeat center",
+                "background-size": "auto 100%"
+            });
         }
         for(var i = 0; i < ticTacMain.player1Squares.length; i++){
-            $("#" + ticTacMain.player1Squares[i]).css("background", "url(assets/p1_duckDead.png) no-repeat center");
+            $("#" + ticTacMain.player1Squares[i]).css({
+                "background": "url(assets/p1_duckDead.png) no-repeat center",
+                "background-size": "auto 100%"
+            });
         }
         if (ticTacMain.playerTurn === 0) { //updateScore in html.index;
             $('.player0ScoreVal').text(this.player0Score);

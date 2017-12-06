@@ -36,6 +36,11 @@ function startGame(){
         $('.player1Score').css("opacity","0.3");
 		$('.winnerMessageDisplay').text("player1 click gun to start");
 		gameStarted = true;
+		if (window.innerWidth < 767) {
+			$(".startButtonMobile").text("Reset");
+		} else {
+			$(".startButton").text("Reset");
+		}
         audioHandler.start();
         $(".instructionsMenu").hide();
         displayUIMenu("Player 1: Press your zapper to start your turn!")
@@ -47,9 +52,11 @@ function startGame(){
 		if (window.innerWidth < 767) {
 			$('.condition-3-mobile, .condition-4-mobile, .condition-5-mobile').prop('disabled',false);
 			$('.grid-3-mobile, .grid-4-mobile, .grid-5-mobile').prop('disabled',false);
+			$(".startButtonMobile").text("Start");			
 		} else { 
 			$('.condition-3, .condition-4, .condition-5').prop('disabled',false);
 			$('.grid-3, .grid-4, .grid-5').prop('disabled',false);
+			$(".startButton").text("Start");			
 		}
 
         $(".animateDuck0").removeClass("animateDuck0");
