@@ -145,6 +145,20 @@ button, input{
 	font-size: 20px;
 }
 
+.gameScreenMonitor>.instructionsMenuMobile{
+	position:absolute;
+	left:50%;
+	top:50%;
+	transform: translate(-50%, -50%);
+	width:50%;
+	height:70%;
+	background-image: url("assets/instructionsMenu.png");
+	background-size: 100% 100%;
+	background-repeat:no-repeat;
+	color: white;
+	font-size: 20px;
+}
+
 .gameScreenMonitor>.instructionsMenu>h1, .gameScreenMonitor>.instructionsMenu>h2{
 	text-align: center;
 }
@@ -312,7 +326,7 @@ button, input{
 	/*font-size: 25px;*/
 /*}*/
 .player1Area {
-	background: black;
+	/* background: black; */
 	background-image: url("assets/zapperPurple.png");
 	background-size: auto 100%;
 	background-repeat: no-repeat;
@@ -388,7 +402,138 @@ button, input{
 	to { background-position: -590px; }
 }
 
-@media screen and (max-width: 1200px){
+.mobileDiv {
+	display: none;
+}
+
+@media screen and (max-width: 768px){
+	.buttonArea {
+		display: none;
+	}
+
+	.mobileDiv {
+		display: block;
+	}
+
+	.mobileDiv button {
+		margin: 1% 0 0 0;
+	}
+
+	.titleArea {
+		padding: 0;
+		font-size: 3em;
+		display: inline;
+	}
+
+	.rowUpper {
+		height: auto;
+	}
+
+	.rowUpper > div:nth-child(3) {
+		height: 81vmin;
+	}
+
+	.gameScreenMonitor > .uiMenu {
+		display: none;
+	}
+
+	.instructionsMenu {
+		display: none;
+	}
+
+	.animateDog, .animateDuck0, .animateDuck1 {
+		height: 50vh;
+	}
+
+	.player0Name, .player1Name {
+		font-size: 1.8em;
+		top: 60%; /* change this? */
+	}
+
+	.scoreAndTimerAndDucks {
+		font-size: 2em;
+	}
+
+	.scoreAndTimerAndDucks>div {
+		height: 78%;
+	}
+
+	.scoreAndTimerAndDucks>div {
+		background: none;
+	}
+
+	.timerAndDuckDisplay > div {
+		position: absolute;
+		bottom: 64%;
+		left: 2%;
+		width: 100%;
+	}
+
+	.player0Area {
+		background-position: left;
+	}
+
+	.player0Score {
+		position: absolute;
+		right: 78%;
+		top: 28%;	
+		width: 64%;
+	}
+
+	.player1Area {
+		background-position: right;
+	}
+
+	.player1Score {
+		position: absolute;
+		top: 28%;
+		left: 79%;
+		width: 63%;
+	}
+
+	.timerAndDuckDisplay {
+		position: absolute;
+		width: 92%;
+		right: 4%;
+		bottom: 22%;
+	}
+
+	.player0Score, .player1Score {
+		font-size: 25px;
+	}
+
+	.buttonAreaMobile {
+		background: lightgrey;
+		top: 0;
+	}
+
+	.startButton, .radioGridSelect {
+		margin-top: 5px;
+	}
+
+	.radioGridSelectLabel {
+		margin: 10px;
+	}
+
+	.radioWinSelectLabel {
+		height: 45%;
+		margin: 10px;
+	}
+
+	.mobile-modal {
+		height: 115vmin;
+	}
+
+	.modal-footer {
+		padding-top: 0;
+	}
+
+	.gameScreenMonitor>.uiMenu {
+		height: 27%;
+	}
+}
+
+/* @media screen and (max-width: 1200px) and (min-width: 740px){
 	.instructionsMenu h2{
 		font-size: 16px;
 	}
@@ -419,63 +564,10 @@ button, input{
 	.player0Name, .player1Name{
 		font-size:30px;
 	}
-}
+} */
 
-@media screen and (max-width: 992px){
-
-}
-
-@media screen and (max-width: 992px) and (min-width: 768px){
+/* @media screen and (max-width: 992px) and (min-width: 768px){
 	.titleArea{
 		font-size: 45px;
 	}
-}
-
-@media screen and (max-width: 767px){
-
-}
-
-.mobileDiv {
-	display: none;
-}
-
-@media screen and (max-width: 768px){
-    .buttonArea {
-		display: none;
-	}
-
-    .mobileDiv {
-		display: block;
-	}
-
-    .mobileDiv button {
-		margin: 1% 0 0 0;
-	}
-
-    .titleArea {
-		padding: 0;
-		font-size: 3em;
-		display: inline;
-	}
-
-    .rowUpper {
-		height: auto;
-	}
-
-    .rowUpper > div:nth-child(3) {
-		height: 81vmin;
-	}
-
-    .gameScreenMonitor > .uiMenu {
-		display: none;
-	}
-
-    .instructionsMenu {
-		display: none;
-	}
-
-    .animateDog, .animateDuck0, .animateDuck1 {
-		height: 50vh;
-	}
-
-}
+} */
