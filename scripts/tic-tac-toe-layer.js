@@ -1,4 +1,4 @@
-function TicTacMain(dim,winCond){	//will eventually need to take in winning condition number
+function TicTacToeLayer(dim,winCond){	//will eventually need to take in winning condition number
 	this.self = this;
 	this.dimension = dim;
 	this.winNumber = winCond; 
@@ -22,7 +22,7 @@ function TicTacMain(dim,winCond){	//will eventually need to take in winning cond
 					'height':'100%', 
 					'z-index':'1'
 				}).click(function(){
-					ticTacMain.clickGameSquare($(this).attr('id'));
+					ticTacToeLayer.clickGameSquare($(this).attr('id'));
 				});
 				var innerDiv = $("<div>").css({
 					'height':'100%', 
@@ -64,7 +64,7 @@ function TicTacMain(dim,winCond){	//will eventually need to take in winning cond
 	};
 
 	this.changePlayerTurn = function(){
-		playerTurnStartClicked = false;
+		turnStarted = false;
 		if(duckLayer.dogHit){	//if the dog hit bool turns true, stop game
 			if(this.playerTurn === 0){
 				$('.player0Area').unbind('click',playerTurnStart).css("opacity","0.3");
@@ -73,7 +73,7 @@ function TicTacMain(dim,winCond){	//will eventually need to take in winning cond
 				$('.player1Score').css("opacity","1");
 				$('.player1Name').addClass("playerFocusHighlight");
 				$('.player0Name').removeClass("playerFocusHighlight");
-				displayUIMenu("Player 2 Wins: Player 1 shot the dog!  Press START to play again!");
+				displayUIMenu("Player 2 Wins: Player 1 shot the dog!  Press RESET to play again!");
 				this.gameOver = true;
 				return;
 			}else if(this.playerTurn ===1){
@@ -83,7 +83,7 @@ function TicTacMain(dim,winCond){	//will eventually need to take in winning cond
 				$('.player0Score').css("opacity","1");
 				$('.player0Name').addClass("playerFocusHighlight");
 				$('.player1Name').removeClass("playerFocusHighlight");
-				displayUIMenu("Player 1 Wins: Player 2 shot the dog!  Press START to play again!");
+				displayUIMenu("Player 1 Wins: Player 2 shot the dog!  Press RESET to play again!");
 				this.gameOver = true;
 				return;
 			}
@@ -99,10 +99,8 @@ function TicTacMain(dim,winCond){	//will eventually need to take in winning cond
 				}
 				if(duckLayer.player0Score > duckLayer.player1Score){
 					displayUIMenu("Player 1 wins with higher score!  Press RESET to play again!")
-					return;
 				}else if(duckLayer.player0Score < duckLayer.player1Score){
                     displayUIMenu("Player 2 wins with higher score!  Press RESET to play again!")
-                    return;
 				}
 			}
 			else if(this.playerTurn === 0){
@@ -118,7 +116,6 @@ function TicTacMain(dim,winCond){	//will eventually need to take in winning cond
                 $('.player0Score').css("opacity","0.3");
                 $('.player1Score').css("opacity","1");
 				$('.player1Name').addClass('playerFocusHighlight');
-				return;
 			}else if(this.playerTurn === 1){
             	this.playerTurn = 0;
 				$('.player1Area').unbind('click',playerTurnStart);
@@ -133,8 +130,6 @@ function TicTacMain(dim,winCond){	//will eventually need to take in winning cond
                 $('.player1Score').css("opacity","0.3");
                 $('.player0Score').css("opacity","1");
 				$('.player0Name').addClass('playerFocusHighlight');
-            	// console.log("player 0 turn");
-				return;
 			}
 		}else if(this.gameOver){
 			if(this.playerTurn === 0){
@@ -203,7 +198,6 @@ function TicTacMain(dim,winCond){	//will eventually need to take in winning cond
 					this.gameOver = true;
 					this.gameWinner = 0;
 					return;
-					//call function updating ui with player 0 win
 				}
 				if(player1Pt == this.winNumber){
 					// console.log('player 1 wins; triggered at col win check');
@@ -279,13 +273,15 @@ function TicTacMain(dim,winCond){	//will eventually need to take in winning cond
                     }
                 }
                 if(player0PtLR == this.winNumber || player0PtRL == this.winNumber){
-					this.gameOver = true;
+					console.log("player0 DIAG win")
+                	this.gameOver = true;
 					//call function for ui update
 					this.gameWinner = 0;
 					return;
 				}
 				else if(player1PtLR == this.winNumber || player1PtRL == this.winNumber){
-                    this.gameOver = true;
+                    console.log("player1 DIAG win")
+                	this.gameOver = true;
                     //call function for ui update
                     this.gameWinner = 1;
                     return;
