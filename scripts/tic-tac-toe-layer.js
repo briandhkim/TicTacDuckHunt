@@ -161,14 +161,14 @@ function TicTacToeLayer(dim,winCond){	//will eventually need to take in winning 
 					player1Pt = 0;
 				}
 				if(player0Pt ==this.winNumber){
-					console.log('player 0 wins; triggered at row win check');
+					// console.log('player 0 wins; triggered at row win check');
 					this.gameOver = true;
 					this.gameWinner = 0;
 					return;
 					//call function that updates ui with player 0 win
 				}
 				if(player1Pt == this.winNumber){
-					console.log('player 1 wins; triggered at row win check');
+					// console.log('player 1 wins; triggered at row win check');
 					this.gameOver = true;
 					this.gameWinner = 1;
 					return;
@@ -194,14 +194,13 @@ function TicTacToeLayer(dim,winCond){	//will eventually need to take in winning 
 					player1Pt = 0;
 				}
 				if(player0Pt == this.winNumber){
-					console.log('player 0 wins; triggered at col win check');
+					// console.log('player 0 wins; triggered at col win check');
 					this.gameOver = true;
 					this.gameWinner = 0;
 					return;
-					//call function updating ui with player 0 win
 				}
 				if(player1Pt == this.winNumber){
-					console.log('player 1 wins; triggered at col win check');
+					// console.log('player 1 wins; triggered at col win check');
 					this.gameOver = true;
 					this.gameWinner = 1;
 					return;
@@ -274,13 +273,15 @@ function TicTacToeLayer(dim,winCond){	//will eventually need to take in winning 
                     }
                 }
                 if(player0PtLR == this.winNumber || player0PtRL == this.winNumber){
-					this.gameOver = true;
+					console.log("player0 DIAG win")
+                	this.gameOver = true;
 					//call function for ui update
 					this.gameWinner = 0;
 					return;
 				}
 				else if(player1PtLR == this.winNumber || player1PtRL == this.winNumber){
-                    this.gameOver = true;
+                    console.log("player1 DIAG win")
+                	this.gameOver = true;
                     //call function for ui update
                     this.gameWinner = 1;
                     return;

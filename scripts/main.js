@@ -10,11 +10,10 @@ function startGame(){
     //start game
 	if(!gameStarted){
 		if (window.innerWidth < 767) {
-			dimension = $("input[name='grid-mobile']:checked").val();
-			winCond = $("input[name='win-mobile']:checked").val();
-	
-			$('.condition-3-mobile:not(:checked), .condition-4-mobile:not(:checked), .condition-5-mobile:not(:checked)').prop('disabled',true);
-			$('.grid-3-mobile:not(:checked), .grid-4-mobile:not(:checked), .grid-5-mobile:not(:checked)').prop('disabled',true);
+			// dimension = $("input[name='grid-mobile']:checked").val();
+			// winCond = $("input[name='win-mobile']:checked").val();
+            dimension = 3;
+            winCond = 3;
 		} else {
 			dimension = $("input[name='grid']:checked").val();
 			winCond = $("input[name='win']:checked").val();
