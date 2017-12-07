@@ -51,11 +51,13 @@ function startGame(){
 		if (window.innerWidth < 767) {
 			$('.condition-3-mobile, .condition-4-mobile, .condition-5-mobile').prop('disabled',false);
 			$('.grid-3-mobile, .grid-4-mobile, .grid-5-mobile').prop('disabled',false);
-			$(".startButtonMobile").text("Start");			
+			$(".startButtonMobile").text("Start");
+			displayUIMenu("Open the menu for instructions. Press START to play!")		
 		} else { 
 			$('.condition-3, .condition-4, .condition-5').prop('disabled',false);
 			$('.grid-3, .grid-4, .grid-5').prop('disabled',false);
-			$(".startButton").text("Start");			
+			$(".startButton").text("Start");
+			displayUIMenu("Select board size, number of ducks in a row to win, and press START to play!")			
 		}
 
         $(".animateDuck0").removeClass("animateDuck0");
@@ -78,8 +80,7 @@ function startGame(){
         duckLayer.timerTimeRemaining = 0;
         duckLayer = null;
         audioHandler = null;
-        turnStarted = false;
-        displayUIMenu("Select board size, number of ducks in a row to win, and press START to play!")
+        playerTurnStartClicked = false;
 	}
 }
 
@@ -87,9 +88,9 @@ function removeUIMenu(){
 	$(".uiMenu").hide();
 }
 function displayUIMenu(message){
-    $(".uiMenu").show();
-	$(".uiMenuText").text(message).css("text-align", "center")/*.css("display", "flex");*/
-    $(".uiMenuText").css("margin", "0 20px")
+    $(".uiMenu").show().css('display', 'flex');
+	$(".uiMenuText").text(message)/*.css("text-align", "center")/*.css("display", "flex");*/
+    // $(".uiMenuText").css("margin", "0 20px")
 }
 
 function playerTurnStart(){		//click handler for player areas  | starts each player's turn and timer
@@ -133,14 +134,20 @@ $(document).ready(function(){
 			}
 			if($('.grid-3-mobile').is(':checked')){
 				$('.condition-3-mobile[type=radio]').prop("checked", true)
+				$('.con-4ml').css('color', 'gray');
+				$('.con-5ml').css('color', 'gray');
 			}
 			if($('.grid-4-mobile').is(':checked')){
 				$('.condition-4-mobile[type=radio]').attr('disabled',false);
 				$('.condition-4-mobile[type=radio]').prop("checked", true)
+				$('.con-4ml').css('color', '#fb9a38');
+				$('.con-5ml').css('color', 'gray');				
 	
 			}if($('.grid-5-mobile').is(':checked')){
 				$('.condition-4-mobile,.condition-5-mobile[type=radio]').attr('disabled',false);
 				$('.condition-5-mobile[type=radio]').prop("checked", true)
+				$('.con-4ml').css('color', '#fb9a38');
+				$('.con-5ml').css('color', '#fb9a38');
 			}	
 		} else {
 			if(!$('.grid-5[type=radio]').is(':checked')){

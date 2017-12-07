@@ -86,8 +86,7 @@ button, input{
 }
 .titleArea{
 	font-family: duckhunt, Arial;
-	font-size: 115px;
-
+	font-size: 6.5em;
 	background-color: black;
 	color: #00e8d8;
 }
@@ -375,7 +374,11 @@ button, input{
 	position: absolute;
 }
 
-/* animation using classes */
+.mobileDiv {
+	display: none;
+}
+
+/* animation */
 .animateDuck0 {
 	position: relative;
 	height: 200px;
@@ -416,12 +419,10 @@ button, input{
 	from { background-position: 0; }
 	to { background-position: -590px; }
 }
+/* animation */
 
-.mobileDiv {
-	display: none;
-}
-
-@media screen and (max-width: 768px){
+/***** RESPONSIVE *****/
+@media screen and (max-width: 769px){
 	.animateDuck0 {
 		position: relative;
 		height: 50px;
@@ -478,7 +479,7 @@ button, input{
 
 	.titleArea {
 		padding: 0;
-		font-size: 3em;
+		font-size: 2.5em;
 		text-align: center;
 		background: none;
 	}
@@ -581,7 +582,8 @@ button, input{
 	}
 
 	.mobile-modal {
-		height: 115vmin;
+		height: 69vmin;
+		padding: 10px 15px;
 	}
 	.modal-content{
 		background-color: #060606;
@@ -593,6 +595,116 @@ button, input{
 
 	.gameScreenMonitor>.uiMenu {
 		height: 27%;
+	}
+
+	.modal-header {
+		padding: 2px 0;
+		border-bottom: none;
+	}
+
+	.instructionsMenuMobile > h2 {
+		margin: 6px 0;
+	}
+
+	.github-links i {
+		font-size: 20px;
+	}
+
+	.con-4ml, .con-5ml {
+		color: gray;
+	}
+
+	.uiMenu {
+		display: flex;
+	}
+
+	.gameScreenMonitor>.uiMenu>.uiMenuText { 
+		margin: auto;
+		padding: 5px;
+		text-align: center;
+		font-size: 18px;
+	}
+}
+
+@media screen and (max-width: 769px) and (min-height: 450px){
+	.animateDuck0 {
+		position: relative;
+		height: 150px;
+		width: 235px;
+		background: url('assets/p0_duck_animation.png') no-repeat center;
+		background-size: auto 80%;
+		animation: play0-mobile .7s steps(4) infinite;
+	}
+	
+	@keyframes play0-mobile {
+		from { background-position: 0; }
+		to { background-position: -830px; }
+	}
+	
+	.animateDuck1 {
+		position: relative;
+		height: 150px;
+		width: 235px;
+		background: url('assets/p1_duck_animation.png') no-repeat center;
+		background-size: auto 80%;
+		animation: play1-mobile .7s steps(4) infinite;
+	}
+	
+	@keyframes play1-mobile {
+		from { background-position: 0; }
+		to { background-position: -830px; }
+	}
+	
+	.animateDog {
+		position: relative;
+		height: 150px;
+		width: 220px;
+		background: url('assets/dog_animation.png') no-repeat center;
+		background-size: auto 80%;
+		animation: playdog-mobile .5s steps(3) infinite;
+	}
+	
+	@keyframes playdog-mobile {
+		from { background-position: 0; }
+		to { background-position: -610px; }
+	}
+
+    .mobile-modal {
+		height: 38vmin;
+	}
+
+	.timerAndDuckDisplay > div {
+		position: absolute;
+		bottom: 44%;
+		width: 100%;
+	}
+
+	.timerAndDuckDisplay > button {
+		position: absolute;
+		top: 70%;
+		left: 24%;
+	}
+
+	.player0Score {
+		position: absolute;
+		right: 68%;
+		top: 40%;
+		width: 85%;
+	}
+
+	.player1Score {
+		position: absolute;
+		top: 39%;
+		left: 72%;
+		width: 85%;
+	}
+
+	.scoreAndTimerAndDucks>div {
+		height: auto;
+	}
+
+	.scoreAndTimerAndDucks>div:nth-child(2) {
+		height: 79%;
 	}
 }
 
@@ -629,7 +741,7 @@ button, input{
 	}
 }
 
-/* @media screen and (max-width: 992px) and (min-width: 768px){
+@media screen and (max-width: 992px) and (min-width: 770px){
 	.titleArea{
 		font-size: 45px;
 	}
