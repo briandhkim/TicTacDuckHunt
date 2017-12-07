@@ -1,13 +1,13 @@
-var ticTacMain = null;
+var ticTacToeLayer = null;
 var duckLayer = null;
 var audioHandler = null;
 var gameStarted =false;
-var playerTurnStartClicked = false;
+var turnStarted = false;
 
 function startGame(){
-	//start game
 	var dimension = null;
 	var winCond = null;
+    //start game
 	if(!gameStarted){
 		if (window.innerWidth < 767) {
 			dimension = $("input[name='grid-mobile']:checked").val();
@@ -23,10 +23,10 @@ function startGame(){
 			$('.grid-3:not(:checked), .grid-4:not(:checked), .grid-5:not(:checked)').prop('disabled',true);
 		}
 
-		ticTacMain = new TicTacMain(dimension,winCond);
+		ticTacToeLayer = new TicTacToeLayer(dimension,winCond);
 		duckLayer = new DuckLayer();
 		audioHandler = new AudioHandler(); //audioHandler missing var| set var audioHandler to null up top (Brian)
-		ticTacMain.createBoard(dimension);
+		ticTacToeLayer.createBoard(dimension);
 		$('.gameScreenMonitor').removeClass('cursorDefault');
 		$('.container-fluid').removeClass('gunCursorDefault').addClass('gunCursorPlayer0');
 		$('.gameScreenMonitor').addClass('cursorPlayer0');
@@ -75,11 +75,11 @@ function startGame(){
         $('.player1Score').css("opacity","1");
         $('.player0ScoreVal, .player1ScoreVal').text('0');
         $('.winnerMessageDisplay').text('select options above and click start');
-        ticTacMain = null;
+        ticTacToeLayer = null;
         duckLayer.timerTimeRemaining = 0;
         duckLayer = null;
         audioHandler = null;
-        playerTurnStartClicked = false;
+        turnStarted = false;
         displayUIMenu("Select board size, number of ducks in a row to win, and press START to play!")
 	}
 }
@@ -95,11 +95,11 @@ function displayUIMenu(message){
 
 function playerTurnStart(){		//click handler for player areas  | starts each player's turn and timer
 	removeUIMenu();
-	if(gameStarted&&!playerTurnStartClicked){
-		playerTurnStartClicked = true;
-		if(ticTacMain.playerTurn == 0){
+	if(gameStarted&&!turnStarted){
+		turnStarted = true;
+		if(ticTacToeLayer.playerTurn == 0){
 			$('.winnerMessageDisplay').text('player 1 is playing');
-		}else if (ticTacMain.playerTurn ==1){
+		}else if (ticTacToeLayer.playerTurn ==1){
 			$('.winnerMessageDisplay').text('player 2 is playing');
 		}
 		duckLayer.startTimer();

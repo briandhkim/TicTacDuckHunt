@@ -73,10 +73,10 @@ function DuckLayer(){
     };
 
     this.checkWinCondition = function(){
-        ticTacMain.checkWinCol();
-        ticTacMain.checkWinRow();
-        ticTacMain.checkWinDiag();
-        ticTacMain.changePlayerTurn();
+        ticTacToeLayer.checkWinCol();
+        ticTacToeLayer.checkWinRow();
+        ticTacToeLayer.checkWinDiag();
+        ticTacToeLayer.changePlayerTurn();
     };
 
     this.resetDuckVar = function(){
@@ -87,7 +87,7 @@ function DuckLayer(){
         this.duckDurations = {};
         $(".gameSquare").each(function() { //removing background images at the end of the player turn"
             var duckAnimateSelection = $(this)[0].children[0];
-            if (ticTacMain.playerTurn === 0) {
+            if (ticTacToeLayer.playerTurn === 0) {
                 $(duckAnimateSelection).removeClass('animateDuck0');
             } else {
                 $(duckAnimateSelection).removeClass('animateDuck1');
@@ -103,7 +103,7 @@ function DuckLayer(){
         var percentChanceDuckAppears = 0.90;
         if (this.currentTurnTime >= this.turnTime) { //checking if currentTime === 5 seconds and if it is, stopTimer
             this.stopTimer();
-            ticTacMain.changePlayerTurn();
+            ticTacToeLayer.changePlayerTurn();
             audioHandler.miss();
         }
         if(this.currentTurnTime === 0){
@@ -130,9 +130,9 @@ function DuckLayer(){
             }
         }
         var availableUnoccupiedSquares = [];
-        for(var i = 0; i < ticTacMain.availableSquareArray.length; i++){ //looping through array in ticTacMain.js containing all available div IDs
-            if(this.duckOccupiedSquares.indexOf(ticTacMain.availableSquareArray[i]) === -1 && this.dogOccupiedSquares.indexOf(ticTacMain.availableSquareArray[i]) === -1){ //checking if duckOccupied squares array contains the same ID in the availableSquareArray
-                availableUnoccupiedSquares.push(ticTacMain.availableSquareArray[i]) //if there is no match, push those IDs to newly made array
+        for(var i = 0; i < ticTacToeLayer.availableSquareArray.length; i++){ //looping through array in ticTacToeLayer.js containing all available div IDs
+            if(this.duckOccupiedSquares.indexOf(ticTacToeLayer.availableSquareArray[i]) === -1 && this.dogOccupiedSquares.indexOf(ticTacToeLayer.availableSquareArray[i]) === -1){ //checking if duckOccupied squares array contains the same ID in the availableSquareArray
+                availableUnoccupiedSquares.push(ticTacToeLayer.availableSquareArray[i]) //if there is no match, push those IDs to newly made array
             }
         }
         if(availableUnoccupiedSquares.length === 0) {
@@ -154,7 +154,7 @@ function DuckLayer(){
         var duckAnimateSelection = $('#' + randomDuckSquare)[0].children[0];
         if(!dogGenerate) {
             audioHandler.quack();
-            if(ticTacMain.playerTurn === 0){
+            if(ticTacToeLayer.playerTurn === 0){
                 $(duckAnimateSelection).addClass('animateDuck0'); //adding animations via class
                 audioHandler.quack();
             } else{
@@ -190,16 +190,16 @@ function DuckLayer(){
         var duckAnimateSelection = $('#' + squareId)[0].children[0];
         audioHandler.hit();
         this.duckHit = true; //changing duckHit to true if duck was in div clicked
-        if (ticTacMain.playerTurn === 0) {
+        if (ticTacToeLayer.playerTurn === 0) {
             this.player0Score += this.pointsPerDuck; //update this.player0Score
-            ticTacMain.player0Squares.push(squareId);
+            ticTacToeLayer.player0Squares.push(squareId);
         } else {
             this.player1Score += this.pointsPerDuck; //update this.player1Score
-            ticTacMain.player1Squares.push(squareId);
+            ticTacToeLayer.player1Squares.push(squareId);
         }
-        ticTacMain.availableSquareArray.splice(ticTacMain.availableSquareArray.indexOf(squareId), 1 );
+        ticTacToeLayer.availableSquareArray.splice(ticTacToeLayer.availableSquareArray.indexOf(squareId), 1 );
         this.stopTimer();
-        if(ticTacMain.playerTurn === 0){
+        if(ticTacToeLayer.playerTurn === 0){
             $("#" + squareId).addClass("player0Sq");
             $(duckAnimateSelection).removeClass('animateDuck0'); //removing animations
         } else{
@@ -221,19 +221,19 @@ function DuckLayer(){
     };
 
     this.updateDisplay = function(){
-        for(var i = 0; i < ticTacMain.player0Squares.length; i++){
-            $("#" + ticTacMain.player0Squares[i]).css({
-                "background": "url(assets/p0_duckDead.png) no-repeat center",
+        for(var i = 0; i < ticTacToeLayer.player0Squares.length; i++){
+            $("#" + ticTacToeLayer.player0Squares[i]).css({
+                "background": "url(assets/p0_duck_shot.png) no-repeat center",
                 "background-size": "auto 100%"
             });
         }
-        for(var i = 0; i < ticTacMain.player1Squares.length; i++){
-            $("#" + ticTacMain.player1Squares[i]).css({
-                "background": "url(assets/p1_duckDead.png) no-repeat center",
+        for(var i = 0; i < ticTacToeLayer.player1Squares.length; i++){
+            $("#" + ticTacToeLayer.player1Squares[i]).css({
+                "background": "url(assets/p1_duck_shot.png) no-repeat center",
                 "background-size": "auto 100%"
             });
         }
-        if (ticTacMain.playerTurn === 0) { //updateScore in html.index;
+        if (ticTacToeLayer.playerTurn === 0) { //updateScore in html.index;
             $('.player0ScoreVal').text(this.player0Score);
         } else {
             $('.player1ScoreVal').text(this.player1Score);

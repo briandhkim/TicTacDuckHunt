@@ -132,7 +132,7 @@ button, input{
 	transform: translate(-50%, -50%);
 	width:50%;
 	height:15%;
-	background-image: url("assets/UImenu.png");
+	background-image: url("assets/ui_menu.png");
 	background-size: 100% 100%;
 	background-repeat:no-repeat;
 	align-items: center;
@@ -148,7 +148,7 @@ button, input{
 	transform: translate(-50%, -50%);
 	width:60%;
 	height:80%;
-	background-image: url("assets/instructionsMenu.png");
+	background-image: url("assets/instructions_menu.png");
 	background-size: 100% 100%;
 	background-repeat:no-repeat;
 	color: white;
@@ -162,7 +162,7 @@ button, input{
 	transform: translate(-50%, -50%);
 	width:50%;
 	height:70%;
-	background-image: url("assets/instructionsMenu.png");
+	background-image: url("assets/instructions_menu.png");
 	background-size: 100% 100%;
 	background-repeat:no-repeat;
 	color: white;
@@ -177,13 +177,13 @@ button, input{
 	list-style: square;
 	margin:15px;
 }
-.instructionsMenu>p:first-child{
+.instructionsMenu>p{
+	margin-top: 20px;
+}
+.instructionsMenu>p.mobileWarning{
 	margin-top: 10px;
 	padding: 0 10px;
 	font-size: 11px;
-}
-.instructionsMenu>p:not(:first-child){
-	margin-top: 20px;
 }
 @media screen and (max-width: 1584px){
 	.instructionsMenu{
