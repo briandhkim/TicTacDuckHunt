@@ -215,16 +215,22 @@ function TicTacToeLayer(dim,winCond){	//will eventually need to take in winning 
                 var player1PtLR = 0;
                 var proceedP0 = true;
                 var proceedP1 = true;
-                var currentX = i;
-                var currentY = j;
-                var currentSquare = $('#'+ currentX + currentY);
+                var currentRow = j;
+                var currentCol = i;
+                var currentSquare = $('#'+ currentRow + currentCol);
                 if(currentSquare.hasClass('player0Sq') || currentSquare.hasClass('player1Sq')){
-                    player0PtLR = 1;
-                    player1PtLR = 1;
-                	while((currentX+1 < this.dimension) && (currentY+1 < this.dimension) && (player0PtLR != this.winNumber) && (player1PtLR != this.winNumber)){
-                        currentX += 1;
-                        currentY += 1;
-                        currentSquare = $('#'+ currentX + currentY);
+                    if(currentSquare.hasClass('player0Sq')){
+                        player0PtLR = 1;
+                        proceedP1 = false;
+                    }
+                	else if(currentSquare.hasClass('player1Sq')){
+                        player1PtLR = 1;
+                        proceedP0 = false;
+					}
+                	while((currentRow+1 < this.dimension) && (currentCol+1 < this.dimension) && (player0PtLR !== this.winNumber) && (player1PtLR !== this.winNumber)){
+                        currentRow += 1;
+                        currentCol += 1;
+                        currentSquare = $('#'+ currentRow + currentCol);
                         if(currentSquare.hasClass('player0Sq') && proceedP0){
                             player0PtLR+=1;
                         }
@@ -240,22 +246,46 @@ function TicTacToeLayer(dim,winCond){	//will eventually need to take in winning 
                             player1PtLR = 0;
                         }
 					}
-
 				}
+                if(player0PtLR === this.winNumber){
+                    console.log("player0 DIAG win")
+                    this.gameOver = true;
+                    //call function for ui update
+                    this.gameWinner = 0;
+                    return;
+                }
+                else if(player1PtLR === this.winNumber){
+                    console.log("player1 DIAG win")
+                    this.gameOver = true;
+                    //call function for ui update
+                    this.gameWinner = 1;
+                    return;
+                }
+            }
+        }
+
+        for(var i=0; i<this.dimension; i++) {
+            for (var j = 0; j < this.dimension; j++) {
                 var player0PtRL = 0;
                 var player1PtRL = 0;
-                proceedP0 = true;
-                proceedP1 = true;
-                currentX = i;
-                currentY = j;
-                currentSquare = $('#'+ currentX + currentY);
+                var proceedP0 = true;
+                var proceedP1 = true;
+                var currentRow = j;
+                var currentCol = i;
+                currentSquare = $('#'+ currentRow + currentCol);
                 if(currentSquare.hasClass('player0Sq') || currentSquare.hasClass('player1Sq')){
-                    player0PtRL = 1;
-                    player1PtRL = 1;
-                	while((currentX-1 >= 0) && (currentY+1 < this.dimension) && (player0PtRL != this.winNumber) && (player1PtRL != this.winNumber)){
-                        currentX -= 1;
-                        currentY += 1;
-                        currentSquare = $('#'+ currentX + currentY);
+                    if(currentSquare.hasClass('player0Sq')){
+                        player0PtRL = 1;
+                        proceedP1 = false;
+                    }
+                    else if(currentSquare.hasClass('player1Sq')){
+                        player1PtRL = 1;
+                        proceedP0 = false;
+                    }
+                    while((currentRow+1 < this.dimension) && (currentCol-1 >= 0) && (player0PtRL !== this.winNumber) && (player1PtRL !== this.winNumber)){
+                    	currentRow += 1;
+                        currentCol -= 1;
+                        currentSquare = $('#'+ currentRow + currentCol);
                         if(currentSquare.hasClass('player0Sq') && proceedP0){
                             player0PtRL+=1;
                         }
@@ -272,20 +302,20 @@ function TicTacToeLayer(dim,winCond){	//will eventually need to take in winning 
                         }
                     }
                 }
-                if(player0PtLR == this.winNumber || player0PtRL == this.winNumber){
-					console.log("player0 DIAG win")
-                	this.gameOver = true;
-					//call function for ui update
-					this.gameWinner = 0;
-					return;
-				}
-				else if(player1PtLR == this.winNumber || player1PtRL == this.winNumber){
+                if(player0PtRL === this.winNumber){
+                    console.log("player0 DIAG win")
+                    this.gameOver = true;
+                    //call function for ui update
+                    this.gameWinner = 0;
+                    return;
+                }
+                else if(player1PtRL === this.winNumber){
                     console.log("player1 DIAG win")
-                	this.gameOver = true;
+                    this.gameOver = true;
                     //call function for ui update
                     this.gameWinner = 1;
                     return;
-				}
+                }
             }
         }
     }

@@ -15,8 +15,8 @@ function startGame(){
             dimension = 3;
             winCond = 3;
 		} else {
-			dimension = $("input[name='grid']:checked").val();
-			winCond = $("input[name='win']:checked").val();
+			dimension = parseInt($("input[name='grid']:checked").val());
+			winCond = parseInt($("input[name='win']:checked").val());
 	
 			$('.condition-3:not(:checked), .condition-4:not(:checked), .condition-5:not(:checked)').prop('disabled',true);
 			$('.grid-3:not(:checked), .grid-4:not(:checked), .grid-5:not(:checked)').prop('disabled',true);
