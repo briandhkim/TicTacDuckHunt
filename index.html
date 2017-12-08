@@ -113,7 +113,11 @@
 						<div class="transTimer"></div>
 						<div class="timer"></div>
 					</div>
-					<button type="button" class="btn btn-info col-xs-6 hidden-sm hidden-md hidden-lg" data-toggle="modal" data-target="#menuModal">Menu</button>
+					<div class="visible-xs startInput"> <!--start button for mobile-->
+						<div class="startButtonMobile startButton text-center button">
+							START
+						</div>
+					</div>
 				</div>	
 				<div class="col-sm-3 player1Score text-center">Score: <span class="player1ScoreVal">0</span>
 				</div>
@@ -126,82 +130,27 @@
 		</div>	<!--end of rowLower div-->
 	</div> <!--end of mainWrapperRow div-->
 
-	<!--MODAL-->
-	<div class="modal fade" id="menuModal" role="dialog">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h4 class="modal-title titleArea">Tic Tac Duck Hunt</h4>
-				</div>
-				<div class="modal-body mobile-modal col-xs-12">
-					<div class="instructionsMenuMobile col-xs-6">
-						<h2>Instructions</h2>
-						<ul>
-							<li>Shoot ducks to mark a square</li>
-							<li>Hitting the dog is an instant loss</li>
-							<li>Mark a square before the timer runs out</li>
-							<li>Each duck hit results in 5 - 20 points depending on how quickly it is shot</li>
-							<li>If game results in a tie, highest score wins</li>
-							<li>On mobile, only one board size is available! Check out our desktop version for the full game.</li>
-						</ul>
-						<!-- <br> -->
-						<!-- <p>Select board size, number of ducks in a row to win, and press START to play!</> -->
-					</div>
-					<div class="col-xs-12 col-sm-2 buttonAreaMobile col-xs-6">	<!--area for screen option button, start button, etc-->
-						<div class="col-xs-12 startInput">
-							<div class="startButtonMobile startButton text-center button" data-dismiss="modal">
-								START
-							</div>
-						</div>	<!--end of start button div-->
-						<div class="col-xs-12 radioGridSelect">
-							<div class="row radioGridSelectLabel text-center">
-								Board Size
-							</div>
-							<div class="row radioGridSelectInput text-center">
-								<input type="radio" name="grid-mobile" class='grid-3-mobile' value="3" checked>
-								<label class='grid-3ml' for="grid-3-mobile">3</label>
-								<input type="radio" name="grid-mobile" class='grid-4-mobile' value="4">
-								<label class='grid-4ml' for="grid-4-mobile">4</label>
-								<input type="radio" name="grid-mobile"	class="grid-5-mobile" value="5">
-								<label class='grid-5ml' for="grid-5-mobile">5</label>
-							</div>
-						</div>	<!--end of radioGridSelect div-->
-						<div class="col-xs-12 radioWinSelect">
-							<div class="row radioWinSelectLabel text-center">
-								Ducks in a Row to Win
-							</div>
-							<div class="row radioWinSelectInput text-center" id="winOptions">
-								<input type="radio" name="win-mobile" class="condition-3-mobile" value="3" checked>
-								<label class='con-3ml' for="condition-3-mobile">3</label>
-								<input type="radio" name="win-mobile" class="condition-4-mobile" value="4">
-								<label class='con-4ml' for="condition-4-mobile">4</label>
-								<input type="radio" name="win-mobile" class="condition-5-mobile" value="5">
-								<label class='con-5ml' for="condition-5-mobile">5</label>
-							</div>
-							<p class="text-center github-links">
-								<br>
-								Anthony:<a href="https://github.com/AnthonySorise" target="_blank"><i class="fa fa-github-square" aria-hidden="true"></i></a> |
-								Brian:<a href="https://github.com/briandhkim" target="_blank"><i class="fa fa-github-square" aria-hidden="true"></i></a> |
-								Peter:<a href="https://github.com/oowretep" target="_blank"><i class="fa fa-github-square" aria-hidden="true"></i></a>
-							</p>
-						</div>	<!--end of radioWinSelect div-->
-						<!--end of reset button div-->
-						<!-- <div class="col-xs-11 volumeControl">
-							reserved for volume control
-						</div> -->
-						<!--<div class="col-xs-11 winnerMessageDisplay text-center">-->
-							<!--select options above and click start-->
-						<!--</div>-->
-		
-					</div>	<!--end of buttonArea div-->
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default col-xs-12" data-dismiss="modal">Close</button>
-				</div>
-			</div>
+	<!--MOBILE-->
+	<div class="mobile-first col-xs-12 visible-xs">
+		<div class="instructionsMenuMobile">
+			<h2>Instructions</h2>
+			<ul>
+				<li>Shoot ducks to mark a square before the timer runs out</li>
+				<li>Hitting the dog is an instant loss</li>
+				<li>Each duck hit results in 5 - 20 points depending on how quickly it is shot</li>
+				<li>If game results in a tie, highest score wins</li>
+				<li>On mobile, only one board size is available! Check out our desktop version for the full game.</li>
+			</ul>
+			<p class="text-center github-links">
+				<br>
+				Anthony:<a href="https://github.com/AnthonySorise" target="_blank"><i class="fa fa-github-square" aria-hidden="true"></i></a> |
+				Brian:<a href="https://github.com/briandhkim" target="_blank"><i class="fa fa-github-square" aria-hidden="true"></i></a> |
+				Peter:<a href="https://github.com/oowretep" target="_blank"><i class="fa fa-github-square" aria-hidden="true"></i></a>
+			</p>
 		</div>
-	</div> <!--MODAL-->
+	</div>
+	<!--MOBILE -->
+
 </div>	<!--end of overall container div-->
 </body>
 

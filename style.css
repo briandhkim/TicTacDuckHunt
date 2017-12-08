@@ -154,20 +154,6 @@ button, input{
 	font-size: 20px;
 }
 
-.gameScreenMonitor>.instructionsMenuMobile{
-	position:absolute;
-	left:50%;
-	top:50%;
-	transform: translate(-50%, -50%);
-	width:50%;
-	height:70%;
-	background-image: url("assets/instructions_menu.png");
-	background-size: 100% 100%;
-	background-repeat:no-repeat;
-	color: white;
-	font-size: 20px;
-}
-
 .gameScreenMonitor>.instructionsMenu>h1, .gameScreenMonitor>.instructionsMenu>h2{
 	text-align: center;
 }
@@ -380,101 +366,88 @@ button, input{
 
 /* animation */
 .animateDuck0 {
-	position: relative;
-	height: 200px;
-	width: 200px;
+	margin: auto;
+	width: 100%;
 	background: url('assets/p0_duck_animation.png') no-repeat center;
+	background-size: cover;
 	animation: play0 .7s steps(4) infinite;
 }
 
 @keyframes play0 {
-	from { background-position: 0; }
-	to { background-position: -850px; }
+	from { background-position: 0% 0; }
+	to { background-position: 133% 0; }
 }
 
 .animateDuck1 {
-	position: relative;
-	height: 200px;
-	width: 200px;
-	/*background-color: black;*/
+	margin: auto;
+	width: 100%;
 	background: url('assets/p1_duck_animation.png') no-repeat center;
+	background-size: cover;
 	animation: play1 .7s steps(4) infinite;
 }
 
 @keyframes play1 {
-	from { background-position: 0; }
-	to { background-position: -850px; }
+	from { background-position: 0% 0; }
+	to { background-position: 133% 0; }
 }
 
 .animateDog {
-	position: relative;
-	height: 200px;
-	width: 200px;
+	margin: auto;
+	width: 100%;
 	background: url('assets/dog_animation.png') no-repeat center;
-	/*background-color: black;*/
+	background-size: cover;
 	animation: playdog .7s steps(3) infinite;
 }
 
 @keyframes playdog {
-	from { background-position: 0; }
-	to { background-position: -590px; }
+	from { background-position: 0% 0; }
+	to { background-position: 152% 0; }
 }
 /* animation */
 
 /***** RESPONSIVE *****/
 @media screen and (max-width: 769px){
 	.animateDuck0 {
-		position: relative;
-		height: 50px;
-		width: 125px;
+		margin: auto;
+		width: 55%;
 		background: url('assets/p0_duck_animation.png') no-repeat center;
-		background-size: auto 100%;
-		animation: play0-mobile .7s steps(4) infinite;
+		background-size: cover;
+		animation: play0 .7s steps(4) infinite;
 	}
 	
-	@keyframes play0-mobile {
-		from { background-position: 0; }
-		to { background-position: -475px; }
+	@keyframes play0 {
+		from { background-position: 0% 0; }
+		to { background-position: 130% 0; }
 	}
 	
 	.animateDuck1 {
-		position: relative;
-		height: 50px;
-		width: 125px;
+		margin: auto;
+		width: 55%;
 		background: url('assets/p1_duck_animation.png') no-repeat center;
-		background-size: auto 100%;
-		animation: play1-mobile .7s steps(4) infinite;
+		background-size: cover;
+		animation: play1 .7s steps(4) infinite;
 	}
 	
-	@keyframes play1-mobile {
-		from { background-position: 0; }
-		to { background-position: -475px; }
+	@keyframes play1 {
+		from { background-position: 0% 0; }
+		to { background-position: 130% 0; }
 	}
 	
 	.animateDog {
-		position: relative;
-		height: 50px;
-		width: 125px;
+		margin: auto;
+		width: 50%;
 		background: url('assets/dog_animation.png') no-repeat center;
-		background-size: auto 100%;
-		animation: playdog-mobile .5s steps(3) infinite;
+		background-size: cover;
+		animation: playdog .7s steps(3) infinite;
 	}
 	
-	@keyframes playdog-mobile {
-		from { background-position: 0; }
-		to { background-position: -690px; }
+	@keyframes playdog {
+		from { background-position: 0% 0; }
+		to { background-position: 152% 0; }
 	}
 
 	.buttonArea {
 		display: none;
-	}
-
-	.mobileDiv {
-		display: block;
-	}
-
-	.mobileDiv button {
-		margin: 1% 0 0 0;
 	}
 
 	.titleArea {
@@ -492,13 +465,9 @@ button, input{
 		display: none;
 	}
 
-	.instructionsMenu {
-		display: none;
-	}
-
-	.animateDog, .animateDuck0, .animateDuck1 {
+	/* .animateDog, .animateDuck0, .animateDuck1 {
 		height: 50vh;
-	}
+	} */
 
 	.player0Name, .player1Name {
 		font-size: 1.8em;
@@ -563,43 +532,8 @@ button, input{
 		font-size: 25px;
 	}
 
-	.buttonAreaMobile {
-		background: lightgrey;
-		top: 0;
-	}
-
-	.startButton, .startButtonMobile, .radioGridSelect {
-		margin-top: 5px;
-	}
-
-	.radioGridSelectLabel {
-		margin: 10px;
-	}
-
-	.radioWinSelectLabel {
-		height: 45%;
-		margin: 10px;
-	}
-
-	.mobile-modal {
-		height: 69vmin;
-		padding: 10px 15px;
-	}
-	.modal-content{
-		background-color: #060606;
-	}
-
-	.modal-footer {
-		padding-top: 0;
-	}
-
 	.gameScreenMonitor>.uiMenu {
 		height: 27%;
-	}
-
-	.modal-header {
-		padding: 2px 0;
-		border-bottom: none;
 	}
 
 	.instructionsMenuMobile > h2 {
@@ -624,55 +558,48 @@ button, input{
 		text-align: center;
 		font-size: 18px;
 	}
+
+	.instructionsMenu {
+		display: none;
+	}
+
+	.instructionsMenuMobile > h2 {
+		text-align: center;
+	}
+
+	.instructionsMenuMobile > ul, .instructionsMenuMobile > p {
+		margin: 0;
+	}
+
+	.mobile-first {
+		display: flex;
+		position: absolute;
+		left: 50%;
+		top: 39%;
+		transform: translate(-50%, -50%);
+		margin: auto
+	}
+
+	.mobile-first > .instructionsMenuMobile {
+		margin: auto;
+		background-image: url("assets/instructions_menu.png");
+		background-size: 100% 100%;
+		background-repeat:no-repeat;
+		color: white;
+		font-size: 14px;
+	}
+
+	.startButtonMobile {
+		width: 50%;
+		position: absolute;
+		left: 23%;
+		top: 120%;
+		margin: 0;
+	}
 }
 
+
 @media screen and (max-width: 769px) and (min-height: 450px){
-	.animateDuck0 {
-		position: relative;
-		height: 150px;
-		width: 235px;
-		background: url('assets/p0_duck_animation.png') no-repeat center;
-		background-size: auto 80%;
-		animation: play0-mobile .7s steps(4) infinite;
-	}
-	
-	@keyframes play0-mobile {
-		from { background-position: 0; }
-		to { background-position: -830px; }
-	}
-	
-	.animateDuck1 {
-		position: relative;
-		height: 150px;
-		width: 235px;
-		background: url('assets/p1_duck_animation.png') no-repeat center;
-		background-size: auto 80%;
-		animation: play1-mobile .7s steps(4) infinite;
-	}
-	
-	@keyframes play1-mobile {
-		from { background-position: 0; }
-		to { background-position: -830px; }
-	}
-	
-	.animateDog {
-		position: relative;
-		height: 150px;
-		width: 220px;
-		background: url('assets/dog_animation.png') no-repeat center;
-		background-size: auto 80%;
-		animation: playdog-mobile .5s steps(3) infinite;
-	}
-	
-	@keyframes playdog-mobile {
-		from { background-position: 0; }
-		to { background-position: -610px; }
-	}
-
-    .mobile-modal {
-		height: 38vmin;
-	}
-
 	.timerAndDuckDisplay > div {
 		position: absolute;
 		bottom: 44%;
