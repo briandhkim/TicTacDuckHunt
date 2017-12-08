@@ -26,7 +26,7 @@ function TicTacToeLayer(dim,winCond){	//will eventually need to take in winning 
 					ticTacToeLayer.clickGameSquare($(this).attr('id'));
 				});
 				var innerDiv = $("<div>").css({
-					'height':'100%', 
+					// 'height':'100%', 
 					'margin':"auto"
 				});
 				boardGrid.append(innerDiv);
@@ -34,6 +34,7 @@ function TicTacToeLayer(dim,winCond){	//will eventually need to take in winning 
 				this.availableSquareArray.push(i.toString()+j.toString());
 			}
 		}
+		$('.gameSquare div').css('height', $('.gameSquare').css('height'));
 	};
 
 	this.clickGameSquare = function(squareID){ //will have $().attr('id') passed in

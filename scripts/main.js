@@ -14,6 +14,7 @@ function startGame(){
 			// winCond = $("input[name='win-mobile']:checked").val();
             dimension = 3;
 			winCond = 3;
+			$('.mobile-first').hide();
 		} else {
 			dimension = parseInt($("input[name='grid']:checked").val());
 			winCond = parseInt($("input[name='win']:checked").val());
@@ -108,6 +109,7 @@ function playerTurnStart(){		//click handler for player areas  | starts each pla
 }
 
 $(window).resize(()=>{
+	$('.gameSquare div').css('height', $('.gameSquare').css('height'));
 	if(window.innerWidth < 420){
 		$('.mobileVerticalMsg').css('display','block');
 		$('body>.container-fluid').css('display','none');
