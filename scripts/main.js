@@ -13,7 +13,7 @@ function startGame(){
 			// dimension = $("input[name='grid-mobile']:checked").val();
 			// winCond = $("input[name='win-mobile']:checked").val();
             dimension = 3;
-            winCond = 3;
+			winCond = 3;
 		} else {
 			dimension = parseInt($("input[name='grid']:checked").val());
 			winCond = parseInt($("input[name='win']:checked").val());
@@ -37,11 +37,12 @@ function startGame(){
 		gameStarted = true;
 		if (window.innerWidth < 767) {
 			$(".startButtonMobile").text("Reset");
+			$(".instructionsMenuMobile").hide();
 		} else {
 			$(".startButton").text("Reset");
 		}
         audioHandler.start();
-        $(".instructionsMenu").hide();
+		$(".instructionsMenu").hide();
         displayUIMenu("Player 1: Press your zapper to start your turn!")
 	}
 	//reset game
@@ -52,7 +53,7 @@ function startGame(){
 			$('.condition-3-mobile, .condition-4-mobile, .condition-5-mobile').prop('disabled',false);
 			$('.grid-3-mobile, .grid-4-mobile, .grid-5-mobile').prop('disabled',false);
 			$(".startButtonMobile").text("Start");
-			displayUIMenu("Open the menu for instructions. Press START to play!")		
+			$(".instructionsMenuMobile").show();
 		} else { 
 			$('.condition-3, .condition-4, .condition-5').prop('disabled',false);
 			$('.grid-3, .grid-4, .grid-5').prop('disabled',false);

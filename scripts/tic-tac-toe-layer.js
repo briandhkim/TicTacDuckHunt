@@ -20,13 +20,13 @@ function TicTacToeLayer(dim,winCond){	//will eventually need to take in winning 
 				var boardGrid = $('<div>').addClass('gameSquare').attr('id',i.toString()+j.toString()).css({
 					'width':gameSquareWidth+'%',
 					'height':'100%', 
-					'z-index':'1'
+					'z-index':'1',
+					'display': 'inline-flex'
 				}).click(function(){
 					ticTacToeLayer.clickGameSquare($(this).attr('id'));
 				});
 				var innerDiv = $("<div>").css({
 					'height':'100%', 
-					'width':'auto' + 20, 
 					'margin':"auto"
 				});
 				boardGrid.append(innerDiv);
