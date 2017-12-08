@@ -313,7 +313,8 @@ button, input{
 .player0Area {
 	background: black;
 	background-image: url("assets/zapperGreen.png");
-	background-size: auto 100%;
+	/*background-size: auto 100%;*/
+	background-size: contain;
 	background-repeat: no-repeat;
 	background-position: right;
 }
@@ -328,7 +329,8 @@ button, input{
 .player1Area {
 	/* background: black; */
 	background-image: url("assets/zapperPurple.png");
-	background-size: auto 100%;
+	/*background-size: auto 100%;*/
+	background-size: contain;
 	background-repeat: no-repeat;
 	background-position: left;
 }
@@ -530,9 +532,13 @@ button, input{
 		top: 28%;	
 		width: 64%;
 	}
-
+	.player0Area{
+		background-position: top left;
+		background-size: 100% auto;
+	}
 	.player1Area {
-		background-position: right;
+		background-position: top right;
+		background-size: 100% auto;
 	}
 
 	.player1Score {
@@ -550,7 +556,7 @@ button, input{
 	}
 
 	.player0Score, .player1Score {
-		font-size: 25px;
+		font-size: 20px;
 	}
 
 	.gameScreenMonitor>.uiMenu {
@@ -655,6 +661,14 @@ button, input{
 	@keyframes playdog {
 		from { background-position: 0% 50%; }
 		to { background-position: 150% 50%; }
+	}
+	.player0Area{
+		background-position: center;
+		background-size: auto 100%;
+	}
+	.player1Area {
+		background-position: center;
+		background-size: auto 100%;
 	}
 }
 
