@@ -1,24 +1,3 @@
-@font-face {
-	font-family: 'manaspc';
-	src:  url('assets/manaspc.ttf') format('woff2')
-}
-
-@font-face {
-	font-family: 'duckhunt';
-	src:  url('assets/duckhunt.ttf') format('woff2')
-}
-
-html,body{
-	overflow-x: hidden;
-	font-family: manaspc, Arial;
-	color: #fb9a38;
-	background: black;
-	-webkit-user-select: none; /* Chrome/Safari */
-	-moz-user-select: none; /* Firefox */
-	-ms-user-select: none;
-}
-
-
 /*bootstrap grid: 
 	1 	grid = 8.333% 
 	0.5	grid = 4.166%
@@ -33,64 +12,92 @@ dark liver - rgb(82,74,65)
 ash grey - rgb(176,180,180)
 caput mortuum - rgb(84,42,22)
 */
-.mobileVerticalMsg{
+
+@font-face {
+	font-family: 'manaspc';
+	src:  url('assets/manaspc.ttf') format('woff2');
+}
+
+@font-face {
+	font-family: 'duckhunt';
+	src:  url('assets/duckhunt.ttf') format('woff2');
+}
+
+html, body {
+	overflow-x: hidden;
+	font-family: manaspc, Arial;
+	color: #fb9a38;
+	background: black;
+	-webkit-user-select: none; /* Chrome/Safari */
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none;
+}
+
+.mobileVerticalMsg {
 	display: none;
 	position: absolute;
 	z-index: 1;
 	width: 100vw;
 	height: 100vw;
 }
-.mobileVerticalMsg h1{
+
+.mobileVerticalMsg h1 {
 	margin-top: 30vw;
 }
-.gunCursorDefault{
+
+.gunCursorDefault {
 	cursor: url(assets/cursorDefault.png), auto;
 }
-.gunCursorPlayer0{
+
+.gunCursorPlayer0 {
 	cursor: url(assets/cursorPlayer0.png),auto;
 }
-.gunCursorPlayer1{
+
+.gunCursorPlayer1 {
 	cursor: url(assets/cursorPlayer1.png),auto;
 }
-.cursorDefault{
+
+.cursorDefault {
 	cursor: url(assets/cursorOrange.png) 50 50,auto;
 }
-.gameScreenMonitor.cursorPlayer0{
-	/*green*/
+
+.gameScreenMonitor.cursorPlayer0 { /*green*/
 	cursor: url(assets/cursorGreen.png) 50 50, auto;
 }
-.gameScreenMonitor.cursorPlayer1{
-	/*purple*/
+
+.gameScreenMonitor.cursorPlayer1 { /*purple*/
 	cursor: url(assets/cursorPurple.png) 50 50, auto;
 }
-.button, .radioGridSelect, .radioWinSelect, .player0Area, .player1Area{	
+
+.button, .radioGridSelect, .radioWinSelect, .player0Area, .player1Area {	
 	cursor: pointer;
 }
-button, input{
+
+button, input {
 	cursor:pointer;
 }
 
-.mainWrapperRow{	/*overall container div*/
+.mainWrapperRow {
 	height: 100vh;
 }
-.rowUpper, .rowLower{
-	/*border: 1px solid;*/
-}
-.rowUpper>div, .rowLower>div{
+
+.rowUpper > div, .rowLower > div {
 	height: 100%;
 }
 
-.rowUpper{
+.rowUpper {
 	height: 77%;
 	padding-top: 10px;
 }
-.titleArea{
+
+.titleArea {
 	font-family: duckhunt, Arial;
 	font-size: 6.5em;
 	background-color: black;
 	color: #00e8d8;
 }
-.rule-title{
+
+.rule-title {
 	margin: 10px 5% 10px 5%;
 	height: auto;
 	background-color: #00e8d8;
@@ -99,31 +106,31 @@ button, input{
 	font-size: 25px;
 
 }
-.player0Name, .player1Name{
+
+.player0Name, .player1Name {
 	position: relative;
 	top: 70%;
 	font-size: 45px;
 }
 
-.gameScreen{
+.gameScreen {
 	background-color: rgb(220,212,214);
 
 }
-.gameScreenMonitor{
+
+.gameScreenMonitor {
 	position:relative;
 	height: 98%;
 	margin-top:0.5%;
 	margin-left: 0.25%;
-	/*border: 1px solid;*/
 	border-radius: 7%;
-	/*background-color: rgba(0,0,0,0.9);*/
 	padding: 16px;
 	background-image: url("assets/background.png");
 	background-size: 100% 100%;
 	background-repeat:no-repeat;
-	/*background-color: black;*/
 }
-.gameScreenMonitor>.uiMenu{
+
+.gameScreenMonitor > .uiMenu {
 	position:absolute;
 	display:flex;
 	left:50%;
@@ -140,7 +147,7 @@ button, input{
 	font-size: 20px;
 }
 
-.gameScreenMonitor>.instructionsMenu{
+.gameScreenMonitor > .instructionsMenu {
 	position:absolute;
 	left:50%;
 	top:50%;
@@ -154,48 +161,52 @@ button, input{
 	font-size: 20px;
 }
 
-.gameScreenMonitor>.instructionsMenu>h1, .gameScreenMonitor>.instructionsMenu>h2{
+.gameScreenMonitor > .instructionsMenu > h1, .gameScreenMonitor > .instructionsMenu > h2 {
 	text-align: center;
 }
 
-.gameScreenMonitor>.instructionsMenu>ul{
+.gameScreenMonitor > .instructionsMenu > ul {
 	list-style: square;
 	margin:15px;
 }
-.instructionsMenu>p{
+
+.instructionsMenu > p {
 	margin-top: 20px;
 }
-.instructionsMenu>p.mobileWarning{
+
+.instructionsMenu > p.mobileWarning {
 	margin-top: 10px;
 	padding: 0 10px;
 	font-size: 11px;
 }
-@media screen and (max-width: 1584px){
+
+@media screen and (max-width: 1584px) {
 	.instructionsMenu{
 		font-size: 17px;
 	}
-	.instructionsMenu>ul{
+	.instructionsMenu > ul{
 		font-size: 15px;
 	}
-	.instructionsMenu>p{
+	.instructionsMenu > p{
 		font-size: 12px;
 	}
 }
-.gameScreenMonitor>.uiMenu>.uiMenuText{
+
+.gameScreenMonitor > .uiMenu > .uiMenuText {
 	margin:0 20px;
 	text-align: center;
 }
 
-.gameScreenMonitor>div.row{
-	/*height: ;*/
-	/*display:inline-block;*/
+.gameScreenMonitor > div.row {
 	margin: 0;
 }
-.gameSquare{
+
+.gameSquare {
 	border: 1px solid white;
 	display:inline-block;
 }
-.buttonArea{
+
+.buttonArea {
 	position: relative;
 	top:15%;
 	background-color: black;
@@ -203,7 +214,7 @@ button, input{
 	cursor: default;
 }
 
-.buttonAreaMobile{
+.buttonAreaMobile {
 	position: relative;
 	top:15%;
 	background-color: black;
@@ -211,18 +222,17 @@ button, input{
 	cursor: default;
 }
 
-.buttonArea > div{
+.buttonArea > div {
 	margin-left:2.0888%;
 }
 
-.radioGridSelect{
+.radioGridSelect {
 	margin-top: 5%;
 	height:15%;
-	/*border: 1px solid;*/
-	/*margin-left: 2.088%;*/
 	font-size: 18px;
 }
-.radioGridSelectLabel, .radioWinSelectLabel{
+
+.radioGridSelectLabel, .radioWinSelectLabel {
 	display:flex;
 	justify-content: center;
 	align-items: center;
@@ -231,30 +241,28 @@ button, input{
 	border-radius: 8px;
 	color:black;
 	font-size: 16px;
-	/*border-radius: -20px; look up radial gradient*/
-
 }
-.radioGridSelectLabel{
+
+.radioGridSelectLabel {
 	height:45%;
 	margin-top: 15px;
 
 }
-.radioWinSelectLabel{
+
+.radioWinSelectLabel {
 	height: 80px;
 }
 
-.radioWinSelectInput{
+.radioWinSelectInput {
 	height: 30%;
 	font-size: 18px;
 }
-.startInput, .restartButton{
+
+.startInput, .restartButton {
 	height: 12%;
 }
-.startInput{
-	/*position:relative;*/
-	/*top:40%;*/
-}
-.button{
+
+.button {
 	margin-top: 50px;
 	background-color: #48dc48;
 	color:white;
@@ -265,50 +273,45 @@ button, input{
 	border-radius: 8px;
 	font-size: 25px;
 }
-.volumeControl{
-	/*border: 1px solid white;*/
+
+.volumeControl {
 	height: 50px;
 }
-.winnerMessageDisplay{
-	/*border: 1px solid white;*/
+
+.winnerMessageDisplay {
 	height: 200px;
 	color: white;
 	font-family:duckhunt, Arial;
 	font-size: 38px;
 	color: #00e8d8;
 }
-.rowLower{
+
+.rowLower {
 	height: 23%;
 	padding-bottom: 10px;
 }
-.rowLower>div{
-	/*border: 1px solid;*/
-}
-.scoreAndTimerAndDucks>div{
+
+.scoreAndTimerAndDucks > div {
 	height: 100%;
-	/*border: 1px solid orange;*/
 	padding: 0;
 	background: black;
 }
-.player0Score, .player1Score{
+
+.player0Score, .player1Score {
 	font-size: 50px;
 }
 
-.timerAndDuckDisplay>div{
+.timerAndDuckDisplay > div {
 	height:50%;
-	/*border: 1px solid green;*/
 	padding: 0;
 }
-/*.timerDisplay{
-	font-size: 20px;
-}*/
-.duckDisplay{
+
+.duckDisplay {
 	font-size: 50px;
-	/*color: white;*/
 }
-.littleDuck{
+
+.littleDuck {
 	height: 100%;
-	/*border: 1px solid;*/
 }
 .player0Area {
 	background: black;
@@ -317,29 +320,15 @@ button, input{
 	background-repeat: no-repeat;
 	background-position: right;
 }
-/*.player0Name{*/
-	/*position: absolute;*/
-	/*right: 0;*/
-	/*bottom: 0;*/
-	/*!*color: white;*!*/
-	/*color: #fb9a38;*/
-	/*font-size: 25px;*/
-/*}*/
+
 .player1Area {
-	/* background: black; */
 	background-image: url("assets/zapperPurple.png");
 	background-size: auto 100%;
 	background-repeat: no-repeat;
 	background-position: left;
 }
-/*.player1Name{*/
-	/*position: absolute;*/
-	/*left: 0;*/
-	/*bottom: 0;*/
-	/*color: #fb9a38;*/
-	/*font-size: 25px;*/
-/*}*/
-.playerFocusHighlight{
+
+.playerFocusHighlight {
 	text-shadow: 0 0 20px #21a4e2;
 	color: #fb9a38;
 }
@@ -406,7 +395,7 @@ button, input{
 /* animation */
 
 /***** RESPONSIVE *****/
-@media screen and (max-width: 769px){
+@media screen and (max-width: 769px) {
 	.animateDuck0 {
 		margin: auto;
 		width: 55%;
@@ -465,24 +454,20 @@ button, input{
 		display: none;
 	}
 
-	/* .animateDog, .animateDuck0, .animateDuck1 {
-		height: 50vh;
-	} */
-
 	.player0Name, .player1Name {
 		font-size: 1.8em;
-		top: 60%; /* change this? */
+		top: 60%;
 	}
 
 	.scoreAndTimerAndDucks {
 		font-size: 2em;
 	}
 
-	.scoreAndTimerAndDucks>div {
+	.scoreAndTimerAndDucks > div {
 		height: 78%;
 	}
 
-	.scoreAndTimerAndDucks>div {
+	.scoreAndTimerAndDucks > div {
 		background: none;
 	}
 
@@ -599,7 +584,7 @@ button, input{
 }
 
 
-@media screen and (max-width: 769px) and (min-height: 450px){
+@media screen and (max-width: 769px) and (min-height: 450px) {
 	.timerAndDuckDisplay > div {
 		position: absolute;
 		bottom: 44%;
@@ -626,49 +611,49 @@ button, input{
 		width: 85%;
 	}
 
-	.scoreAndTimerAndDucks>div {
+	.scoreAndTimerAndDucks > div {
 		height: auto;
 	}
 
-	.scoreAndTimerAndDucks>div:nth-child(2) {
+	.scoreAndTimerAndDucks > div:nth-child(2) {
 		height: 79%;
 	}
 }
 
-@media screen and (max-width: 1200px) and (min-width: 770px){
-	.instructionsMenu h2{
+@media screen and (max-width: 1200px) and (min-width: 770px) {
+	.instructionsMenu h2 {
 		font-size: 16px;
 	}
-	.instructionsMenu ul{
+	.instructionsMenu ul {
 		font-size: 13px;
 	}
-	.button{
+	.button {
 		margin-top:20px;
 	}
-	.radioGridSelect, .radioWinSelectInput{
+	.radioGridSelect, .radioWinSelectInput {
 		font-size: 12.5px;
 	}
-	.radioGridSelectLabel, .radioWinSelectLabel{
+	.radioGridSelectLabel, .radioWinSelectLabel {
 		font-size: 11px;
 	}
-	.titleArea{
+	.titleArea {
 		font-size: 65px;
 	}
-	.rowLower{
+	.rowLower {
 		margin: 0;
 	}
-	.player0Area, .player1Area{
+	.player0Area, .player1Area {
 		background-size: 100% auto;
 	}
-	.player0Score, .player1Score{
+	.player0Score, .player1Score {
 		font-size: 25px;
 	}
-	.player0Name, .player1Name{
+	.player0Name, .player1Name {
 		font-size:30px;
 	}
 }
 
-@media screen and (max-width: 992px) and (min-width: 770px){
+@media screen and (max-width: 992px) and (min-width: 770px) {
 	.titleArea{
 		font-size: 45px;
 	}

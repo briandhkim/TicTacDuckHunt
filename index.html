@@ -12,10 +12,7 @@
 	<script type="text/javascript" src="scripts/main.js"></script>
 	<script type="text/javascript" src="scripts/audio-controller.js"></script>
 	<link rel="stylesheet" type="text/css" href="style.css">
-	
-	<title>
-		Tic Tac Duck Hunt
-	</title>
+	<title>Tic Tac Duck Hunt</title>
 </head>
 
 <body>
@@ -29,7 +26,6 @@
 		<div class="row rowUpper">	<!--rowUpper: contains game screen, instruction/rules, game options-->
 			<div class="col-sm-2 hidden-xs titleArea text-center">	<!--instruction/rules section | will be set to display none in small screen-->
 				Tic Tac Duck Hunt
-				<!--<div class="rule-title text-center">Hit a duck to mark a spot - but don't hit the dog!</div>-->
 			</div>
 			<div class="col-xs-12 col-sm-8 gameScreen">	<!--main game screen area-->
 				<div class="col-sm-12 gameScreenMonitor cursorDefault">
@@ -39,15 +35,12 @@
 					<div class="instructionsMenu">
 						<h2>Instructions</h2>
 						<ul>
-							<li>Shoot ducks to mark a square</li>
+							<li>Shoot ducks to mark a square before the timer runs out</li>
 							<li>Hitting the dog is an instant loss</li>
-							<li>Mark a square before the timer runs out</li>
 							<li>Each duck hit results in 5 - 20 points depending on how quickly it is shot</li>
 							<li>If game results in a tie, highest score wins</li>
 						</ul>
-						<!-- <br> -->
 						<h2>Select board size, number of ducks in a row to win, and press START to play!</h2>
-						<!--<p class="text-center mobileWarning">*This game was designed to be played on landscape view for all mobile devices</p>-->
 						<p class="text-center">
 							<br>
 							Anthony:<a href="https://github.com/AnthonySorise" target="_blank"><i class="fa fa-github-square" aria-hidden="true"></i></a> |
@@ -89,14 +82,6 @@
 						<label for="condition-5">5</label>
 					</div>
 				</div>	<!--end of radioWinSelect div-->
-				<!--end of reset button div-->
-				<!-- <div class="col-xs-11 volumeControl">
-					reserved for volume control
-				</div> -->
-				<!--<div class="col-xs-11 winnerMessageDisplay text-center">-->
-					<!--select options above and click start-->
-				<!--</div>-->
-
 			</div>	<!--end of buttonArea div-->
 		</div>	<!--end of rowUpper div-->
 		<div class="row rowLower">	<!--contains player turn display, score display-->
