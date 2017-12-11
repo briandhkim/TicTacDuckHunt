@@ -427,7 +427,7 @@ button, input {
 	}
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 769px) {
 	.animateDuck0 {
 		width: 100%;
 		background-size: 400% auto;
@@ -517,12 +517,10 @@ button, input {
 		top: 28%;	
 		width: 64%;
 	}
-
 	.player0Area{
 		background-position: top left;
 		background-size: 100% auto;
 	}
-
 	.player1Area {
 		background-position: top right;
 		background-size: 100% auto;
@@ -612,9 +610,43 @@ button, input {
 	}
 }
 
-@media screen and (max-width: 769px) and (min-width: 768) {
-	.button {
-		margin-top: 0;
+@media screen and (max-width: 767px) {
+	.animateDuck0 {
+		margin: auto;
+		width: 55%;
+		background: url('assets/p0_duck_animation.png') no-repeat center;
+		background-size: cover;
+		animation: play0 .7s steps(4) infinite;
+	}
+	
+	@keyframes play0 {
+		from { background-position: 0% 0; }
+		to { background-position: 130% 0; }
+	}
+	
+	.animateDuck1 {
+		margin: auto;
+		width: 55%;
+		background: url('assets/p1_duck_animation.png') no-repeat center;
+		background-size: cover;
+		animation: play1 .7s steps(4) infinite;
+	}
+	
+	@keyframes play1 {
+		from { background-position: 0% 0; }
+		to { background-position: 130% 0; }
+	}
+	
+	.animateDog {
+		margin: auto;
+		width: 55%;
+		background: url('assets/dog_animation.png') no-repeat center;
+		background-size: cover;
+	}
+	
+	@keyframes playdog {
+		from { background-position: 0% 50%; }
+		to { background-position: 150% 50%; }
 	}
 
 	.player0Area {
