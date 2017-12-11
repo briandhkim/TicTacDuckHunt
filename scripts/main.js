@@ -36,7 +36,7 @@ function startGame(){
         $('.player1Score').css("opacity","0.3");
 		$('.winnerMessageDisplay').text("player1 click gun to start");
 		gameStarted = true;
-		if (window.innerWidth < 767) {
+		if (window.innerWidth < 770) {
 			$(".startButtonMobile").text("Reset");
 			$(".instructionsMenuMobile").hide();
 		} else {
