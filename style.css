@@ -316,14 +316,16 @@ button, input {
 .player0Area {
 	background: black;
 	background-image: url("assets/zapperGreen.png");
-	background-size: auto 100%;
+	/*background-size: auto 100%;*/
+	background-size: contain;
 	background-repeat: no-repeat;
 	background-position: right;
 }
 
 .player1Area {
 	background-image: url("assets/zapperPurple.png");
-	background-size: auto 100%;
+	/*background-size: auto 100%;*/
+	background-size: contain;
 	background-repeat: no-repeat;
 	background-position: left;
 }
@@ -356,7 +358,8 @@ button, input {
 /* animation */
 .animateDuck0 {
 	margin: auto;
-	width: 100%;
+	/*width: 100%;*/
+	width: 85%;
 	background: url('assets/p0_duck_animation.png') no-repeat center;
 	background-size: cover;
 	animation: play0 .7s steps(4) infinite;
@@ -369,7 +372,8 @@ button, input {
 
 .animateDuck1 {
 	margin: auto;
-	width: 100%;
+	/*width: 100%;*/
+	width: 85%;
 	background: url('assets/p1_duck_animation.png') no-repeat center;
 	background-size: cover;
 	animation: play1 .7s steps(4) infinite;
@@ -382,7 +386,8 @@ button, input {
 
 .animateDog {
 	margin: auto;
-	width: 100%;
+	/*width: 100%;*/
+	width: 80%;
 	background: url('assets/dog_animation.png') no-repeat center;
 	background-size: cover;
 	animation: playdog .7s steps(3) infinite;
@@ -395,44 +400,62 @@ button, input {
 /* animation */
 
 /***** RESPONSIVE *****/
-@media screen and (max-width: 769px) {
+@media screen and (max-width: 1024px) {
 	.animateDuck0 {
-		margin: auto;
-		width: 55%;
-		background: url('assets/p0_duck_animation.png') no-repeat center;
-		background-size: cover;
-		animation: play0 .7s steps(4) infinite;
+		width: 100%;
+		background-size: 400% auto;
+	}
+	@keyframes play0 {
+		from { background-position: 0% 50%; }
+		to { background-position: 133% 50%; }
+	}
+	.animateDuck1{
+		width: 100%;
+		background-size: 400% auto;
+	}
+	@keyframes play1 {
+		from { background-position: 0% 50%; }
+		to { background-position: 133% 50%; }
+	}
+	.animateDog{
+		width: 100%;
+		background-size: 300% auto;
+	}
+	@keyframes playdog {
+		from { background-position: 0% 50%; }
+		to { background-position: 152% 50%; }
+	}
+}
+
+@media screen and (max-width: 767px) {
+	.animateDuck0 {
+		width: 100%;
+		background-size: 400% auto;
 	}
 	
 	@keyframes play0 {
-		from { background-position: 0% 0; }
-		to { background-position: 130% 0; }
+		from { background-position: 0% 50%; }
+		to { background-position: 130% 50%; }
 	}
 	
 	.animateDuck1 {
-		margin: auto;
-		width: 55%;
-		background: url('assets/p1_duck_animation.png') no-repeat center;
-		background-size: cover;
-		animation: play1 .7s steps(4) infinite;
+		width: 100%;
+		background-size: 400% auto;
 	}
 	
 	@keyframes play1 {
-		from { background-position: 0% 0; }
-		to { background-position: 130% 0; }
+		from { background-position: 0% 50%; }
+		to { background-position: 130% 50%; }
 	}
 	
 	.animateDog {
-		margin: auto;
-		width: 50%;
-		background: url('assets/dog_animation.png') no-repeat center;
-		background-size: cover;
-		animation: playdog .7s steps(3) infinite;
+		width: 100%;
+		background-size: 300% auto;
 	}
 	
 	@keyframes playdog {
-		from { background-position: 0% 0; }
-		to { background-position: 152% 0; }
+		from { background-position: 0% 50%; }
+		to { background-position: 150% 50%; }
 	}
 
 	.buttonArea {
@@ -495,8 +518,14 @@ button, input {
 		width: 64%;
 	}
 
+	.player0Area{
+		background-position: top left;
+		background-size: 100% auto;
+	}
+
 	.player1Area {
-		background-position: right;
+		background-position: top right;
+		background-size: 100% auto;
 	}
 
 	.player1Score {
@@ -514,7 +543,7 @@ button, input {
 	}
 
 	.player0Score, .player1Score {
-		font-size: 25px;
+		font-size: 20px;
 	}
 
 	.gameScreenMonitor>.uiMenu {
@@ -583,8 +612,61 @@ button, input {
 	}
 }
 
+@media screen and (max-width: 769px) and (min-width: 768) {
+	.button {
+		margin-top: 0;
+	}
 
-@media screen and (max-width: 769px) and (min-height: 450px) {
+	.player0Area {
+		background-position: center;
+		background-size: auto 100%;
+	}
+
+	.player1Area {
+		background-position: center;
+		background-size: auto 100%;
+	}
+}
+
+@media screen and (max-width: 767px) and (min-height: 450px) {
+	.animateDuck0 {
+		margin: auto;
+		width: 100%;
+		background: url('assets/p0_duck_animation.png') no-repeat center;
+		background-size: cover;
+		animation: play0 .7s steps(4) infinite;
+	}
+	
+	@keyframes play0 {
+		from { background-position: 0% 0; }
+		to { background-position: 130% 0; }
+	}
+	
+	.animateDuck1 {
+		margin: auto;
+		width: 100%;
+		background: url('assets/p1_duck_animation.png') no-repeat center;
+		background-size: cover;
+		animation: play1 .7s steps(4) infinite;
+	}
+	
+	@keyframes play1 {
+		from { background-position: 0% 0; }
+		to { background-position: 130% 0; }
+	}
+	
+	.animateDog {
+		margin: auto;
+		width: 100%;
+		background: url('assets/dog_animation.png') no-repeat center;
+		background-size: cover;
+	}
+	
+	@keyframes playdog {
+		from { background-position: 0% 50%; }
+		to { background-position: 150% 50%; }
+	}
+
 	.timerAndDuckDisplay > div {
 		position: absolute;
 		bottom: 44%;

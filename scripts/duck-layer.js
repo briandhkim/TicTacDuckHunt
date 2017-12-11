@@ -47,7 +47,6 @@ function DuckLayer(){
             var percentOfMiddleTime = middleTime / 3000;
             this.pointsPerDuck = 5 + Math.round(15 * percentOfMiddleTime);
         }
-        // console.log(this.pointsPerDuck);
         $(".timer").css('width', percentRemaining + '%');
     }.bind(this);
     this.intervalFunction = function(){
@@ -240,4 +239,3 @@ function DuckLayer(){
         }
     };
 }
-
