@@ -10,8 +10,6 @@ function startGame(){
     //start game
 	if(!gameStarted){
 		if (window.innerWidth < 767) {
-			// dimension = $("input[name='grid-mobile']:checked").val();
-			// winCond = $("input[name='win-mobile']:checked").val();
             dimension = 3;
 			winCond = 3;
 			$('.mobile-first').hide();
@@ -25,7 +23,7 @@ function startGame(){
 
 		ticTacToeLayer = new TicTacToeLayer(dimension,winCond);
 		duckLayer = new DuckLayer();
-		audioHandler = new AudioHandler(); //audioHandler missing var| set var audioHandler to null up top (Brian)
+		audioHandler = new AudioHandler();
 		ticTacToeLayer.createBoard(dimension);
 		$('.gameScreenMonitor').removeClass('cursorDefault');
 		$('.container-fluid').removeClass('gunCursorDefault').addClass('gunCursorPlayer0');
@@ -91,8 +89,7 @@ function removeUIMenu(){
 }
 function displayUIMenu(message){
     $(".uiMenu").show().css('display', 'flex');
-	$(".uiMenuText").text(message)/*.css("text-align", "center")/*.css("display", "flex");*/
-    // $(".uiMenuText").css("margin", "0 20px")
+	$(".uiMenuText").text(message)
 }
 
 function playerTurnStart(){		//click handler for player areas  | starts each player's turn and timer
