@@ -94,7 +94,7 @@ button, input {
 
 .titleArea {
 	font-family: duckhunt, Arial;
-	font-size: 6.5em;
+	font-size: 6vw;
 	background-color: black;
 	color: #00e8d8;
 }
@@ -155,13 +155,12 @@ button, input {
 	top:50%;
 	transform: translate(-50%, -50%);
 	width:60%;
-	height:80%;
 	background-image: url("assets/instructions_menu.png");
 	background-size: 100% 100%;
 	background-repeat:no-repeat;
 	color: white;
 	font-size: 20px;
-	padding: 1%;
+	padding: 2%;
 }
 
 .gameScreenMonitor > .instructionsMenu > h1, .gameScreenMonitor > .instructionsMenu > h2, .gameScreenMonitor > .instructionsMenu > h3 {
@@ -740,11 +739,28 @@ button, input {
 	}
 
 	.scoreAndTimerAndDucks > div {
-		height: auto;
+		height: 85%;
 	}
 
 	.scoreAndTimerAndDucks > div:nth-child(2) {
 		height: 79%;
+	}
+
+	/* .screenSizeMsg > h1:first-of-type {
+		display: none;
+	} */
+
+	.mobileVerticalMsg, .screenSizeMsg {
+		position: absolute;
+		z-index: 1;
+		width: 100vw;
+		height: 80vw;
+	}
+
+	.mobileVerticalMsg {
+		display: block;
+		height: 100vh;
+		background-color: black;
 	}
 }
 
