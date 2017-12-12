@@ -33,7 +33,7 @@ html, body {
 	-ms-user-select: none;
 }
 
-.mobileVerticalMsg {
+.mobileVerticalMsg, .screenSizeMsg {
 	display: none;
 	position: absolute;
 	z-index: 1;
@@ -41,8 +41,8 @@ html, body {
 	height: 100vw;
 }
 
-.mobileVerticalMsg h1 {
-	margin-top: 30vw;
+.mobileVerticalMsg h1{
+	margin-top: 40vw;
 }
 
 .gunCursorDefault {
@@ -79,7 +79,8 @@ button, input {
 
 .mainWrapperRow {
 	height: 100vh;
-	min-height: 340px;
+	/*min-height: 340px;*/
+	min-height: 360px;
 }
 
 .rowUpper > div, .rowLower > div {
@@ -209,7 +210,7 @@ button, input {
 
 .buttonArea {
 	position: relative;
-	top:15%;
+	/*top:15%;*/
 	background-color: black;
 	padding: 0;
 	cursor: default;
@@ -259,12 +260,13 @@ button, input {
 	font-size: 18px;
 }
 
-.startInput, .restartButton {
+.startInput {
 	height: 12%;
+	margin-top: 100px;
 }
 
 .button {
-	margin-top: 50px;
+	/*margin-top: 50px;*/
 	background-color: #48dc48;
 	color:white;
 	height: 50px;
@@ -458,11 +460,9 @@ button, input {
 		from { background-position: 0% 50%; }
 		to { background-position: 150% 50%; }
 	}
-
-	.buttonArea {
+	/*.buttonArea {
 		display: none;
-	}
-
+	}*/
 	.titleArea {
 		padding: 0;
 		font-size: 2.5em;
@@ -477,7 +477,12 @@ button, input {
 	.gameScreenMonitor > .uiMenu {
 		display: none;
 	}
-
+	.radioGridSelectLable, .radioWinSelectLabel{
+		font-size: 14px;
+	}
+	.radioGridSelect, .radioWinSelectInput{
+		font-size: 12.5px;
+	}
 	.player0Name, .player1Name {
 		font-size: 1.8em;
 		top: 60%;
@@ -649,7 +654,9 @@ button, input {
 		from { background-position: 0% 50%; }
 		to { background-position: 150% 50%; }
 	}
-
+	.buttonArea {
+		display: none;
+	}
 	.player0Area {
 		background-position: center;
 		background-size: auto 100%;
