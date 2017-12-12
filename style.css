@@ -72,6 +72,7 @@ button, input{
 
 .mainWrapperRow{	/*overall container div*/
 	height: 100vh;
+	min-height: 340px;
 }
 .rowUpper, .rowLower{
 	/*border: 1px solid;*/
