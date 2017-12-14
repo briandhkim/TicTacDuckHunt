@@ -107,10 +107,10 @@ function playerTurnStart(){		//click handler for player areas  | starts each pla
 
 $(window).resize(()=>{
 	$('.gameSquare div').css('height', $('.gameSquare').css('height'));
-	if(window.innerWidth < 420){
+	if(window.innerWidth < 420 && $('.screenSizeMsg').css('display')=='none'){
 		$('.mobileVerticalMsg').css('display','block');
-		$('body>.container-fluid').css('display','none');
-	}else if(window.innerWidth > 420){
+		$('body>.container-fluid').css('display','none');	
+	}else if(window.innerWidth > 420 && $('.mobileVerticalMsg').css('display')=='block'){
 		$('.mobileVerticalMsg').css('display','none');
 		$('body>.container-fluid').css('display','block');
 	}
@@ -121,10 +121,10 @@ $(window).resize(()=>{
 	// 	$('.screenSizeMsg').css('display','none');
 	// 	$('body>.container-fluid').css('display','block');
 	// }
-	if(window.innerWidth<768 && window.innerWidth>420 && window.innerHeight>650){
+	if(window.innerWidth<768 && window.innerWidth>420 && window.innerHeight>650 && $('.mobileVerticalMsg').css('display')=='none'){
 		$('.screenSizeMsg').css('display','block');
 		$('body>.container-fluid').css('display', 'none');
-	}else if((window.innerWidth>768 && window.innerHeight>650) || (window.innerWidth<768 && window.innerHeight<651)){
+	}else if((window.innerWidth>768 && window.innerHeight>650) || (window.innerWidth<768 && window.innerHeight<651) && $('.screenSizeMsg').css('display')=='block'){
 		$('.screenSizeMsg').css('display','none');
 		$('body>.container-fluid').css('display','block');
 	}
