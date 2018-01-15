@@ -6,8 +6,7 @@
 
 ## Rules
 - Follows tic-tac-toe game play (ie alternating players, a number of contiguous cells in a row to win).
-- Player-selected gameboard size between 3 - 5.
-- Win condition dynamically determined based off board size.
+- Player-selected gameboard size between 3 - 5 and win condition.
 - In place of X's and O's, Ducks will be randomly generated in squares.
 	- Shoot ducks to mark a square before the timer runs out
 	- Hitting the dog is an instant loss
