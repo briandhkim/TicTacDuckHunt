@@ -12,7 +12,5 @@
 	- Hitting the dog is an instant loss
 	- Each duck hit results in 5 - 20 points depending on how quickly it is shot
 	- If game results in a tie, highest score wins
-- This game was designed to be played at landscape view for mobile.
 
-![Alt text](/assets/readme_1.png?raw=true "Starting Screen")
-![Alt text](/assets/readme_2.png?raw=true "Player 2's turn")
+![Alt text](/assets/readme.png?raw=true "Player 2's turn")
