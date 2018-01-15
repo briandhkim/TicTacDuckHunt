@@ -1,14 +1,10 @@
-##
-- Project created during a Hackathon by students at Learning Fuze.
-
 # Tic Tac Duck Hunt
 
 <h3>A Duck Hunt themed Tic-Tac-Toe Shooting Gallery Game</h3>
 
 ![Alt text](/assets/readme.png?raw=true "Tic Tac Duck Hunt")
 
-###
-<h4 class="text-center">Rules</h4>
+## Rules
 - Follows tic-tac-toe game play (ie alternating players, a number of contiguous cells in a row to win).
 - Player-selected gameboard size between 3 - 5.
 - Win condition dynamically determined based off board size.
