@@ -3,8 +3,8 @@ function TicTacToeLayer(dim,winCond){	//will eventually need to take in winning 
 	this.dimension = dim;
 	this.winNumber = winCond; 
 	this.playerTurn = 0;	//will always be either 0 or 1
-							/*player turn tracker
-								0 : o turn  ||| 1 : x turn*/
+	/*player turn tracker
+	0 : o turn  ||| 1 : x turn*/
 	this.availableSquareArray = []; //will be populated createBoard containing all square ids
 	this.player0Squares = []; //ids of player occupied squares
 	this.player1Squares = []; 
