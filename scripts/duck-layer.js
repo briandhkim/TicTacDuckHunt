@@ -181,8 +181,8 @@ function DuckLayer(){
     };
 
     this.hitDuck = function(squareId) {
-        var duckAnimateSelection = $('#' + squareId)[0].children[0];
         audioHandler.hit();
+        var duckAnimateSelection = $('#' + squareId)[0].children[0];
         this.duckHit = true; //changing duckHit to true if duck was in div clicked
         if (ticTacToeLayer.playerTurn === 0) {
             this.player0Score += this.pointsPerDuck; //update this.player0Score
@@ -205,6 +205,7 @@ function DuckLayer(){
     };
 
     this.hitDog = function(squareID){
+        audioHandler.miss();
         this.dogHit = true;
         this.stopTimer();
         this.checkWinCondition();
