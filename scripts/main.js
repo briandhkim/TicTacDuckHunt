@@ -127,13 +127,6 @@ $(window).resize(()=>{
 		$('.mobileVerticalMsg').css('display','none');
 		$('body>.container-fluid').css('display','block');
 	}
-	// if((window.innerWidth > 767 && window.innerHeight < 560) || (window.innerWidth<768 && window.innerHeight>650)){
-	// 	$('.screenSizeMsg').css('display','block');
-	// 	$('body>.container-fluid').css('display', 'none');
-	// }else if((window.innerWidth > 767&& window.innerHeight > 560) || (window.innerWidth>768 && window.innerHeight<414)){
-	// 	$('.screenSizeMsg').css('display','none');
-	// 	$('body>.container-fluid').css('display','block');
-	// }
 	if(window.innerWidth<768 && window.innerWidth>420 && window.innerHeight>650 && $('.mobileVerticalMsg').css('display')=='none'){
 		$('.screenSizeMsg').css('display','block');
 		$('body>.container-fluid').css('display', 'none');
@@ -145,9 +138,9 @@ $(window).resize(()=>{
 
 $(document).ready(function(){
 	//set browser zoom to 100%
-    document.body.style.webkitTransform =  1;    // Chrome, Opera, Safari
-    document.body.style.msTransform =   1;       // IE 9
-    document.body.style.transform = 1;     // General
+    	document.body.style.webkitTransform =  1;    // Chrome, Opera, Safari
+    	document.body.style.msTransform =   1;       // IE 9
+    	document.body.style.transform = 1;     // General
 	$('.startButton').click(startGame);
 	$('.condition-4, .condition-5[type=radio]').attr('disabled',true);
 	$('.condition-4-mobile, .condition-5-mobile[type=radio]').attr('disabled',true);
@@ -203,11 +196,4 @@ $(document).ready(function(){
 		$('.mobileVerticalMsg').css('display','none');
 		$('body>.container-fluid').css('display','block');
 	}
-	// if(window.innerWidth > 767 && window.innerHeight < 560){
-	// 	$('.screenSizeMsg').css('display','block');
-	// 	$('body>.container-fluid').css('display', 'none');
-	// }else if(window.innerWidth > 767&& window.innerHeight > 560){
-	// 	$('.screenSizeMsg').css('display','none');
-	// 	$('body>.container-fluid').css('display','block');
-	// }
 });
