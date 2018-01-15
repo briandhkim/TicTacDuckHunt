@@ -203,94 +203,94 @@ function TicTacToeLayer(dim,winCond){	//will eventually need to take in winning 
 		}
 	};
 	this.checkWinDiag = function(){
-		for(var i=0; i<this.dimension; i++) {
-            for (var j = 0; j <this.dimension; j++) {
-                var player0PtLR = 0;
-                var player1PtLR = 0;
-                var proceedP0 = true;
-                var proceedP1 = true;
-                var currentRow = j;
-                var currentCol = i;
-                var currentSquare = $('#'+ currentRow + currentCol);
-                if(currentSquare.hasClass('player0Sq') || currentSquare.hasClass('player1Sq')){
-                    	if(currentSquare.hasClass('player0Sq')){
-                        	player0PtLR = 1;
-                        	proceedP1 = false;
-                    	}
-                	else if(currentSquare.hasClass('player1Sq')){
-                        	player1PtLR = 1;
-                        	proceedP0 = false;
+	for(var i=0; i<this.dimension; i++) {
+		for (var j = 0; j <this.dimension; j++) {
+                	var player0PtLR = 0;
+                	var player1PtLR = 0;
+                	var proceedP0 = true;
+                	var proceedP1 = true;
+	 		var currentRow = j;
+                	var currentCol = i;
+                	var currentSquare = $('#'+ currentRow + currentCol);
+                	if(currentSquare.hasClass('player0Sq') || currentSquare.hasClass('player1Sq')){
+                    		if(currentSquare.hasClass('player0Sq')){
+                        		player0PtLR = 1;
+                        		proceedP1 = false;
+                    		}
+                		else if(currentSquare.hasClass('player1Sq')){
+                        		player1PtLR = 1;
+                        		proceedP0 = false;
+				}
+                		while((currentRow+1 < this.dimension) && (currentCol+1 < this.dimension) && (player0PtLR !== this.winNumber) && (player1PtLR !== this.winNumber)){
+                        		currentRow += 1;
+                        		currentCol += 1;
+                        		currentSquare = $('#'+ currentRow + currentCol);
+                        		if(currentSquare.hasClass('player0Sq') && proceedP0){
+                            			player0PtLR+=1;
+                        		}
+                        		else{
+                            			proceedP0 = false;
+                            			player0PtLR = 0;
+                        		}
+                        		if (currentSquare.hasClass('player1Sq') && proceedP1){
+                            			player1PtLR+=1;
+                        		}
+                        		else{
+                        			proceedP1 = false;
+                        			player1PtLR = 0;
+                        		}
+				}
 			}
-                	while((currentRow+1 < this.dimension) && (currentCol+1 < this.dimension) && (player0PtLR !== this.winNumber) && (player1PtLR !== this.winNumber)){
-                        	currentRow += 1;
-                        	currentCol += 1;
-                        	currentSquare = $('#'+ currentRow + currentCol);
+                	if(player0PtLR === this.winNumber){
+                    		this.gameOver = true;
+                    		this.gameWinner = 0;
+                    		return;
+                	}
+                	else if(player1PtLR === this.winNumber){
+                    		this.gameOver = true;
+                    		this.gameWinner = 1;
+                    		return;
+                	}
+            	}
+	}
+
+        for(var i=0; i<this.dimension; i++) {
+    		for (var j = 0; j < this.dimension; j++) {
+                	var player0PtRL = 0;
+                	var player1PtRL = 0;
+                	var proceedP0 = true;
+                	var proceedP1 = true;
+                	var currentRow = j;
+                	var currentCol = i;
+                	currentSquare = $('#'+ currentRow + currentCol);
+                	if(currentSquare.hasClass('player0Sq') || currentSquare.hasClass('player1Sq')){
+                    		if(currentSquare.hasClass('player0Sq')){
+                        	player0PtRL = 1;
+                        	proceedP1 = false;
+                    		}
+                    		else if(currentSquare.hasClass('player1Sq')){
+                        		player1PtRL = 1;
+                        		proceedP0 = false;
+                    		}
+                    		while((currentRow+1 < this.dimension) && (currentCol-1 >= 0) && (player0PtRL !== this.winNumber) && (player1PtRL !== this.winNumber)){
+                    			currentRow += 1;
+                        		currentCol -= 1;
+                        		currentSquare = $('#'+ currentRow + currentCol);
                         	if(currentSquare.hasClass('player0Sq') && proceedP0){
-                            		player0PtLR+=1;
+                            		player0PtRL+=1;
                         	}
                         	else{
                             		proceedP0 = false;
-                            		player0PtLR = 0;
+                            		player0PtRL = 0;
                         	}
                         	if (currentSquare.hasClass('player1Sq') && proceedP1){
-                            		player1PtLR+=1;
+                            		player1PtRL+=1;
                         	}
                         	else{
-                        		proceedP1 = false;
-                        		player1PtLR = 0;
+                            		proceedP1 = false;
+                            		player1PtRL = 0;
                         	}
-			}
-		}
-                if(player0PtLR === this.winNumber){
-                    this.gameOver = true;
-                    this.gameWinner = 0;
-                    return;
-                }
-                else if(player1PtLR === this.winNumber){
-                    this.gameOver = true;
-                    this.gameWinner = 1;
-                    return;
-                }
-            }
-        }
-
-        for(var i=0; i<this.dimension; i++) {
-            for (var j = 0; j < this.dimension; j++) {
-                var player0PtRL = 0;
-                var player1PtRL = 0;
-                var proceedP0 = true;
-                var proceedP1 = true;
-                var currentRow = j;
-                var currentCol = i;
-                currentSquare = $('#'+ currentRow + currentCol);
-                if(currentSquare.hasClass('player0Sq') || currentSquare.hasClass('player1Sq')){
-                    if(currentSquare.hasClass('player0Sq')){
-                        player0PtRL = 1;
-                        proceedP1 = false;
-                    }
-                    else if(currentSquare.hasClass('player1Sq')){
-                        player1PtRL = 1;
-                        proceedP0 = false;
-                    }
-                    while((currentRow+1 < this.dimension) && (currentCol-1 >= 0) && (player0PtRL !== this.winNumber) && (player1PtRL !== this.winNumber)){
-                    	currentRow += 1;
-                        currentCol -= 1;
-                        currentSquare = $('#'+ currentRow + currentCol);
-                        if(currentSquare.hasClass('player0Sq') && proceedP0){
-                            player0PtRL+=1;
-                        }
-                        else{
-                            proceedP0 = false;
-                            player0PtRL = 0;
-                        }
-                        if (currentSquare.hasClass('player1Sq') && proceedP1){
-                            player1PtRL+=1;
-                        }
-                        else{
-                            proceedP1 = false;
-                            player1PtRL = 0;
-                        }
-                    }
+                    	}
                 }
                 if(player0PtRL === this.winNumber){
                     this.gameOver = true;
