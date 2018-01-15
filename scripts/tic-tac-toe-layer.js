@@ -26,7 +26,6 @@ function TicTacToeLayer(dim,winCond){	//will eventually need to take in winning 
 					ticTacToeLayer.clickGameSquare($(this).attr('id'));
 				});
 				var innerDiv = $("<div>").css({
-					// 'height':'100%', 
 					'margin':"auto"
 				});
 				boardGrid.append(innerDiv);
@@ -101,35 +100,35 @@ function TicTacToeLayer(dim,winCond){	//will eventually need to take in winning 
 				if(duckLayer.player0Score > duckLayer.player1Score){
 					displayUIMenu("Player 1 wins with higher score!  Press RESET to play again!")
 				}else if(duckLayer.player0Score < duckLayer.player1Score){
-                    displayUIMenu("Player 2 wins with higher score!  Press RESET to play again!")
+                    			displayUIMenu("Player 2 wins with higher score!  Press RESET to play again!")
 				}
 			}
 			else if(this.playerTurn === 0){
 				this.playerTurn = 1;
 				$('.player0Area').unbind('click', playerTurnStart);
 				$('.player1Area').bind('click',playerTurnStart);
-                $('.gameScreenMonitor').removeClass('cursorPlayer0').addClass('cursorPlayer1');
-                $('.container-fluid').removeClass('gunCursorPlayer0').addClass('gunCursorPlayer1');
-                displayUIMenu("Player 2: Press your zapper to start your turn!");
+                		$('.gameScreenMonitor').removeClass('cursorPlayer0').addClass('cursorPlayer1');
+                		$('.container-fluid').removeClass('gunCursorPlayer0').addClass('gunCursorPlayer1');
+                		displayUIMenu("Player 2: Press your zapper to start your turn!");
 				$('.player0Name').removeClass('playerFocusHighlight');
 				$('.player0Area').css("opacity","0.3");
-                $('.player1Area').css("opacity","1");
-                $('.player0Score').css("opacity","0.3");
-                $('.player1Score').css("opacity","1");
+                		$('.player1Area').css("opacity","1");
+				$('.player0Score').css("opacity","0.3");
+                		$('.player1Score').css("opacity","1");
 				$('.player1Name').addClass('playerFocusHighlight');
 			}else if(this.playerTurn === 1){
-            	this.playerTurn = 0;
+            			this.playerTurn = 0;
 				$('.player1Area').unbind('click',playerTurnStart);
 				$('.player0Area').bind('click',playerTurnStart);
 
-                $('.gameScreenMonitor').removeClass('cursorPlayer1').addClass('cursorPlayer0');
-                $('.container-fluid').removeClass('gunCursorPlayer1').addClass('gunCursorPlayer0');
-                displayUIMenu("Player 1: Press your zapper to start your turn!");
+                		$('.gameScreenMonitor').removeClass('cursorPlayer1').addClass('cursorPlayer0');
+                		$('.container-fluid').removeClass('gunCursorPlayer1').addClass('gunCursorPlayer0');
+                		displayUIMenu("Player 1: Press your zapper to start your turn!");
 				$('.player1Name').removeClass('playerFocusHighlight');
-                $('.player1Area').css("opacity","0.3");
-                $('.player0Area').css("opacity","1");
-                $('.player1Score').css("opacity","0.3");
-                $('.player0Score').css("opacity","1");
+                		$('.player1Area').css("opacity","0.3");
+                		$('.player0Area').css("opacity","1");
+                		$('.player1Score').css("opacity","0.3");
+                		$('.player0Score').css("opacity","1");
 				$('.player0Name').addClass('playerFocusHighlight');
 			}
 		}else if(this.gameOver){
@@ -139,9 +138,9 @@ function TicTacToeLayer(dim,winCond){	//will eventually need to take in winning 
 				$('.player1Area').unbind('click',playerTurnStart);
 			}
 			if(this.gameWinner===0){
-                displayUIMenu("Player 1 Wins!  Press RESET to play again!");
+                		displayUIMenu("Player 1 Wins!  Press RESET to play again!");
 			}else if(this.gameWinner === 1){
-                displayUIMenu("Player 2 Wins!  Press RESET to play again!");
+                		displayUIMenu("Player 2 Wins!  Press RESET to play again!");
 			}
 		}
 	};
@@ -214,34 +213,34 @@ function TicTacToeLayer(dim,winCond){	//will eventually need to take in winning 
                 var currentCol = i;
                 var currentSquare = $('#'+ currentRow + currentCol);
                 if(currentSquare.hasClass('player0Sq') || currentSquare.hasClass('player1Sq')){
-                    if(currentSquare.hasClass('player0Sq')){
-                        player0PtLR = 1;
-                        proceedP1 = false;
-                    }
-                	else if(currentSquare.hasClass('player1Sq')){
-                        player1PtLR = 1;
-                        proceedP0 = false;
-					}
-                	while((currentRow+1 < this.dimension) && (currentCol+1 < this.dimension) && (player0PtLR !== this.winNumber) && (player1PtLR !== this.winNumber)){
-                        currentRow += 1;
-                        currentCol += 1;
-                        currentSquare = $('#'+ currentRow + currentCol);
-                        if(currentSquare.hasClass('player0Sq') && proceedP0){
-                            player0PtLR+=1;
-                        }
-                        else{
-                            proceedP0 = false;
-                            player0PtLR = 0;
-                        }
-                        if (currentSquare.hasClass('player1Sq') && proceedP1){
-                            player1PtLR+=1;
-                        }
-                        else{
+                    	if(currentSquare.hasClass('player0Sq')){
+                        	player0PtLR = 1;
                         	proceedP1 = false;
-                            player1PtLR = 0;
-                        }
-					}
-				}
+                    	}
+                	else if(currentSquare.hasClass('player1Sq')){
+                        	player1PtLR = 1;
+                        	proceedP0 = false;
+			}
+                	while((currentRow+1 < this.dimension) && (currentCol+1 < this.dimension) && (player0PtLR !== this.winNumber) && (player1PtLR !== this.winNumber)){
+                        	currentRow += 1;
+                        	currentCol += 1;
+                        	currentSquare = $('#'+ currentRow + currentCol);
+                        	if(currentSquare.hasClass('player0Sq') && proceedP0){
+                            		player0PtLR+=1;
+                        	}
+                        	else{
+                            		proceedP0 = false;
+                            		player0PtLR = 0;
+                        	}
+                        	if (currentSquare.hasClass('player1Sq') && proceedP1){
+                            		player1PtLR+=1;
+                        	}
+                        	else{
+                        		proceedP1 = false;
+                        		player1PtLR = 0;
+                        	}
+			}
+		}
                 if(player0PtLR === this.winNumber){
                     this.gameOver = true;
                     this.gameWinner = 0;
