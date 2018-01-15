@@ -293,14 +293,14 @@ function TicTacToeLayer(dim,winCond){	//will eventually need to take in winning 
                     	}
                 }
                 if(player0PtRL === this.winNumber){
-                    this.gameOver = true;
-                    this.gameWinner = 0;
-                    return;
+	    		this.gameOver = true;
+                    	this.gameWinner = 0;
+	    		return;
                 }
                 else if(player1PtRL === this.winNumber){
-                    this.gameOver = true;
-                    this.gameWinner = 1;
-                    return;
+                    	this.gameOver = true;
+                    	this.gameWinner = 1;
+                    	return;
                 }
             }
         }
