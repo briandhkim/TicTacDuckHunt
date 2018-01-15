@@ -37,15 +37,15 @@ function TicTacToeLayer(dim,winCond){	//will eventually need to take in winning 
 	};
 
 	this.clickGameSquare = function(squareID){ //will have $().attr('id') passed in
-        audioHandler.shoot();
+        	audioHandler.shoot();
 		//white screen
 		$(".gameScreenMonitor").css("background", "none");
 
 		setTimeout(function(){
-            $(".gameScreenMonitor").css({
-            	"background": "url(assets/background.png)",
-            	"background-size": "100% 100%"
-            });
+    			$(".gameScreenMonitor").css({
+            			"background": "url(assets/background.png)",
+            			"background-size": "100% 100%"
+    			});
 		}, 20);
 
 		//conditional checking player turn was removed | duck object can access that data
