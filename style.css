@@ -136,7 +136,7 @@ button, input {
 	position:absolute;
 	display:flex;
 	left:50%;
-	top:50%;
+	top:33.3%;
 	transform: translate(-50%, -50%);
 	width:50%;
 	height:20%;

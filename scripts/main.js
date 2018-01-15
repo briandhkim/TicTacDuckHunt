@@ -10,16 +10,30 @@ function startGame(){
     //start game
 	if(!gameStarted){
 		if (window.innerWidth < 767) {
-            dimension = 3;
+            //only default dimension and winCond on mobile
+			dimension = 3;
 			winCond = 3;
+			//UI
 			$('.mobile-first').hide();
 		} else {
 			dimension = parseInt($("input[name='grid']:checked").val());
 			winCond = parseInt($("input[name='win']:checked").val());
-	
+
+			//radio button UI
 			$('.condition-3:not(:checked), .condition-4:not(:checked), .condition-5:not(:checked)').prop('disabled',true);
 			$('.grid-3:not(:checked), .grid-4:not(:checked), .grid-5:not(:checked)').prop('disabled',true);
 		}
+
+		//re-position game menu to not cover game pieces
+        if(dimension === 3){
+			$('.uiMenu').css("top", "33.3%")
+        }
+        else if(dimension === 4){
+            $('.uiMenu').css("top", "50%")
+        }
+        else if (dimension === 5){
+            $('.uiMenu').css("top", "40%")
+        }
 
 		ticTacToeLayer = new TicTacToeLayer(dimension,winCond);
 		duckLayer = new DuckLayer();
@@ -80,7 +94,6 @@ function startGame(){
         duckLayer.timerTimeRemaining = 0;
         duckLayer = null;
         audioHandler = null;
-        playerTurnStartClicked = false;
 	}
 }
 

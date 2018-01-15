@@ -152,14 +152,9 @@ function DuckLayer(){
         this.duckDurations[duckLeaveTime] = randomDuckSquare;
         var duckAnimateSelection = $('#' + randomDuckSquare)[0].children[0];
         if(!dogGenerate) {
+            let className = 'animateDuck' + ticTacToeLayer.playerTurn;
+            $(duckAnimateSelection).addClass(className); //adding animations via class
             audioHandler.quack();
-            if(ticTacToeLayer.playerTurn === 0){
-                $(duckAnimateSelection).addClass('animateDuck0'); //adding animations via class
-                audioHandler.quack();
-            } else{
-                $(duckAnimateSelection).addClass('animateDuck1'); //adding animations via class
-                audioHandler.quack();
-            }
         } else{
             $(duckAnimateSelection).addClass('animateDog'); //adding animations via class
             audioHandler.dog();
