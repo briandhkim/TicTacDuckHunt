@@ -3,8 +3,8 @@ function TicTacToeLayer(dim,winCond){	//will eventually need to take in winning 
 	this.dimension = dim;
 	this.winNumber = winCond; 
 	this.playerTurn = 0;	//will always be either 0 or 1
-							/*player turn tracker
-								0 : o turn  ||| 1 : x turn*/
+	/*player turn tracker
+	0 : o turn  ||| 1 : x turn*/
 	this.availableSquareArray = []; //will be populated createBoard containing all square ids
 	this.player0Squares = []; //ids of player occupied squares
 	this.player1Squares = []; 
@@ -37,15 +37,15 @@ function TicTacToeLayer(dim,winCond){	//will eventually need to take in winning 
 	};
 
 	this.clickGameSquare = function(squareID){ //will have $().attr('id') passed in
-        audioHandler.shoot();
+        	audioHandler.shoot();
 		//white screen
 		$(".gameScreenMonitor").css("background", "none");
 
 		setTimeout(function(){
-            $(".gameScreenMonitor").css({
-            	"background": "url(assets/background.png)",
-            	"background-size": "100% 100%"
-            });
+    			$(".gameScreenMonitor").css({
+            			"background": "url(assets/background.png)",
+            			"background-size": "100% 100%"
+    			});
 		}, 20);
 
 		//conditional checking player turn was removed | duck object can access that data
@@ -293,14 +293,14 @@ function TicTacToeLayer(dim,winCond){	//will eventually need to take in winning 
                     	}
                 }
                 if(player0PtRL === this.winNumber){
-                    this.gameOver = true;
-                    this.gameWinner = 0;
-                    return;
+	    		this.gameOver = true;
+                    	this.gameWinner = 0;
+	    		return;
                 }
                 else if(player1PtRL === this.winNumber){
-                    this.gameOver = true;
-                    this.gameWinner = 1;
-                    return;
+                    	this.gameOver = true;
+                    	this.gameWinner = 1;
+                    	return;
                 }
             }
         }
