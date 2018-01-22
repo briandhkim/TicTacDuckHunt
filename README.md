@@ -1,6 +1,6 @@
 # Tic Tac Duck Hunt
 
-<h3>A Duck Hunt themed Tic-Tac-Toe Shooting Gallery Game</h3>
+<h3>A Duck Hunt Themed Tic-Tac-Toe Shooting Gallery Game</h3>
 
 ![Alt text](/assets/readme.png?raw=true "Tic Tac Duck Hunt")
 
